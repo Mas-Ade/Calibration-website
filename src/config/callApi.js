@@ -1,34 +1,10 @@
-// import Component from React 
-import React, {Component} from 'react';
-//Library API
-import axios from "axios";
-// //Import config URL API
-import { BASE_URLAPI } from './URLAPI'
+import axios from 'axios'
 
-class CallApi extends Component {
-  
-//   constructor(props){
-//     super(props)
-//     this.state = {
-//       dataAndon: []
-//     }
-//   }
-// // komponen life cycle pada react 
-//   componentDidMount() {
-//     axios.get(`${BASE_URLAPI}/api/getandondata`)
-//     .then(response => {
-//       this.setState({ dataAndon: response.data.data })
-//     })
-//     .catch(error =>{
-//       console.log('error', error)
-//     })}
-//   render() { 
-//   return (
-//     <div>
-// { this.state.dataAndon.map((dataAndon, index) => (
-//     console.log(dataAndon))
-//    )}
-//     </div>
-// )}
+const url = `http://10.202.10.42:3003/api/getdata_devicemaster_calibration`
+
+export const getData = async () => {
+    const datas = await axios.get(url)
+    console.log('Berhasil Muncul', datas )
+    // return datas.data
+    // return movie.data.results
 }
-export default CallApi;

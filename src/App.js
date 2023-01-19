@@ -8,6 +8,7 @@ import Schedule from "./Pages/schedule";
 import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/loginPages";
 import DataTables from './Components/datatableDev'
+import ReactPaginate from "./Components/reactPaginate";
 
 
 
@@ -25,7 +26,8 @@ class App extends Component {
         <Route path="/Report" element={ <Report /> } />
         <Route path="/Schedule" element={ <Schedule /> } />
         <Route path="/About" element={ <About /> } />
-        <Route path="/table" element={ <DataTables /> } />
+        <Route path="/table" element={ <DataTables  /> } />
+        <Route path="/paginate" element={ <ReactPaginate /> } />
       </Routes>
 
     </div>

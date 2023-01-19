@@ -21,6 +21,7 @@ class Header extends Component {
           <li><Link  class="nav-link px-2 text-secondary" to="/About">About</Link></li>
           <li><Link  class="nav-link px-2 text-secondary" to="/testApi">TesApi</Link></li>
           <li><Link  class="nav-link px-2 text-secondary" to="/table">Datatable</Link></li>
+          <li><Link  class="nav-link px-2 text-secondary" to="/paginate">ReactPaginate</Link></li>
         </ul>
 
         <div class="text-end">
