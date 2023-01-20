@@ -8,7 +8,7 @@ import Schedule from "./Pages/schedule";
 import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/loginPages";
 import DataTables from './Components/datatableDev'
-import ReactPaginate from "./Components/reactPaginate";
+import Datatables2 from "./Components/funcDatatables2";
 
 
 
@@ -27,7 +27,7 @@ class App extends Component {
         <Route path="/Schedule" element={ <Schedule /> } />
         <Route path="/About" element={ <About /> } />
         <Route path="/table" element={ <DataTables  /> } />
-        <Route path="/paginate" element={ <ReactPaginate /> } />
+        <Route path="/trialpage" element={ <Datatables2 /> } />
       </Routes>
 
     </div>
