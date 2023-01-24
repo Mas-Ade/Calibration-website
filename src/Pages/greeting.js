@@ -1,6 +1,7 @@
 
 import greeting_icon1 from '../Assets/pictures/greeting_icon1.png'
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 
 const Greetings = () => {
@@ -12,7 +13,7 @@ const Greetings = () => {
               <div>  <h1>Bettter Calibration experience with Technology Control Section</h1> </div>
               <div> <h2>We are team of talented designers making websites with Bootstrap</h2></div>
               <div>
-            <button><Link class="btn-get-started scrollto" to="/login">Get Started</Link></button>
+            <Button variant="outline-warning" ><Link class="nav-link px-2 text-secondary" to="/login">Get Started</Link></Button>
 
             </div>
             </div>

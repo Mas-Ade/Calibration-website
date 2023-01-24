@@ -3,6 +3,8 @@ import DataTable from 'react-data-table-component';
 import axios from 'axios';
 
 
+
+
 function Datatables2 () {
 
   const url2 = `http://10.202.100.84:3003/api/getdata_devicemaster_calibration`
@@ -10,15 +12,18 @@ function Datatables2 () {
     const datas = await axios.get(url2)
     return datas
     }
+
+// hooks data api
    const [getData1,setGetdata1] = useState([])
+   const [searchInput, setSearchInput] = useState("");
+
    
    useEffect (() => {
-     getData().then((result) => {
-     setGetdata1(result.data.data)
-     })
+    getData().then((result) => {
+    setGetdata1(result.data.data)
+    })
      
      },[])
-
      console.log("result :", getData1)
 
      const columns = [
@@ -45,14 +50,32 @@ function Datatables2 () {
     
 ];
 
+ // fungsi seacrh
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+    };
+   
+if (searchInput.length > 0) {
+    getData1.filter((a) => {
+    return a.new_reg_no.match(searchInput);
+});
+}
+
   return (
     <div className='container'>
-            <DataTable
-            
-                columns={columns}
-                data={getData1}
-                pagination
-  
+        <div>
+            <input
+            type="search"
+            placeholder="Search here"
+            onChange={handleChange}
+            value={searchInput} />
+        </div>
+        
+    <DataTable 
+            columns={columns}
+            data={getData1}
+            pagination
             />
     </div>
     );
@@ -60,3 +83,4 @@ function Datatables2 () {
 }
 
 export default Datatables2;
+

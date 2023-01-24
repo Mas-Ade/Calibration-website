@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import tempcont3 from '../Assets/pictures/tempcont3.jpg';
 import pressgauge3 from '../Assets/pictures/pressgauge3.jpg';
 import temp_recorder3 from '../Assets/pictures/temp_recorder3.jpg';
+import { Link } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
 
 
 
@@ -24,7 +26,9 @@ class Input extends Component {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary">Input Data</Button>
+        
+        
+        <Button variant="outline-primary" ><Link class="nav-link px-2 text-secondary" to="/Input/form1">Input Data</Link></Button>
       </Card.Body>
     </Card>
         </Col>
