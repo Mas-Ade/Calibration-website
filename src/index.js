@@ -9,12 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Your Component / JSX
 import App from './App';
-import Header from './Components/header';
-import Footer from './Components/footer';
+import Header from './Components/layout/header';
+import Footer from './Components/layout/footer';
+// import Apptest from './App.test';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+  {/* <Apptest /> */}
 <Header />
     <App />
 <Footer />

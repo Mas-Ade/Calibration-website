@@ -2,9 +2,6 @@ import React, {useState, useEffect} from 'react';
 import DataTable from 'react-data-table-component';
 import axios from 'axios';
 
-
-
-
 function Datatables2 () {
 
   const url2 = `http://10.202.100.84:3003/api/getdata_devicemaster_calibration`
@@ -17,15 +14,23 @@ function Datatables2 () {
    const [getData1,setGetdata1] = useState([])
    const [searchInput, setSearchInput] = useState("");
 
+   const [filterText, setFilterText] = React.useState('');
+   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+
+   const filteredItems = getData1.filter(
+		item => item.reg_no && item.reg_no.toLowerCase().includes(filterText.toLowerCase()),
+	);
+	
    
    useEffect (() => {
     getData().then((result) => {
     setGetdata1(result.data.data)
+    console.log("result :", getData1)
     })
-     
+        
      },[])
-     console.log("result :", getData1)
 
+     // define coloums
      const columns = [
     {
         name: 'Reg-No',
@@ -47,34 +52,15 @@ function Datatables2 () {
         name: 'Type-Model',
         selector: row => row.type_model,
     },
-    
-];
-
- // fungsi seacrh
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-    };
-   
-if (searchInput.length > 0) {
-    getData1.filter((a) => {
-    return a.new_reg_no.match(searchInput);
-});
-}
+    ];
 
   return (
     <div className='container'>
-        <div>
-            <input
-            type="search"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput} />
-        </div>
-        
+
     <DataTable 
+    
             columns={columns}
-            data={getData1}
+            data={filteredItems}
             pagination
             />
     </div>
@@ -83,4 +69,17 @@ if (searchInput.length > 0) {
 }
 
 export default Datatables2;
+
+
+// fungsi seacrh 
+//   const handleChange = (e) => {
+//     e.preventDefault();
+//     setSearchInput(e.target.value);
+//     };
+   
+// if (searchInput.length > 0) {
+//     getData1.filter((a) => {
+//     return a.new_reg_no.match(searchInput);
+// });
+// }
 

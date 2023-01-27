@@ -7,9 +7,10 @@ import Report from "./Pages/report";
 import Schedule from "./Pages/schedule";
 import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/loginPages";
-import DataTables from './Components/datatableDev'
-import Datatables2 from "./Components/funcDatatables2";
-import FormInput1 from "./Pages/inputData";
+import DataTables from './Components/utils/datatableDev'
+import Datatables2 from "./Components/utils/funcDatatables2";
+import Basic from "./Pages/formik";
+import HookForm from "./Pages/hookForm";
 
 
 // Routes berfungsi sebagai induk untuk menampung semua route
@@ -28,7 +29,8 @@ class App extends Component {
         <Route path="/About" element={ <About /> } />
         <Route path="/table" element={ <DataTables  /> } />
         <Route path="/trialpage" element={ <Datatables2 /> } />
-        <Route path="/Input/form1" element={ <FormInput1 /> } />
+        <Route path="/hookform" element={ <HookForm /> } />
+        <Route path="/formik" element={ <Basic /> } />
       </Routes>
 
     </div>
