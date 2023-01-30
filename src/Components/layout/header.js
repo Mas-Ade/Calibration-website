@@ -22,7 +22,6 @@ class Header extends Component {
           <li><Link  class="nav-link px-2 text-secondary" to="/testApi">TesApi</Link></li>
           <li><Link  class="nav-link px-2 text-secondary" to="/table">Datatable</Link></li>
           <li><Link  class="nav-link px-2 text-secondary" to="/trialpage">Trial Page</Link></li>
-          <li><Link  class="nav-link px-2 text-secondary" to="/formik">input with formik</Link></li>
           <li><Link  class="nav-link px-2 text-secondary" to="/hookform">input with hookform</Link></li>
         </ul>
 

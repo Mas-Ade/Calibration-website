@@ -12,16 +12,7 @@ function Datatables2 () {
 
 // hooks data api
    const [getData1,setGetdata1] = useState([])
-   const [searchInput, setSearchInput] = useState("");
-
-   const [filterText, setFilterText] = React.useState('');
-   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
-
-   const filteredItems = getData1.filter(
-		item => item.reg_no && item.reg_no.toLowerCase().includes(filterText.toLowerCase()),
-	);
 	
-   
    useEffect (() => {
     getData().then((result) => {
     setGetdata1(result.data.data)
@@ -52,19 +43,55 @@ function Datatables2 () {
         name: 'Type-Model',
         selector: row => row.type_model,
     },
+    {
+        name: 'capacity',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'device_standard',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'status_calibration',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'priod_calibration',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'receive_date',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'location',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'machine_no',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'remark',
+        selector: row => row.type_model,
+    },
+    {
+        name: 'Type-Model',
+        selector: row => row.type_model,
+    },
     ];
 
   return (
-    <div className='container'>
-
+<div className='p-2'>
     <DataTable 
-    
+   
             columns={columns}
-            data={filteredItems}
+            data={getData1}
             pagination
             />
-    </div>
+            </div>
     );
+    
 
 }
 

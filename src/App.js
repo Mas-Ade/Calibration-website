@@ -9,7 +9,6 @@ import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/loginPages";
 import DataTables from './Components/utils/datatableDev'
 import Datatables2 from "./Components/utils/funcDatatables2";
-import Basic from "./Pages/formik";
 import HookForm from "./Pages/hookForm";
 
 
@@ -30,7 +29,6 @@ class App extends Component {
         <Route path="/table" element={ <DataTables  /> } />
         <Route path="/trialpage" element={ <Datatables2 /> } />
         <Route path="/hookform" element={ <HookForm /> } />
-        <Route path="/formik" element={ <Basic /> } />
       </Routes>
 
     </div>

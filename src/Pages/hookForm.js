@@ -1,16 +1,28 @@
 import { useForm } from "react-hook-form"
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
+import axios from "axios";
 
+
+// method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
+// state input disimpan di register dan di fetch atau di gabung di useForm
 
 function HookForm() {
+ // works
+  // deklarasi state
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data);
-    alert(JSON.stringify(data, null, 2));}
+
+  // fungsi onsubmit
+  const onSubmit = datas => {
+    console.log(datas);
+    axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+  }
+
+  const movePage = (event) => {
+    window.location.href='/hookform'
+  }
 
  // watch input value by passing the name of it
 
@@ -23,12 +35,12 @@ function HookForm() {
       <Row className="mb-5">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>User</Form.Label>
-          <Form.Control {...register("user")}  placeholder="isi data user" />
+          <Form.Control {...register("updated_staff")}  placeholder="isi data user" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>Room Degree</Form.Label>
-          <Form.Select  defaultValue="Choose..." {...register("room_degree")}  placeholder="isi data suhu ruangan">
+          <Form.Select  defaultValue="Choose..." {...register("room_temperature")}  placeholder="isi data suhu ruangan">
             <option>....</option>
             <option>21</option>
             <option>22</option>
@@ -38,8 +50,13 @@ function HookForm() {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>No Reg Old</Form.Label>
-          <Form.Control {...register("no_reg_old")}  placeholder="isi data no reg old" />
+          <Form.Label>No Reg New</Form.Label>
+          <Form.Control {...register("new_reg_no")}  placeholder="isi data no reg old" />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridZip">
+          <Form.Label>No Machine</Form.Label>
+          <Form.Control {...register("machine_no")}  placeholder="isi data no reg old" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
@@ -53,17 +70,17 @@ function HookForm() {
       <Row className="mb-">
         <Form.Group as={Col} controlId="formGridCity" >
           <Form.Label>R1 10</Form.Label>
-          <Form.Control {...register("R110")} />
+          <Form.Control {...register("std_ds1_r1")} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R2 10</Form.Label>
-          <Form.Control {...register("R210")} />
+          <Form.Control {...register("std_ds1_r2")} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R3 10</Form.Label>
-          <Form.Control {...register("R310")} />
+          <Form.Control {...register("std_ds1_r3")} />
         </Form.Group>
 
       </Row>
@@ -72,17 +89,17 @@ function HookForm() {
      <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R1 50</Form.Label>
-          <Form.Control {...register("R150")}/>
+          <Form.Control {...register("std_ds2_r1")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R2 50</Form.Label>
-          <Form.Control {...register("R250")}/>
+          <Form.Control {...register("std_ds2_r2")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R3 50</Form.Label>
-          <Form.Control {...register("R350")}/>
+          <Form.Control {...register("std_ds2_r3")}/>
         </Form.Group>
 
       </Row>
@@ -91,17 +108,17 @@ function HookForm() {
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R1 100</Form.Label>
-          <Form.Control {...register("R1100")}/>
+          <Form.Control {...register("std_ds3_r1")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R2 100</Form.Label>
-          <Form.Control {...register("R2100")}/>
+          <Form.Control {...register("std_ds3_r2")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R3 100</Form.Label>
-          <Form.Control {...register("R3100")}/>
+          <Form.Control {...register("std_ds3_r3")}/>
         </Form.Group>
 
       </Row>
@@ -110,17 +127,17 @@ function HookForm() {
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R1 150</Form.Label>
-          <Form.Control {...register("R1150")}/>
+          <Form.Control {...register("std_ds4_r1")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R2 150</Form.Label>
-          <Form.Control {...register("R2150")}/>
+          <Form.Control {...register("std_ds4_r2")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R3 150</Form.Label>
-          <Form.Control {...register("R3150")}/>
+          <Form.Control {...register("std_ds4_r3")}/>
         </Form.Group>
 
       </Row>
@@ -129,21 +146,23 @@ function HookForm() {
       <Row className="mb-5 ">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R1 300</Form.Label>
-          <Form.Control {...register("R1300")}/>
+          <Form.Control {...register("std_ds5_r1")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R2 300</Form.Label>
-          <Form.Control {...register("R2300")}/>
+          <Form.Control {...register("std_ds5_r2")}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>R3 300</Form.Label>
-          <Form.Control {...register("R3300")}/>
+          <Form.Control {...register("std_ds5_r3")}/>
         </Form.Group>
 
       </Row>
 
+    {/* <Button  variant="primary" type="submit" onClick="setTimeout(movePage, 200);"> */}
+      {/* <Button  variant="primary" type="submit" onClick={event =>  window.location.href='/hookform'}> */}
       <Button  variant="primary" type="submit">
         Submit
       </Button>
@@ -153,16 +172,3 @@ function HookForm() {
 }
 
 export default HookForm
-
-/* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    //   {/* register your input into the hook by invoking the "register" function */}
-    //   <input {...register("example")} />
-      
-    //   {/* include validation with required or other standard HTML validation rules */}
-    //   <input {...register("exampleRequired", { required: true })} />
-    //   {/* errors will return when field validation fails  */}
-    //   {errors.exampleRequired && <span>This field is required</span>}
-      
-    //   <input type="submit" />
-    // </form>
