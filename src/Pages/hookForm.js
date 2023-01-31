@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
+import Alert from 'react-bootstrap/Alert';
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -14,15 +15,25 @@ function HookForm() {
   // deklarasi state
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  // fungsi onsubmit
-  const onSubmit = datas => {
+  // fungsi onsubmit + alert
+  const onSubmit = async datas => {
     console.log(datas);
-    axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+    // axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+    alert(JSON.stringify("Data berhasil diinput"));
+
+    // script timeout dan pindah halaman
+    const timeout = await setTimeout(() => {
+    console.log('update berhasil');
+    window.location.href='/hookform'
+  }, 1000);
   }
+
+  // onClick={event =>  window.location.href='/home'}
 
   const movePage = (event) => {
     window.location.href='/hookform'
   }
+
 
  // watch input value by passing the name of it
 
@@ -30,7 +41,7 @@ function HookForm() {
     <div className='container'>
     <h1 className='mb-5'> Input hasil kalibrasi anda</h1>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
       <Row className="mb-5">
         <Form.Group as={Col} controlId="formGridCity">
@@ -162,8 +173,8 @@ function HookForm() {
       </Row>
 
     {/* <Button  variant="primary" type="submit" onClick="setTimeout(movePage, 200);"> */}
-      {/* <Button  variant="primary" type="submit" onClick={event =>  window.location.href='/hookform'}> */}
-      <Button  variant="primary" type="submit">
+      <Button  variant="primary" type="submit" >
+      {/* <Button  variant="primary" type="submit"> */}
         Submit
       </Button>
  </form>
@@ -172,3 +183,4 @@ function HookForm() {
 }
 
 export default HookForm
+
