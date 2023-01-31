@@ -9,3 +9,24 @@ react-hook-form: "^7.42.1",
 react-router: "^6.6.1",
 react-router-dom: "^6.6.1",
 
+list ecnd point API calibration
+
+//Start route Authentication
+router.post("/login", auth.login);
+// get
+router.get("/getdata_staff");
+//End route Authentication
+
+//Start route db nmax schema "public"
+router.get("/getdata_machine_master", machine.getdatamachinemaster);
+//End route db nmax schema "public"
+
+//Start route db nmax schema "calibration"
+/* method GET */
+router.get("/getdata_devicemaster_calibration", calibration.getdata_devices_master);
+router.get("/getdata_schedule_calibration", calibration.getdata_schedule_calibration);
+router.get("/getdata_repair_devicecal_history", calibration.getdata_repair_devicecal_history);
+router.get("/getdata_reloc_devicecal_history", calibration.getdata_reloc_devicecal_history);
+router.get("/getdata_calibration_tempctrl_temprec", calibration.getdata_calibration_tempctrl_temprec);
+router.get("/getdata_calibration_pressgauge", calibration.getdata_calibration_pressgauge);
+//End route db nmax schema "calibration"
