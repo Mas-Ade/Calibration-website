@@ -4,19 +4,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import login2 from '../../Assets/pictures/login2.png';
 import Footer from '../../Components/layout/footer'
-import background from '../../Assets/css/bodyLogin.css'
+
 
 const LoginUser = () => {
 const navigate = useNavigate()
 
-const [email,setEmail] = useState('')
+const [username,setUsername] = useState('')
 const [password,setPassword] = useState('')
 
 const onSubmit = async (e) => {
     e.preventDefault()
     try{
 
-    const result = await login(email,password)
+    const result = await login(username,password)
     localStorage.setItem('dataUser', JSON.stringify(result.data.data))
     navigate('/home')
     console.log(result)
@@ -47,7 +47,7 @@ const onSubmit = async (e) => {
 
 			      							<div className="form-group mt-3 mb-3">
                                             <label className="form-control-placeholder">Username</label>
-			      							<input type="text" className="form-control form-control-lg " required onChange={(e)=> setEmail(e.target.value) } value={email}/>	
+			      							<input type="text" className="form-control form-control-lg " required onChange={(e)=> setUsername(e.target.value) } value={username}/>	
 			      							</div>
 
 		            						<div className="form-group mb-5">
@@ -61,15 +61,6 @@ const onSubmit = async (e) => {
 		           							</div>
 		          						</form>
                          
-            {/* <form onSubmit={(e) => onSubmit(e)}>
-                <label>email</label>
-                <input onChange={(e)=> setEmail(e.target.value) } value={email} type='email'/> 
-
-                <label>password</label>
-                <input onChange={(e)=> setPassword(e.target.value) } value ={password} type='password'/> 
-                <button> submit</button>
-
-            </form> */}
             </div>
             </div>
         </div>    

@@ -9,7 +9,7 @@ const Greetings = () => {
     <div className="container">
       <div className="row gy-4">
         <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-              <div className= "mb-2">  <h1>Bettter Calibration experience with Technology Control Section</h1> </div>
+              <div className= "mb-2">  <h1>Bettter Calibration Experience with Technology Control Section</h1> </div>
               <div className= "mb-5"> <h2 >We are team of talented designers making websites with Bootstrap</h2></div>
               <div>
             <Button variant="outline-warning" ><Link className="nav-link px-2 text-secondary" to="/login">Get Started</Link></Button>
