@@ -82,14 +82,16 @@ function Datatables2 () {
     ];
 
   return (
-<div className='p-2'>
-    <DataTable 
+<div className='container'>
+    <h1 className='mt-2 mb-3'>Master Calibration Data</h1>
+    <DataTable title="Desserts - Cell Styling"
    
             columns={columns}
             data={getData1}
             pagination
             />
-            </div>
+
+</div>
     );
     
 

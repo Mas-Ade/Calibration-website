@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 class Input extends Component {
     render(){
     return (
-        <Container>
+        <Container className='mt-3'>
       <Row>
         <Col sm={4}>
         <Card style={{ width: '18rem' }}>

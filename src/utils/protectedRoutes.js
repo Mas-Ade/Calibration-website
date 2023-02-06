@@ -19,3 +19,7 @@ const  ProtectedRoutes=() =>{
 }
 
 export default ProtectedRoutes;
+
+// metode ini menggunakan library NAVIGATE dan OUTLET dari react router dom
+// localStorage.getItem adalah fungsi yang tertera pada navigate atau library react router dom
+// ('dataUser') adalah nama database atau data yang di simpan sementara pada local storage web atau browser
