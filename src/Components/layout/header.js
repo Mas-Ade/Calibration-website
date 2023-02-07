@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import nok from '../../Assets/pictures/nok.jpg'
 
 const Header = () => {
 // class Header extends Component {
@@ -12,9 +13,11 @@ const Header = () => {
     }
 
     return (
-      <div >
+      <div>
+      <div>
       <h2 className='container p'>PT.NOK INDONESIA</h2>
-
+      {/* <img className="w-10 h-10" alt="logo dept. NIN" src={nok}></img> */}
+      </div>
       <header className="p-2 text-bg-dark bg-warning ">
         <div className="container ">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> 
@@ -24,10 +27,9 @@ const Header = () => {
               <li><Link  className="nav-link px-2 text-light" to="/Schedule">Schedule</Link></li>
               <li><Link  className="nav-link px-2 text-light" to="/Report">Report</Link></li>
               <li><Link  className="nav-link px-2 text-secondary" to="/About">About</Link></li>
-              <li><Link  className="nav-link px-2 text-secondary" to="/testApi">TesApi</Link></li>
-              <li><Link  className="nav-link px-2 text-secondary" to="/table">Datatable</Link></li>
+              {/* <li><Link  className="nav-link px-2 text-secondary" to="/table">Datatable</Link></li> */}
               <li><Link  className="nav-link px-2 text-secondary" to="/trialpage">Trial Page</Link></li>
-              <li><Link  className="nav-link px-2 text-secondary" to="/hookform">input with hookform</Link></li>
+              {/* <li><Link  className="nav-link px-2 text-secondary" to="/hookform">input with hookform</Link></li> */}
             </ul>
 
             <div className="text-end">

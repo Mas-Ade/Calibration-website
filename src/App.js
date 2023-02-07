@@ -9,14 +9,14 @@ import Header from './Components/layout/header';
 import Footer from './Components/layout/footer';
 
 // import JSX Page
-import Home from "./Pages/home";
-import About from "./Pages/About";
-import Input from "./Pages/menuInput";
-import Report from "./Pages/report";
-import Schedule from "./Pages/schedule";
+import Home from "./Pages/dashborad/home";
+import About from "./Pages/dashborad/About";
+import Input from "./Pages/input/menuInput";
+import Report from "./Pages/dashborad/report";
+import Schedule from "./Pages/dashborad/schedule";
 import DataTables from './Components/testing/datatableDev'
 import Datatables2 from "./Components/testing/funcDatatables2";
-import HookForm from "./Pages/hookForm";
+import HookForm from "./Pages/input/hookForm";
 
 // import Greeting & Login Page
 import Greetings from "./Pages/greeting";
@@ -37,17 +37,15 @@ const App = () => {
       <Routes> 
         <Route path="/" element={ <Greetings /> } />
         <Route path="/login" element={ <LoginPages /> } />
-
-         <Route path="/" element={<ProtectedRoutes />}>
-
-        <Route path="/Home" element={ <Home /> } />
-        <Route path="/Input" element={ <Input /> } />
-        <Route path="/Report" element={ <Report /> } />
-        <Route path="/Schedule" element={ <Schedule /> } />
-        <Route path="/About" element={ <About /> } />
-        <Route path="/table" element={ <DataTables  /> } />
-        <Route path="/trialpage" element={ <Datatables2 /> } />
-        <Route path="/hookform" element={ <HookForm /> } />
+          <Route path="/" element={<ProtectedRoutes />}>
+            <Route path="/Home" element={ <Home /> } />
+            <Route path="/Input" element={ <Input /> } />
+            <Route path="/Report" element={ <Report /> } />
+            <Route path="/Schedule" element={ <Schedule /> } />
+            <Route path="/About" element={ <About /> } />
+            <Route path="/table" element={ <DataTables  /> } />
+            <Route path="/trialpage" element={ <Datatables2 /> } />
+            <Route path="/hookform" element={ <HookForm /> } />
         </Route>
       </Routes>
 

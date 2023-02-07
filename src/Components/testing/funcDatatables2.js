@@ -83,8 +83,11 @@ function Datatables2 () {
 
   return (
 <div className='container'>
+    <div>
     <h1 className='mt-2 mb-3'>Master Calibration Data</h1>
-    <DataTable title="Desserts - Cell Styling"
+    
+    </div>
+    <DataTable 
    
             columns={columns}
             data={getData1}
