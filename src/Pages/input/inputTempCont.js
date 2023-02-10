@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
 // state input disimpan di register dan di fetch atau di gabung di useForm
 
-function HookForm() {
+function InputTempCont() {
  // works
   // deklarasi state
   const { register, handleSubmit } = useForm();
@@ -39,7 +39,7 @@ function HookForm() {
 
   return (
     <div className='container'>
-    <h1 className='mb-5'> Input hasil kalibrasi anda</h1>
+    <h1 className='mb-5 mt-3'> Input hasil kalibrasi Temperature Control</h1>
 
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
@@ -182,5 +182,5 @@ function HookForm() {
   );
 }
 
-export default HookForm
+export default InputTempCont
 

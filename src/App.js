@@ -15,8 +15,14 @@ import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
 import Schedule from "./Pages/dashborad/schedule";
 import DataTables from './Components/testing/datatableDev'
-import Datatables2 from "./Components/testing/funcDatatables2";
-import HookForm from "./Pages/input/hookForm";
+import Table2 from './Components/testing/testTable'
+
+
+// Import menu imput
+import InputTempCont from "./Pages/input/inputTempCont";
+import InputTempPress from "./Pages/input/inputTempPress";
+import InputTempRecord from "./Pages/input/inputTempRecord";
+
 
 // import Greeting & Login Page
 import Greetings from "./Pages/greeting";
@@ -44,8 +50,14 @@ const App = () => {
             <Route path="/Schedule" element={ <Schedule /> } />
             <Route path="/About" element={ <About /> } />
             <Route path="/table" element={ <DataTables  /> } />
-            <Route path="/trialpage" element={ <Datatables2 /> } />
-            <Route path="/hookform" element={ <HookForm /> } />
+            <Route path="/testTable" element={ <DataTables  /> } />
+            <Route path="/test2" element={ <Table2  /> } />
+            {/* <Route path="/trialpage" element={ <Datatables2 /> } /> */}
+
+            {/* {menu input} */}
+            <Route path="/inputTempCont" element={ <InputTempCont /> } />
+            <Route path="/inputTempPress" element={ <InputTempPress /> } />
+            <Route path="/inputTempRecord" element={ <InputTempRecord /> } />
         </Route>
       </Routes>
 

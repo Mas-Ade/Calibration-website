@@ -27,8 +27,9 @@ const Header = () => {
               <li><Link  className="nav-link px-2 text-light" to="/Schedule">Schedule</Link></li>
               <li><Link  className="nav-link px-2 text-light" to="/Report">Report</Link></li>
               <li><Link  className="nav-link px-2 text-secondary" to="/About">About</Link></li>
+              <li><Link  className="nav-link px-2 text-secondary" to="/test2">test2</Link></li>
               {/* <li><Link  className="nav-link px-2 text-secondary" to="/table">Datatable</Link></li> */}
-              <li><Link  className="nav-link px-2 text-secondary" to="/trialpage">Trial Page</Link></li>
+              {/* <li><Link  className="nav-link px-2 text-secondary" to="/trialpage">Trial Page</Link></li> */}
               {/* <li><Link  className="nav-link px-2 text-secondary" to="/hookform">input with hookform</Link></li> */}
             </ul>
 

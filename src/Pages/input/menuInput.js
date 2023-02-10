@@ -23,7 +23,7 @@ class Input extends Component {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/hookform">Input Data</Link></Button>
+        <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempCont">Input Data</Link></Button>
       </Card.Body>
     </Card>
         </Col>
@@ -36,7 +36,7 @@ class Input extends Component {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary">Input Data</Button>
+        <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempPress">Input Data</Link></Button>
       </Card.Body>
     </Card>
         </Col>
@@ -49,7 +49,7 @@ class Input extends Component {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary">Input Data</Button>
+        <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempRecord">Input Data</Link></Button>
       </Card.Body>
     </Card>
         </Col>
