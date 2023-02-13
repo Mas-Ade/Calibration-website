@@ -1,100 +1,162 @@
 import React, {useState, useEffect} from 'react';
-import DataTable from 'react-data-table-component';
 import axios from 'axios';
+import { Button, Input, Table } from "antd"
+import { Col, Container, Row } from 'react-bootstrap';
+import BASE_URLAPI from '../../config/URLAPI'
 
 function Datatables2 () {
 
-  const url2 = `http://10.202.100.84:3003/api/getdata_devicemaster_calibration`
-    const getData = async () => {
-    const datas = await axios.get(url2)
-    return datas
+const [gridData, setGridData] = useState([])
+const [loading, setLoading] = useState(false)
+const [searchText, setSearchText] =useState("")
+let filteredData = useState()
+
+useEffect(() => {
+    loadData()
+}, [])
+
+
+const loadData = async () => {
+    setLoading(true)
+    const response = await axios.get({BASE_URLAPI} + 'api/getdata_devicemaster_calibration')
+    setGridData(response.data.data)
+    setLoading(false)
+}
+
+console.log("gridData", gridData)
+
+const columns = [
+    {
+    title: 'Reg No',
+    dataIndex: 'reg_no'
+    },
+    {
+    title: 'New Reg No',
+    dataIndex: 'new_reg_no',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Device Name',
+    dataIndex: 'device_name',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Brand',
+    dataIndex: 'brand',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Type/Model',
+    dataIndex: 'type_model',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Capacity',
+    dataIndex: 'capacity',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Resolution',
+    dataIndex: 'resolution',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Status Calibration',
+    dataIndex: 'status_calibration',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Priod Calibration',
+    dataIndex: 'priod_calibration',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Receive Date',
+    dataIndex: 'receive_date',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Location',
+    dataIndex: 'location',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Machine No',
+    dataIndex: 'machine_no',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Remark',
+    dataIndex: 'remark',
+    align: "center",
+    ediatble:true
+    },
+    {
+    title: 'Update Staff',
+    dataIndex: 'updated_staff',
+    align: "center",
+    ediatble:true
     }
+]
 
-// hooks data api
-   const [getData1,setGetdata1] = useState([])
-	
-   useEffect (() => {
-    getData().then((result) => {
-    setGetdata1(result.data.data)
-    console.log("result :", getData1)
+const handleSearch = (e) => {
+    setSearchText(e.target.value)
+    if(e.target.value === "") {
+        loadData()
+    }
+}
+
+const globalSearch = () => {
+    filteredData = gridData.filter((value) => {
+        return(
+            value.reg_no.toLowerCase().includes(searchText.toLowerCase()) ||
+            
+            value.device_name.toLowerCase().includes(searchText.toLowerCase()) 
+            // value.brand.toLowerCase().includes(searchText.toLowerCase())
+        )
     })
-        
-     },[])
-
-     // define coloums
-     const columns = [
-    {
-        name: 'Reg-No',
-        selector: row => row.reg_no,
-    },
-    {
-        name: 'New-Reg_No',
-        selector: row => row.new_reg_no,
-    },
-    {
-        name: 'Device-Name',
-        selector: row => row.device_name,
-    },
-    {
-        name: 'Brand',
-        selector: row => row.brand,
-    },
-    {
-        name: 'Type-Model',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'capacity',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'device_standard',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'status_calibration',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'priod_calibration',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'receive_date',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'location',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'machine_no',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'remark',
-        selector: row => row.type_model,
-    },
-    {
-        name: 'Type-Model',
-        selector: row => row.type_model,
-    },
-    ];
+    setGridData(filteredData)
+}
 
   return (
-<div className='container'>
     <div>
-    <h1 className='mt-2 mb-3'>Master Calibration Data</h1>
-    
-    </div>
-    <DataTable 
-   
-            columns={columns}
-            data={getData1}
-            pagination
-            />
+        <h3 className="container mt-3 text-center"> Data Master Calibration </h3>
+        <Container className='container mb-3'>
+        <Row>
+        <Col>
+        <Input
+        placeholder="cari device"
+        onChange={handleSearch}
+        allowClear
+        type="text"
+        value={searchText}
+        />
+        </Col>
+        <Col xs={1}>
+        <Button type="primary" onClick={globalSearch}> Search</Button>
+        </Col>
+        </Row>
+        </Container>
 
-</div>
+        <Table
+            columns={columns}
+            dataSource={ gridData }
+            bordered
+            loading={loading}
+        />
+
+        </div>
     );
     
 
