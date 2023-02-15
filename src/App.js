@@ -45,7 +45,7 @@ const App = () => {
             <Route path="/Schedule" element={ <Schedule /> } />
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
-        <Route path="/trial1" element={ <TbHomeNow /> } />
+            <Route path="/trial1" element={ <TbHomeNow /> } />
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
         {/* =================INPUT=============================== */}

@@ -18,97 +18,26 @@ useEffect(() => {
 
 const loadData = async () => {
     setLoading(true)
-    const response = await axios.get( `${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
-    setGridData(response.data.data)
+    const response = await axios.get( `${BASE_URLAPI}/api/getdata_schedule_calibration`)
     setLoading(false)
+    setGridData(
+        response.data.data.map(row => ({
+            schedule_id: row.schedule_id,
+            reg_no: row.reg_no,
+            new_reg_no: row.new_reg_no,
+            device_name: row.device_name,
+            machine_no: row.machine_no,
+            location: row.location,
+            date_calibration: row.machine_no,
+            last_calibration: row.last_calibration,
+            next_calibration: row.next_calibration,
+
+        })))
 }
 
 console.log("gridData", gridData)
 
-const columns = [
-    {
-    title: 'Reg No',
-    dataIndex: 'reg_no'
-    },
-    {
-    title: 'New Reg No',
-    dataIndex: 'new_reg_no',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Device Name',
-    dataIndex: 'device_name',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Brand',
-    dataIndex: 'brand',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Type/Model',
-    dataIndex: 'type_model',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Capacity',
-    dataIndex: 'capacity',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Resolution',
-    dataIndex: 'resolution',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Status Calibration',
-    dataIndex: 'status_calibration',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Priod Calibration',
-    dataIndex: 'priod_calibration',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Receive Date',
-    dataIndex: 'receive_date',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Location',
-    dataIndex: 'location',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Machine No',
-    dataIndex: 'machine_no',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Remark',
-    dataIndex: 'remark',
-    align: "center",
-    ediatble:true
-    },
-    {
-    title: 'Update Staff',
-    dataIndex: 'updated_staff',
-    align: "center",
-    ediatble:true
-    }
-]
+
 
 const handleSearch = (e) => {
     setSearchText(e.target.value)
@@ -117,17 +46,16 @@ const handleSearch = (e) => {
     }
 }
 
-const globalSearch = () => {
-    filteredData = gridData.filter((value) => {
-        return(
-            value.reg_no.toLowerCase().includes(searchText.toLowerCase()) ||
-            
-            value.device_name.toLowerCase().includes(searchText.toLowerCase()) 
-            // value.brand.toLowerCase().includes(searchText.toLowerCase())
-        )
-    })
-    setGridData(filteredData)
-}
+// const globalSearch = () => {
+//     const filteredData = gridData.filter((value) => {
+//         return(
+//             value.device_name.toLowerCase().includes(searchText.toLowerCase()) || 
+//             value.schedule_id.toLowerCase().includes(searchText.toLowerCase()) 
+//         )
+//     })
+
+//     setGridData(filteredData)
+// }
 
     return (
     <div>
@@ -136,24 +64,83 @@ const globalSearch = () => {
         <Container className='container mb-3'>
         <Row>
         <Col>
-        <Input
+        <Input.Search
         placeholder="cari device"
-        onChange={handleSearch}
+        onSearch={(value) => {
+            setSearchText(value)
+        }}
         allowClear
         type="text"
-        value={searchText}
         />
         </Col>
         <Col xs={1}>
-        <Button type="primary" onClick={globalSearch}> Search</Button>
+        <Button type="primary"> Search</Button>
         </Col>
         </Row>
         </Container>
 
         {/* table */}
         <Table
-            columns={columns}
-            dataSource={ gridData }
+        columns = {[
+                {
+                title: 'ID',
+                dataIndex: 'schedule_id'
+                },
+                {
+                title: 'Reg No',
+                dataIndex: 'reg_no',
+                align: "center",
+                },
+                {
+                title: 'New Reg No',
+                dataIndex: 'new_reg_no',
+                align: "center",
+                filteredValue: [searchText],
+                onFilter:(value,record) => {
+                    return record.new_reg_no.includes(value)
+                }
+                },
+                {
+                title: 'Device Name',
+                dataIndex: 'device_name',
+                align: "center",
+                
+                },
+                {
+                title: 'Machine No',
+                dataIndex: 'machine_no',
+                align: "center",
+
+                },
+                {
+                title: 'Location',
+                dataIndex: 'location',
+                align: "center",
+
+                },
+                {
+                title: 'Date Calibration',
+                dataIndex: 'date_calibration',
+                align: "center",
+
+                },
+                {
+                title: 'Last Calibration',
+                dataIndex: 'last_calibration',
+                align: "center",
+
+                },
+                {
+                title: 'Next Calibration',
+                dataIndex: 'next_calibration',
+                align: "center",
+
+                }
+                
+            ]
+            }
+
+            dataSource={gridData}
             bordered
             loading={loading}
         />

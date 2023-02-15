@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-// import axios from "axios";
+import axios from "axios";
 // import Alert from 'react-bootstrap/Alert';
 
 
@@ -18,7 +18,7 @@ function InputTempRecord() {
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
     console.log(datas);
-    // axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+    await axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
     alert(JSON.stringify("Data berhasil diinput"));
 
     // script timeout dan pindah halaman
@@ -27,13 +27,6 @@ function InputTempRecord() {
     window.location.href='/hookform'
   }, 1000);
   }
-
-  // onClick={event =>  window.location.href='/home'}
-
-  // const movePage = (event) => {
-  //   window.location.href='/hookform'
-  // }
-
 
  // watch input value by passing the name of it
 
@@ -72,7 +65,7 @@ function InputTempRecord() {
 
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Calibration Date</Form.Label>
-          <Form.Control {...register("calibration_date", { required: true})}  placeholder="isi data tanggal kalibrasi" />
+          <Form.Control type="date" {...register("calibration_date", { required: true})}  placeholder="isi data tanggal kalibrasi" />
         </Form.Group>
 
         </Row>

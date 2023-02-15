@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-// import axios from "axios";
-// import Alert from 'react-bootstrap/Alert';
+import axios from "axios";
+import Alert from 'react-bootstrap/Alert';
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -18,9 +18,8 @@ function InputTempPress() {
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
     console.log(datas);
-    // axios.post('http://10.202.100.84:3003/api/postdupata_calibration_tempctrl_temprec', datas)
+    axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
     alert(JSON.stringify("Data berhasil diinput"));
-
     // script timeout dan pindah halaman
     const timeout = await setTimeout(() => {
     console.log('update berhasil');
