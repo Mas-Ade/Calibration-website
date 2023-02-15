@@ -2,7 +2,7 @@
 import { login } from '../../utils/axios'
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import login2 from '../../Assets/pictures/login2.png';
+import login3 from '../../Assets/pictures/login3.png';
 import Footer from '../../Components/layout/footer'
 
 
@@ -35,7 +35,7 @@ const onSubmit = async (e) => {
         <div className="col-md-7 col-lg-5 mt-5 p-0 mb-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded background "> 
         <div className="wrap">
         <div className="card-img ">
-               			<img className="img-fluid max-width: 100%  " alt="logo dept. NIN" src={login2}></img>
+               			<img className="img-fluid max-width: 100%  " alt="logo dept. NIN" src={login3}></img>
                  				</div>
 
  							  		<div className="login-wrap p-4 p-md-4">

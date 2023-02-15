@@ -12,7 +12,7 @@ import About from "./Pages/dashborad/About";
 import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
 import Schedule from "./Pages/dashborad/schedule";
-import DataTables from './Components/testing/datatableDev'
+// import DataTables from './Components/testing/datatable(notuse)'
 // Import menu imput
 import InputTempCont from "./Pages/input/inputTempCont";
 import InputTempPress from "./Pages/input/inputTempPress";
@@ -20,6 +20,8 @@ import InputTempRecord from "./Pages/input/inputTempRecord";
 // import Greeting & Login Page
 import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/login/loginPages";
+
+import TbHomeNow from "./Components/testing/home.dateNow";
 
 // Routes berfungsi sebagai induk untuk menampung semua route
 const App = () => {
@@ -43,8 +45,9 @@ const App = () => {
             <Route path="/Schedule" element={ <Schedule /> } />
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
-            <Route path="/table" element={ <DataTables  /> } />
-            <Route path="/testTable" element={ <DataTables  /> } />
+        <Route path="/trial1" element={ <TbHomeNow /> } />
+            {/* <Route path="/table" element={ <DataTables  /> } />
+            <Route path="/testTable" element={ <DataTables  /> } /> */}
         {/* =================INPUT=============================== */}
             <Route path="/inputTempCont" element={ <InputTempCont /> } />
             <Route path="/inputTempPress" element={ <InputTempPress /> } />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import nok from '../../Assets/pictures/nok.jpg'
+import nok from '../../Assets/pictures/nok.png'
 
 const Header = () => {
 // class Header extends Component {
@@ -16,17 +16,18 @@ const Header = () => {
       <div>
       <div>
       <h2 className='container p'>PT.NOK INDONESIA</h2>
-      {/* <img className="w-10 h-10" alt="logo dept. NIN" src={nok}></img> */}
       </div>
-      <header className="p-2 text-bg-dark bg-warning ">
+      <header className="p-2 bg-info">
         <div className="container ">
+        {/* <img className="img-fluid" alt="logo dept. NIN" src={nok}></img> */}
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> 
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><Link  className="nav-link px-2 text-light" to="/home">Home</Link></li>
-              <li><Link  className="nav-link px-2 text-light" to="/Input">Input Calibrations</Link></li>
-              <li><Link  className="nav-link px-2 text-light" to="/Schedule">Schedule</Link></li>
-              <li><Link  className="nav-link px-2 text-light" to="/Report">Report</Link></li>
-              <li><Link  className="nav-link px-2 text-secondary" to="/About">About</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/home">Home</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/Input">Input Calibrations</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/Schedule">Schedule</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/Report">Report</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/About">About</Link></li>
+              <li><Link  className="nav-link px-2 text-light fw-bold" to="/trial1">trialDate</Link></li>
             </ul>
 
             <div className="text-end">

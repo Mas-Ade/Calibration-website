@@ -18,7 +18,7 @@ useEffect(() => {
 
 const loadData = async () => {
     setLoading(true)
-    const response = await axios.get({BASE_URLAPI} + 'api/getdata_devicemaster_calibration')
+    const response = await axios.get( `${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
     setGridData(response.data.data)
     setLoading(false)
 }
@@ -129,9 +129,10 @@ const globalSearch = () => {
     setGridData(filteredData)
 }
 
-  return (
+    return (
     <div>
-        <h3 className="container mt-3 text-center"> Data Master Calibration </h3>
+        <h3 className="container mt-3 mb-3 text-center fw-bold"> Data Master Calibration </h3>
+        {/* search button */}
         <Container className='container mb-3'>
         <Row>
         <Col>
@@ -149,6 +150,7 @@ const globalSearch = () => {
         </Row>
         </Container>
 
+        {/* table */}
         <Table
             columns={columns}
             dataSource={ gridData }

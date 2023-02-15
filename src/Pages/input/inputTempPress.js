@@ -45,12 +45,12 @@ function InputTempPress() {
 {/* Leader Form Group 1 */}
       <Row className="mb-5">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>User</Form.Label>
+          <Form.Label className="fw-bold text-info">User</Form.Label>
           <Form.Control {...register("updated_staff" , { required: true})}  placeholder="isi data user" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>Room Degree</Form.Label>
+          <Form.Label className="fw-bold text-info">Room Degree</Form.Label>
           <Form.Select  defaultValue="" {...register("room_temperature" , { required: true})}  placeholder="isi data suhu ruangan">
             <option>....</option>
             <option>21</option>
@@ -61,18 +61,18 @@ function InputTempPress() {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>No Reg New</Form.Label>
+          <Form.Label className="fw-bold text-info">No Reg New</Form.Label>
           <Form.Control {...register("new_reg_no", { required: true})}  placeholder="isi data no reg old" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>No Machine</Form.Label>
+          <Form.Label className="fw-bold text-info">No Machine</Form.Label>
           <Form.Control {...register("machine_no", { required: true})}  placeholder="isi data no reg old" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Calibration Date</Form.Label>
-          <Form.Control {...register("calibration_date", { required: true})}  placeholder="isi data tanggal kalibrasi" />
+          <Form.Label className="fw-bold text-info">Calibration Date</Form.Label>
+          <Form.Control type="date" {...register("calibration_date", { required: true})}  placeholder="isi data tanggal kalibrasi" />
         </Form.Group>
 
         </Row>
@@ -80,17 +80,17 @@ function InputTempPress() {
 {/* Group-1 */}
       <Row className="mb-">
         <Form.Group as={Col} controlId="formGridCity" >
-          <Form.Label>R1 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 10</Form.Label>
           <Form.Control {...register("stdup_ds1_r1", { required: true})} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 10</Form.Label>
           <Form.Control {...register("stdup_ds1_r2", { required: true})} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 10</Form.Label>
           <Form.Control {...register("stdup_ds1_r3", { required: true})} />
         </Form.Group>
 
@@ -99,17 +99,17 @@ function InputTempPress() {
 {/* Group-2 */}
      <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 50</Form.Label>
           <Form.Control {...register("stdup_ds2_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 50</Form.Label>
           <Form.Control {...register("stdup_ds2_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 50</Form.Label>
           <Form.Control {...register("stdup_ds2_r3", { required: true})}/>
         </Form.Group>
 
@@ -118,17 +118,17 @@ function InputTempPress() {
 {/* Group-3 */}
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 100</Form.Label>
           <Form.Control {...register("stdup_ds3_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 100</Form.Label>
           <Form.Control {...register("stdup_ds3_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 100</Form.Label>
           <Form.Control {...register("stdup_ds3_r3", { required: true})}/>
         </Form.Group>
 
@@ -137,17 +137,17 @@ function InputTempPress() {
 {/* Group-4 */}
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 150</Form.Label>
           <Form.Control {...register("stdup_ds4_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 150</Form.Label>
           <Form.Control {...register("stdup_ds4_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 150</Form.Label>
           <Form.Control {...register("stdup_ds4_r3", { required: true})}/>
         </Form.Group>
 
@@ -156,17 +156,17 @@ function InputTempPress() {
 {/* Group-5 */}
       <Row className="mb-5 ">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 300</Form.Label>
           <Form.Control {...register("stdup_ds5_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 300</Form.Label>
           <Form.Control {...register("stdup_ds5_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 300</Form.Label>
           <Form.Control {...register("stdup_ds5_r3", { required: true})}/>
         </Form.Group>
 
@@ -177,17 +177,17 @@ function InputTempPress() {
       {/* Group-1 */}
       <Row className="mb-">
         <Form.Group as={Col} controlId="formGridCity" >
-          <Form.Label>R1 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 10</Form.Label>
           <Form.Control {...register("stddwn_ds1_r1", { required: true})} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 10</Form.Label>
           <Form.Control {...register("stddwn_ds1_r2", { required: true})} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 10</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 10</Form.Label>
           <Form.Control {...register("stddwn_ds1_r3", { required: true})} />
         </Form.Group>
 
@@ -196,17 +196,17 @@ function InputTempPress() {
 {/* Group-2 */}
      <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 50</Form.Label>
           <Form.Control {...register("stddwn_ds2_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 50</Form.Label>
           <Form.Control {...register("stddwn_ds2_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 50</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 50</Form.Label>
           <Form.Control {...register("stddwn_ds2_r3", { required: true})}/>
         </Form.Group>
 
@@ -215,17 +215,17 @@ function InputTempPress() {
 {/* Group-3 */}
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 100</Form.Label>
           <Form.Control {...register("stddwn_ds3_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 100</Form.Label>
           <Form.Control {...register("stddwn_ds3_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 100</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 100</Form.Label>
           <Form.Control {...register("stddwn_ds3_r3", { required: true})}/>
         </Form.Group>
 
@@ -234,17 +234,17 @@ function InputTempPress() {
 {/* Group-4 */}
       <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 150</Form.Label>
           <Form.Control {...register("stddwn_ds4_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 150</Form.Label>
           <Form.Control {...register("stddwn_ds4_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 150</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 150</Form.Label>
           <Form.Control {...register("stddwn_ds4_r3", { required: true})}/>
         </Form.Group>
 
@@ -253,17 +253,17 @@ function InputTempPress() {
 {/* Group-5 */}
       <Row className="mb-5 ">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R1 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R1 300</Form.Label>
           <Form.Control {...register("stddwn_ds5_r1", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R2 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R2 300</Form.Label>
           <Form.Control {...register("stddwn_ds5_r2", { required: true})}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>R3 300</Form.Label>
+          <Form.Label className="fw-bold text-info">R3 300</Form.Label>
           <Form.Control {...register("stddwn_ds5_r3", { required: true})}/>
         </Form.Group>
 
