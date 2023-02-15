@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Input, Table } from "antd"
 import { Col, Container, Row } from 'react-bootstrap';
 import BASE_URLAPI from '../../config/URLAPI'
+import moment from 'moment'
 
 function Datatables2 () {
 
@@ -28,9 +29,9 @@ const loadData = async () => {
             device_name: row.device_name,
             machine_no: row.machine_no,
             location: row.location,
-            date_calibration: row.machine_no,
-            last_calibration: row.last_calibration,
-            next_calibration: row.next_calibration,
+            date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
+            last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
+            next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
 
         })))
 }
