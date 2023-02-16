@@ -12,7 +12,8 @@ import About from "./Pages/dashborad/About";
 import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
 import Schedule from "./Pages/dashborad/schedule";
-// import DataTables from './Components/testing/datatable(notuse)'
+
+import Testing2 from "./Components/testing/testing2";
 // Import menu imput
 import InputTempCont from "./Pages/input/inputTempCont";
 import InputTempPress from "./Pages/input/inputTempPress";
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
             <Route path="/trial1" element={ <TbHomeNow /> } />
+            <Route path="/trial2" element={ <Testing2 /> } />
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
         {/* =================INPUT=============================== */}
