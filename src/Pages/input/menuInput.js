@@ -12,10 +12,11 @@ import { Link } from "react-router-dom";
 class Input extends Component {
     render(){
     return (
+      <div>
         <Container className='mt-3'>
       <Row>
         <Col sm={4}>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '20rem' }}>
       <Card.Img variant="top" src={tempcont3} />
       <Card.Body>
         <Card.Title>Temperature Control</Card.Title>
@@ -28,8 +29,8 @@ class Input extends Component {
     </Card>
         </Col>
         <Col sm={4}>
-        <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={pressgauge3} />
+        <Card style={{ width: '20rem' }}>
+      <Card.Img width={50} variant="top" src={pressgauge3} />
       <Card.Body>
         <Card.Title>Pressure Gauge</Card.Title>
         <Card.Text>
@@ -41,7 +42,7 @@ class Input extends Component {
     </Card>
         </Col>
         <Col sm={4}>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '20rem' }}>
       <Card.Img variant="top" src={temp_recorder3} />
       <Card.Body>
         <Card.Title>Temp Recorder</Card.Title>
@@ -55,6 +56,13 @@ class Input extends Component {
         </Col>
       </Row>
     </Container>
+    <div className='container mt-4 border border-info'>
+      <h3>Download File</h3>
+      <div className='border'>
+        <h4>pilih device</h4>
+      </div>
+    </div>
+    </div>
         
     )
 }

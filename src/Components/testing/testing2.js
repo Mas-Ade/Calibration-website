@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import BASE_URLAPI from '../../config/URLAPI'
 import moment from 'moment'
 
-function Testing2 () {
+function Testing2 (props) {
 
 const [gridData, setGridData] = useState([])
 const [filterData, setFilterData] = useState([])
@@ -15,7 +15,7 @@ const [searchText, setSearchText] =useState("")
 
 useEffect(() => {
     // loadData()
-    // loadData2()
+    loadData2()
 }, [])
 
 const loadData = async () => {
@@ -65,7 +65,7 @@ const dates = moment(new Date()).format("YYYY-MM-DD")
 
     return (
     <div>
-        <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing </h3>
+        <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 2</h3>
         {/* search button */}
         <Container className='container mb-3'>
         <Row>
@@ -80,10 +80,10 @@ const dates = moment(new Date()).format("YYYY-MM-DD")
         />
         </Col>
         <Col xs={1}>
-        <Button type="primary"> Search</Button>
+        <Button onClick={ () => props.handleClick('today')} type="primary"> Today</Button>
         </Col>
         <Col xs={1}>
-        <Button className='ml-3' type="primary"> Search</Button>
+        <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary"> All Data</Button>
         </Col>
         </Row>
         </Container>

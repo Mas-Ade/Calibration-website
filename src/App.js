@@ -7,7 +7,7 @@ import ProtectedRoutes from '../src/utils/protectedRoutes'
 import Header from './Components/layout/header';
 import Footer from './Components/layout/footer';
 // import JSX Page
-import Home from "./Pages/dashborad/home";
+import Home from "./Pages/dashborad/home.js"
 import About from "./Pages/dashborad/About";
 import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
@@ -23,6 +23,7 @@ import Greetings from "./Pages/greeting";
 import LoginPages from "./Pages/login/loginPages";
 
 import TbHomeNow from "./Components/testing/home.dateNow";
+import IndexHome from "./Pages/dashborad/Home/index";
 
 // Routes berfungsi sebagai induk untuk menampung semua route
 const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
             <Route path="/trial1" element={ <TbHomeNow /> } />
-            <Route path="/trial2" element={ <Testing2 /> } />
+            <Route path="/trial2" element={ <IndexHome /> } />
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
         {/* =================INPUT=============================== */}
