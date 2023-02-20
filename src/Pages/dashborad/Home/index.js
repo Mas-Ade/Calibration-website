@@ -22,7 +22,7 @@ return(
             case 'all' :
             return <Testing3 handleClick={handleClick} />
             default:
-            return <Testing2 handleClick={handleClick} />
+            return <Testing3 handleClick={handleClick} />
 
         }
     })()}

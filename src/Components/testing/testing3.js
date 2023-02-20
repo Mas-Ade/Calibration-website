@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Button, Input, Table } from "antd"
+import { Button, Input, Table, Modal} from "antd"
 import { Col, Container, Row } from 'react-bootstrap';
 import BASE_URLAPI from '../../config/URLAPI'
 import moment from 'moment'
@@ -10,10 +10,14 @@ function Testing3 (props) {
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
 const [searchText, setSearchText] =useState("")
+const [tempData, setTempData] = useState([])
+const [isEditing, setIsEditing] = useState(false)
+const [editing, setEditing] = useState([])
 // let filteredData = useState()
 
 useEffect(() => {
     loadData()
+    callDataTemp()
 }, [])
 
 const loadData = async () => {
@@ -31,55 +35,18 @@ const loadData = async () => {
             date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
             last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
             next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
-
         })))
 }
 
+    const callDataTemp = async () => {
+    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+    setTempData(response.data.data)
+}
     console.log("gridData", gridData)
-
-    // downloadData = () => {
-	// 	fetch('http://localhost:8080/employees/download')
-	// 		.then(response => {
-	// 			response.blob().then(blob => {
-	// 				let url = window.URL.createObjectURL(blob);
-	// 				let a = document.createElement('a');
-	// 				a.href = url;
-	// 				a.download = 'employees.json';
-	// 				a.click();
-	// 			});
-	// 			//window.location.href = response.url;
-	// 	});
-	// }
-
-    return (
-    <div>
-        <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 3 </h3>
-        {/* search button */}
-        <Container className='container mb-3'>
-        <Row>
-        <Col>
-        <Input.Search
-        placeholder="cari device"
-        onSearch={(value) => {
-        setSearchText(value)
-        }}
-        allowClear
-        type="text"
-        />
-        </Col>
-        <Col xs={1}>
-        <Button onClick={ () => props.handleClick('today')} type="primary"> Today</Button>
-        </Col>
-        <Col xs={1}>
-        <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary"> All Data</Button>
-        </Col>
-        </Row>
-        </Container>
-
-        {/* table */}
-        <div className='container '>
-        <Table 
-        columns = {[
+    console.log("filter:", tempData )
+    console.log("editing: --> " , editing)
+    
+    const column  = [
                 {
                 title: 'ID',
                 dataIndex: 'schedule_id',
@@ -150,27 +117,73 @@ const loadData = async () => {
                 {
                 title: 'Action',
                 key:'action',
-                render: (text, record) => (
-                <button onClick={()=> console.log(record)}>
-                {"Button Text"}
-                </button>),
+                render: (record) => (
+                <Button onClick={() => {
+                    onClickButton(record)
+                }} >test button 
+                </Button>),
                 align: 'center'
                 }
-                
             ]
+        
+            const onClickButton = (record) => {
+                setIsEditing(true)
+                setEditing(record.reg_no)
             }
 
-            dataSource={gridData}
-            bordered
-            loading={loading}
-            size= "small"
-        />
+            const editingData = editing
+            
 
-        </div>
+    return (
+            <div>
+                <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 3 </h3>
+                {/* search button */}
+                <Container className='container mb-3'>
+                <Row>
+                <Col>
+                <Input.Search
+                placeholder="cari device"
+                onSearch={(value) => {
+                setSearchText(value)
+                }}
+                allowClear
+                type="text"
+                />
+                </Col>
+                <Col xs={2}>
+                <Button onClick={ () => props.handleClick('today')} type="primary" style={{marginLeft:2}}> Today</Button>
+                <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary" style={{marginLeft:12}}> All Data</Button>
+                </Col>
+                </Row>
+                </Container>
 
-        </div>
+                {/* table */}
+                <div className='container '>
+                    <Table 
+                        columns={column}
+                        dataSource={gridData}
+                        bordered
+                        loading={loading}
+                        size= "small"
+                    ></Table>
+                    <Modal 
+                        title="test tampil data : "
+                        open={isEditing}
+                        okText='Download'
+                        onCancel={() => {
+                        setIsEditing(false)
+                        }}
+                        onOk= {()=> {
+                        setIsEditing(false)
+                        }}
+                    >
+                    <h3>Data : {editingData}</h3>
+                    </Modal>
+
+                </div>
+
+            </div>
     );
-    
 
 }
 
