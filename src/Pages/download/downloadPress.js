@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import BASE_URLAPI from '../../config/URLAPI'
 import moment from 'moment'
 
-function Testing3 (props) {
+function DownloadPress () {
 
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
@@ -39,7 +39,7 @@ const loadData = async () => {
 }
 
 const callDataTemp = async () => {
-    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_pressgauge`)
     setTempData(response.data.data)
 }
     console.log("gridData", gridData)
@@ -136,7 +136,7 @@ const callDataTemp = async () => {
 
     return (
             <div>
-                <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 3 </h3>
+                <h3 className="container mt-3 mb-3 text-center fw-bold"> Download Data Pressure Gauge </h3>
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>
@@ -149,10 +149,6 @@ const callDataTemp = async () => {
                 allowClear
                 type="text"
                 />
-                </Col>
-                <Col xs={2}>
-                <Button onClick={ () => props.handleClick('today')} type="primary" style={{marginLeft:2}}> Today</Button>
-                <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary" style={{marginLeft:12}}> All Data</Button>
                 </Col>
                 </Row>
                 </Container>
@@ -187,7 +183,7 @@ const callDataTemp = async () => {
 
 }
 
-export default Testing3;
+export default DownloadPress;
 
 
 

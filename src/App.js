@@ -24,6 +24,9 @@ import LoginPages from "./Pages/login/loginPages";
 
 import TbHomeNow from "./Components/testing/home.dateNow";
 import IndexHome from "./Pages/dashborad/Home/index";
+import DownloadTemp from "./Pages/download/downloadTemp";
+import DownloadPress from "./Pages/download/downloadPress";
+import DownloadRecord from "./Pages/download/downloadRecord";
 
 // Routes berfungsi sebagai induk untuk menampung semua route
 const App = () => {
@@ -47,15 +50,23 @@ const App = () => {
             <Route path="/Schedule" element={ <Schedule /> } />
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
+
             <Route path="/trial1" element={ <TbHomeNow /> } />
             <Route path="/trial2" element={ <IndexHome /> } />
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
+
         {/* =================INPUT=============================== */}
             <Route path="/inputTempCont" element={ <InputTempCont /> } />
             <Route path="/inputTempPress" element={ <InputTempPress /> } />
             <Route path="/inputTempRecord" element={ <InputTempRecord /> } />
         {/* =================END OF INPUT======================== */}
+        
+        {/* =================DOWNLOAD=============================== */}
+            <Route path="/downloadtemp" element={ <DownloadTemp /> } />
+            <Route path="/downloadpress" element={ <DownloadPress /> } />
+            <Route path="/downloadrecord" element={ <DownloadRecord /> } />
+        {/* =================END OF DOWNLOAD======================== */}
         </Route>
       </Routes>
 
