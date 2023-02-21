@@ -13,7 +13,7 @@ const handleClick = (table) => {
 
 return(
     <div className='App'>
-    <h2 className='container text-center fw-bold mb-3 mt-3' style={{fontFamily: 'Segoe UI'}}> Calibration Progress </h2>
+    <h2 className='container text-center fw-bold mb-4 mt-4' style={{fontFamily: 'Segoe UI'}}> Calibration Progress </h2>
 
     {(() => {
         switch(todayData) {

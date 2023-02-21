@@ -12,9 +12,9 @@ import { Link } from "react-router-dom";
 function Input () {
     return (
       <div>
-        <Container className='mt-3'>
+        <Container className='mt-4'>
         <div>
-          <h2 className='text-center mb-3 fw-bold'>Select Device to Input</h2>
+          <h2 className='text-center mb-4 fw-bold'>Select Device to Input</h2>
         </div>
       <Row>
         <Col sm={4}>

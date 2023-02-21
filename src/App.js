@@ -7,7 +7,7 @@ import ProtectedRoutes from '../src/utils/protectedRoutes'
 import Header from './Components/layout/header';
 import Footer from './Components/layout/footer';
 // import JSX Page
-import Home from "./Pages/dashborad/home.js"
+import Home from "./Components/testing/home"
 import About from "./Pages/dashborad/About";
 import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
@@ -39,12 +39,11 @@ const App = () => {
   return (
    <div className="App">
    {page === '/'  ? '' : page === '/login' ? '' : <Header/> }
-   
       <Routes> 
         <Route path="/" element={ <Greetings /> } />
         <Route path="/login" element={ <LoginPages /> } />
         {/* =================DASHBOARD========================== */}
-          <Route path="/" element={<ProtectedRoutes />}>
+        <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/Home" element={ <IndexHome /> } />
             <Route path="/Input" element={ <Input /> } />
             <Route path="/Report" element={ <Report /> } />

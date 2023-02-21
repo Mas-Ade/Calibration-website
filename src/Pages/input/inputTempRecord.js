@@ -32,7 +32,7 @@ function InputTempRecord() {
 
   return (
     <div className='container'>
-       <h1 className='mb-5 mt-3'> Input hasil kalibrasi Temperature Recorder </h1>
+       <h1 className='mb-4 mt-4'> Input hasil kalibrasi Temperature Recorder </h1>
 
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
