@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import nok from '../../Assets/pictures/nok.png'
+import '../../Assets/font/oswald/Oswald-VariableFont_wght.ttf'
 
 const Header = () => {
-// class Header extends Component {
-//     render() {
 
-    // const logout = localStorage.removeItem("dataUser");  
-    const handleClick = () => {
+      // const logout = localStorage.removeItem("dataUser");  
+      const handleClick = () => {
       localStorage.clear();
       window.location.reload();
     }
@@ -27,12 +26,6 @@ const Header = () => {
               <li><Link  className="nav-link px-2 text-light fw-bold" to="/Schedule">Schedule</Link></li>
               <li><Link  className="nav-link px-2 text-light fw-bold" to="/Report">Report</Link></li>
               <li><Link  className="nav-link px-2 text-light fw-bold" to="/About">About</Link></li>
-              <li><Link  className="nav-link px-2 text-light fw-bold" to="/trial1">trialDate</Link></li>
-              <li><Link  className="nav-link px-2 text-light fw-bold" to="/trial2">Testing2</Link></li>
-
-              <li><Link  className="nav-link px-2 text-light fw-bold" to="/downloadtemp">temp</Link></li>
-              <li><Link  className="nav-link px-2 text-light fw-bold" to="/downloadpress">press</Link></li>
-              <li><Link  className="nav-link px-2 text-light fw-bold" to="/downloadrecord">record</Link></li>
             </ul>
 
             <div className="text-end">

@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Button, Input, Table, Modal } from "antd"
 import { Col, Container, Row } from 'react-bootstrap';
-import BASE_URLAPI from '../../config/URLAPI'
+import BASE_URLAPI from '../../../config/URLAPI'
 import moment from 'moment'
-import Column from 'antd/es/table/Column';
+// import Column from 'antd/es/table/Column';
 
-function Testing2 (props) {
+function FilterToday (props) {
 
 // const [gridData, setGridData] = useState([])
 const [filterData, setFilterData] = useState([])
@@ -153,7 +153,6 @@ const columns = [
 
 return (
     <div>
-        <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 2</h3>
         {/* search button */}
         <Container className='container mb-3'>
                 <Row>
@@ -204,7 +203,7 @@ return (
 
 }
 
-export default Testing2;
+export default FilterToday;
 
 
 

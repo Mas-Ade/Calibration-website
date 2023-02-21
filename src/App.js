@@ -13,7 +13,6 @@ import Input from "./Pages/input/menuInput";
 import Report from "./Pages/dashborad/report";
 import Schedule from "./Pages/dashborad/schedule";
 
-import Testing2 from "./Components/testing/testing2";
 // Import menu imput
 import InputTempCont from "./Pages/input/inputTempCont";
 import InputTempPress from "./Pages/input/inputTempPress";
@@ -24,6 +23,8 @@ import LoginPages from "./Pages/login/loginPages";
 
 import TbHomeNow from "./Components/testing/home.dateNow";
 import IndexHome from "./Pages/dashborad/Home/index";
+
+// import Download Data Page
 import DownloadTemp from "./Pages/download/downloadTemp";
 import DownloadPress from "./Pages/download/downloadPress";
 import DownloadRecord from "./Pages/download/downloadRecord";
@@ -44,15 +45,14 @@ const App = () => {
         <Route path="/login" element={ <LoginPages /> } />
         {/* =================DASHBOARD========================== */}
           <Route path="/" element={<ProtectedRoutes />}>
-            <Route path="/Home" element={ <Home /> } />
+            <Route path="/Home" element={ <IndexHome /> } />
             <Route path="/Input" element={ <Input /> } />
             <Route path="/Report" element={ <Report /> } />
             <Route path="/Schedule" element={ <Schedule /> } />
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
 
-            <Route path="/trial1" element={ <TbHomeNow /> } />
-            <Route path="/trial2" element={ <IndexHome /> } />
+            {/* <Route path="/trial2" element={ <Home /> } /> */}
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Testing2 from '../../../Components/testing/testing2';
-import Testing3 from '../../../Components/testing/testing3';
+import AllData from './allData';
+import FilterToday from './filterToday';
 
 function IndexHome () {
 
@@ -13,16 +13,16 @@ const handleClick = (table) => {
 
 return(
     <div className='App'>
-    <h1 className='container'> Halaman index home</h1>
+    <h2 className='container text-center fw-bold mb-3 mt-3' style={{fontFamily: 'Segoe UI'}}> Calibration Progress </h2>
 
     {(() => {
         switch(todayData) {
             case 'today' :
-            return <Testing2 handleClick={handleClick} />
+            return <FilterToday handleClick={handleClick} />
             case 'all' :
-            return <Testing3 handleClick={handleClick} />
+            return <AllData handleClick={handleClick} />
             default:
-            return <Testing3 handleClick={handleClick} />
+            return <FilterToday handleClick={handleClick} />
 
         }
     })()}

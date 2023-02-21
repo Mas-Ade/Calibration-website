@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Button, Input, Table, Modal} from "antd"
 import { Col, Container, Row } from 'react-bootstrap';
-import BASE_URLAPI from '../../config/URLAPI'
+import BASE_URLAPI from '../../../config/URLAPI'
 import moment from 'moment'
 
-function Testing3 (props) {
+function AllData (props) {
 
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
@@ -133,10 +133,9 @@ const callDataTemp = async () => {
 
             const editingData = editing
             
-
     return (
             <div>
-                <h3 className="container mt-3 mb-3 text-center fw-bold"> Unit Testing 3 </h3>
+                
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>
@@ -187,7 +186,7 @@ const callDataTemp = async () => {
 
 }
 
-export default Testing3;
+export default AllData;
 
 
 
