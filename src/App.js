@@ -1,8 +1,9 @@
 // import from React 
-// import React, { Component } from "react";
+import React, { Component , useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom"
 import ProtectedRoutes from '../src/utils/protectedRoutes'
+
 // import component
 import Header from './Components/layout/header';
 import Footer from './Components/layout/footer';

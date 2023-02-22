@@ -13,6 +13,7 @@ const [searchText, setSearchText] =useState("")
 const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
+const [getlink, setGetLink] =useState([])
 // let filteredData = useState()
 
 useEffect(() => {
@@ -72,8 +73,9 @@ const callDataTemp = async () => {
     setTempData(response.data.data)
 }
     console.log("gridData", gridData)
-    console.log("filter:", tempData )
+    console.log("filter:", tempData)
     console.log("editing: --> " , editing)
+    console.log("Link: --> " , getlink)
     
     const column  = [
                 {
@@ -98,14 +100,12 @@ const callDataTemp = async () => {
                 title: 'Reg No',
                 dataIndex: "reg_no",
                 align: 'center',
-                
                 },
 
                 {
                 title: 'New Reg No',
                 dataIndex: 'new_reg_no',
                 align: 'center',
-                
                 },
 
                 {
@@ -247,8 +247,6 @@ const callDataTemp = async () => {
                 align: 'center'
                 },
 
-                
-
                 {
                 title: 'Action',
                 key:'action',
@@ -266,6 +264,8 @@ const callDataTemp = async () => {
             const onClickButton = (record) => {
                 setIsEditing(true)
                 setEditing(record.reg_no)
+                setGetLink(record.attach_name)
+                
             }
 
             const editingData = editing
@@ -308,10 +308,11 @@ const callDataTemp = async () => {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        setIsEditing(false)
+                        <a href='./src/Excelfrom/CalibrationFIle/Tpc016F0(SD073-T1-P0) 30-01-2023.xlsx'></a>
                         }}
                     >
-                    <h3>Data : {editingData}</h3>
+                    <h4>Data : {editingData}</h4>
+                    <h4>Data : {getlink}</h4>
                     </Modal>
 
                 </div>

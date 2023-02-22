@@ -145,6 +145,9 @@ const callDataTemp = async () => {
                 onSearch={(value) => {
                 setSearchText(value)
                 }}
+                onChange= {(e) => {
+                setSearchText(e.target.value)
+                }}
                 allowClear
                 type="text"
                 />
@@ -157,7 +160,7 @@ const callDataTemp = async () => {
                 </Container>
 
                 {/* table */}
-                <div className='container '>
+                <div key={gridData} className='container '>
                     <Table 
                         columns={column}
                         dataSource={gridData}

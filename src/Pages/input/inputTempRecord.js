@@ -27,7 +27,7 @@ function InputTempRecord() {
     window.location.href='/hookform'
   }, 1000);
   }
-
+  
  // watch input value by passing the name of it
 
   return (

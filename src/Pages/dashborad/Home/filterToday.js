@@ -73,6 +73,7 @@ const callDataTemp = async () => {
     console.log("editing: --> " , editing)
     console.log("filtered data : ", filterData)
 
+
 const dates = moment(new Date()).format("YYYY-MM-DD")
 
 const columns = [
@@ -162,6 +163,9 @@ return (
                 onSearch={(value) => {
                 setSearchText(value)
                 }}
+                onChange= {(e) => {
+                setSearchText(e.target.value)
+                }}
                 allowClear
                 type="text"
                 />
@@ -174,7 +178,7 @@ return (
                 </Container>
 
                 {/* table */}
-                <div className='container '>
+                <div key={filterData} className='container '>
                     <Table 
                         columns={columns}
                         dataSource={filterData}

@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -7,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import tempcont3 from '../../Assets/pictures/tempcont3.jpg';
 import pressgauge3 from '../../Assets/pictures/pressgauge3.jpg';
 import temp_recorder3 from '../../Assets/pictures/temp_recorder3.jpg';
-import { Link } from "react-router-dom";
+
 
 function Input () {
     return (

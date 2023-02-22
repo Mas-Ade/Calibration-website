@@ -11,6 +11,7 @@ const handleClick = (table) => {
     setTodayData(table)
 }
 
+
 return(
     <div className='App'>
     <h2 className='container text-center fw-bold mb-4 mt-4' style={{fontFamily: 'Segoe UI'}}> Calibration Progress </h2>
