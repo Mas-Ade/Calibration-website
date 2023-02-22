@@ -42,9 +42,10 @@ const callDataTemp = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
     setTempData(response.data.data)
 }
-    console.log("gridData", gridData)
-    console.log("filter:", tempData )
-    console.log("editing: --> " , editing)
+    // # optional to show (for checking only)
+    // console.log("gridData", gridData)
+    // console.log("filter:", tempData )
+    // console.log("editing: --> " , editing)
     
     const column  = [
                 {

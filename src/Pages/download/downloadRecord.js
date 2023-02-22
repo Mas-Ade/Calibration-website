@@ -61,7 +61,8 @@ const loadData = async () => {
             rave_ds5: row.rave_ds5,
 
             updated_staff: row.updated_staff,
-            remark: row.remark
+            remark: row.remark,
+            result_calibration: row.result_calibration
         
 
         })))
@@ -71,9 +72,10 @@ const callDataTemp = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
     setTempData(response.data.data)
 }
-    console.log("gridData", gridData)
-    console.log("filter:", tempData )
-    console.log("editing: --> " , editing)
+    // # optional to show
+    // console.log("gridData", gridData)
+    // console.log("filter:", tempData )
+    // console.log("editing: --> " , editing)
     
     const column  = [
                 {
@@ -122,7 +124,7 @@ const callDataTemp = async () => {
 
                 {
                 title: 'Next Calibration',
-                dataIndex: 'date_calibration',
+                dataIndex: 'next_calibration',
                 align: 'center'
                 },
 
@@ -138,82 +140,82 @@ const callDataTemp = async () => {
                 align: 'center'
                 },
 
-                {
-                title: 'DS 1',
-                dataIndex: 'std_ds1_r1',
-                align: 'center'
-                },
-                {
-                title: 'DS 1',
-                dataIndex: 'std_ds1_r2',
-                align: 'center'
-                },
-                {
-                title: 'DS 1',
-                dataIndex: 'std_ds1_r3',
-                align: 'center'
-                },
+                // {
+                // title: 'DS 1',
+                // dataIndex: 'std_ds1_r1',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 1',
+                // dataIndex: 'std_ds1_r2',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 1',
+                // dataIndex: 'std_ds1_r3',
+                // align: 'center'
+                // },
 
-                {
-                title: 'DS 2',
-                dataIndex: 'std_ds2_r1',
-                align: 'center'
-                },
-                {
-                title: 'DS 2',
-                dataIndex: 'std_ds2_r2',
-                align: 'center'
-                },
-                {
-                title: 'DS 2',
-                dataIndex: 'std_ds2_r3',
-                align: 'center'
-                },
-                {
-                title: 'DS 3',
-                dataIndex: 'std_ds3_r1',
-                align: 'center'
-                },
-                {
-                title: 'DS 3',
-                dataIndex: 'std_ds3_r2',
-                align: 'center'
-                },
-                {
-                title: 'DS 3',
-                dataIndex: 'std_ds3_r3',
-                align: 'center'
-                },
-                {
-                title: 'DS 4',
-                dataIndex: 'std_ds4_r1',
-                align: 'center'
-                },
-                {
-                title: 'DS 4',
-                dataIndex: 'std_ds4_r2',
-                align: 'center'
-                },
-                {
-                title: 'DS 4',
-                dataIndex: 'std_ds4_r3',
-                align: 'center'
-                },
-                {
-                title: 'DS 5',
-                dataIndex: 'std_ds5_r1',
-                align: 'center'
-                },
-                {
-                title: 'DS 5',
-                dataIndex: 'std_ds5_r2',
-                align: 'center'
-                },
-                {
-                title: 'DS 5',
-                dataIndex: 'std_ds5_r3',
-                align: 'center'
-                },
+                // {
+                // title: 'DS 2',
+                // dataIndex: 'std_ds2_r1',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 2',
+                // dataIndex: 'std_ds2_r2',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 2',
+                // dataIndex: 'std_ds2_r3',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 3',
+                // dataIndex: 'std_ds3_r1',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 3',
+                // dataIndex: 'std_ds3_r2',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 3',
+                // dataIndex: 'std_ds3_r3',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 4',
+                // dataIndex: 'std_ds4_r1',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 4',
+                // dataIndex: 'std_ds4_r2',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 4',
+                // dataIndex: 'std_ds4_r3',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 5',
+                // dataIndex: 'std_ds5_r1',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 5',
+                // dataIndex: 'std_ds5_r2',
+                // align: 'center'
+                // },
+                // {
+                // title: 'DS 5',
+                // dataIndex: 'std_ds5_r3',
+                // align: 'center'
+                // },
 
                 {
                 title: 'RAVE 1',

@@ -22,8 +22,7 @@ function Input () {
       <Card.Body>
         <Card.Title>Temperature Control</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+
         </Card.Text>
         <Button onClick={()=> {window.location.href='/inputTempCont'}}  variant="outline-primary" > Input Data </Button>
         <Button onClick={()=> {window.location.href='/downloadtemp'}} style={{marginLeft: 15}}  variant="success"> Download </Button>
@@ -36,8 +35,7 @@ function Input () {
       <Card.Body>
         <Card.Title>Pressure Gauge</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          
         </Card.Text>
         <Button onClick={()=> {window.location.href='/inputTempPress'}} variant="outline-primary" >Input Data </Button>
         <Button onClick={()=> {window.location.href='/downloadpress'}} style={{marginLeft: 15}}  variant="success"> Download </Button>
@@ -50,8 +48,7 @@ function Input () {
       <Card.Body>
         <Card.Title>Temp Recorder</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          
         </Card.Text>
         <Button onClick={()=> {window.location.href='/inputTempRecord'}} variant="outline-primary" >Input Data</Button>
         <Button onClick={()=> {window.location.href='/downloadrecord'}} style={{marginLeft: 15}}  variant="success"> Download </Button>

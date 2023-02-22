@@ -68,10 +68,12 @@ const callDataTemp = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
     setTempData(response.data.data)
 }
+
+    // # optional to show (only fro checking data)
     // console.log("gridData", gridData)
-    console.log("filter:", tempData )
-    console.log("editing: --> " , editing)
-    console.log("filtered data : ", filterData)
+    // console.log("filter:", tempData )
+    // console.log("editing: --> " , editing)
+    // console.log("filtered data : ", filterData)
 
 
 const dates = moment(new Date()).format("YYYY-MM-DD")
