@@ -280,6 +280,9 @@ const callDataTemp = async () => {
                 onSearch={(value) => {
                 setSearchText(value)
                 }}
+                onChange= {(e) => {
+                setSearchText(e.target.value)
+                }}
                 allowClear
                 type="text"
                 />
