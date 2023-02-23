@@ -272,7 +272,6 @@ const callDataTemp = async () => {
 
             const editingData = editing
             
-
     return (
             <div>
                 <h3 className="container mt-3 mb-3 text-center fw-bold"> Download Data Temperature Recorder </h3>

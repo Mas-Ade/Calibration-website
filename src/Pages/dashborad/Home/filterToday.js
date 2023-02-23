@@ -160,7 +160,7 @@ return (
         <Container className='container mb-3'>
                 <Row>
                 <Col>
-                <Input.Search
+                <Input.Search striped="columns" 
                 placeholder="cari device"
                 onSearch={(value) => {
                 setSearchText(value)
@@ -181,7 +181,7 @@ return (
 
                 {/* table */}
                 <div key={filterData} className='container '>
-                    <Table 
+                    <Table striped="columns"
                         columns={columns}
                         dataSource={filterData}
                         bordered

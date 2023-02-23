@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import tempcont3 from '../../Assets/pictures/tempcont3.jpg';
 import pressgauge3 from '../../Assets/pictures/pressgauge3.jpg';
 import temp_recorder3 from '../../Assets/pictures/temp_recorder3.jpg';
+import { Link } from 'react-router-dom';
 
 
 function Input () {
@@ -24,8 +25,12 @@ function Input () {
         <Card.Text>
 
         </Card.Text>
-        <Button onClick={()=> {window.location.href='/inputTempCont'}}  variant="outline-primary" > Input Data </Button>
-        <Button onClick={()=> {window.location.href='/downloadtemp'}} style={{marginLeft: 15}}  variant="success"> Download </Button>
+        <Link to='/inputTempCont'>
+        <Button style={{marginRight: 15}}  variant="outline-primary">Input Data</Button>
+        </Link>
+        <Link to='/downloadtemp'>
+        <Button style={{marginRight: 15}}  variant="success">Download</Button>
+        </Link> 
       </Card.Body>
     </Card>
         </Col>
@@ -37,8 +42,12 @@ function Input () {
         <Card.Text>
           
         </Card.Text>
-        <Button onClick={()=> {window.location.href='/inputTempPress'}} variant="outline-primary" >Input Data </Button>
-        <Button onClick={()=> {window.location.href='/downloadpress'}} style={{marginLeft: 15}}  variant="success"> Download </Button>
+        <Link to='/inputTempPress'>
+        <Button style={{marginRight: 15}}  variant="outline-primary">Input Data</Button>
+        </Link>
+        <Link to='/downloadpress'>
+        <Button style={{marginRight: 15}}  variant="success">Download</Button>
+        </Link> 
       </Card.Body>
     </Card>
         </Col>
@@ -50,8 +59,12 @@ function Input () {
         <Card.Text>
           
         </Card.Text>
-        <Button onClick={()=> {window.location.href='/inputTempRecord'}} variant="outline-primary" >Input Data</Button>
-        <Button onClick={()=> {window.location.href='/downloadrecord'}} style={{marginLeft: 15}}  variant="success"> Download </Button>
+        <Link to='/inputTempRecord'>
+        <Button style={{marginRight: 15}}  variant="outline-primary">Input Data</Button>
+        </Link>
+        <Link to='/downloadrecord'>
+        <Button style={{marginRight: 15}}  variant="success">Download</Button>
+        </Link> 
       </Card.Body>
     </Card>
         </Col>

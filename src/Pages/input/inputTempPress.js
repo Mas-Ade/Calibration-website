@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import Alert from 'react-bootstrap/Alert';
+import React, { useState, useEffect} from 'react';
+import BASE_URLAPI from '../../config/URLAPI'
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -14,6 +16,16 @@ function InputTempPress() {
  // works
   // deklarasi state
   const { register, handleSubmit } = useForm();
+  const [validno, setValidno] = useState([]) 
+  
+  const getNo = async () => {
+    const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
+    setValidno(response.data.data)
+  }
+
+  useEffect(() => {
+    getNo()
+}, [])
 
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
@@ -61,12 +73,22 @@ function InputTempPress() {
 
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label className="fw-bold text-info">No Reg New</Form.Label>
-          <Form.Control {...register("new_reg_no", { required: true})}  placeholder="isi data no reg old" />
+          <Form.Select  defaultValue="" {...register("new_reg_no" , { required: true})}  placeholder="isi data No Reg New">
+            <option>....</option>
+            {validno.map(row => (
+              <option key={row.reg_no}>{row.new_reg_no}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label className="fw-bold text-info">No Machine</Form.Label>
-          <Form.Control {...register("machine_no", { required: true})}  placeholder="isi data no reg old" />
+          <Form.Select  defaultValue="" {...register("machine_no" , { required: true})}  placeholder="isi data No Reg New">
+            <option>....</option>
+            {validno.map(row => (
+              <option key={row.reg_no}>{row.machine_no}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
