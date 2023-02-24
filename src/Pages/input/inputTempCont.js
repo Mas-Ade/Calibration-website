@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form"
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect , } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import Alert from 'react-bootstrap/Alert';
+// import Alert from 'react-bootstrap/Alert';
 import BASE_URLAPI from '../../config/URLAPI'
-
-import { Table, Input, Modal } from "antd";
+import { Table, Input, Modal, message } from "antd";
+// import { FormControl } from "react-bootstrap";
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -17,12 +17,17 @@ import { Table, Input, Modal } from "antd";
 function InputTempCont() {
  // works
   // deklarasi state
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const [validno, setValidno] = useState([]) 
   const [isEditing, setIsEditing] = useState(false)
+   const [isEditing2, setIsEditing2] = useState(false)
   const [searchText, setSearchText] =useState("")
+  const [dataNoreg, setDataNoreg] = useState({})
+  const [dataNomach, setDataNomach] = useState({})
+  const [filter, setFilter] = useState("")
+  const [filter2, setFilter2] = useState("")
+  const [messageApi, contextHolder] = message.useMessage();
 
-  
   const getNo = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
     setValidno(response.data.data)
@@ -31,10 +36,31 @@ function InputTempCont() {
   const onClickButton = async (record) => {
             setIsEditing(true)
             }
+  const onClickButton2 = async (record) => {
+            setIsEditing2(true)
+            }
+
+  const onClickFilter = (record) => {
+             setFilter(record.new_reg_no)
+             setIsEditing(true)
+            }
+  
+  const onClickFilter2 = (record) => {
+             setFilter2(record.machine_no)
+             setIsEditing2(true)
+            }
+            // console.log('data : ', filter)
+  const success = () => {
+            messageApi.open({
+            type: 'success',
+            content: 'No reg New Choosed',
+             });
+            };
 
   useEffect(() => {
     getNo()
 }, [])
+
 
 console.log("data no reg new :" , validno)
 
@@ -69,26 +95,65 @@ console.log("data no reg new :" , validno)
                 .toLowerCase()
                 .includes(value.toLowerCase())
                 },
-                },
+                onclick:(value, record) => {
+                setDataNoreg(record.new_reg_no)
+                }
+                }, 
                 {
                 title: 'Action',
                 key:'action',
-                fixed: 'right',
-                widht: 100 ,
                 render: (record) => (
-                <Button onClick={() => {
-                    onClickButton(record)
-                }} >Choose 
-                </Button>),
+                <Button onClick={ () => {
+                  onClickFilter(record)
+                }} >Choose
+                </Button>
+                ),
                 align: 'center'
                 }
               ]
+
+  const column2  = [
+                {
+                title: 'Machine No',
+                dataIndex: "machine_no",
+                align: 'center',
+                filteredValue: [searchText],
+                onFilter:(value,record) => {
+                return String(record.machine_no)
+                .toLowerCase()
+                .includes(value.toLowerCase()) || 
+                String(record.new_reg_no)
+                .toLowerCase()
+                .includes(value.toLowerCase()) || 
+                String(record.calibration_date)
+                .toLowerCase()
+                .includes(value.toLowerCase())
+                },
+                onclick:(value, record) => {
+                setDataNomach(record.machine_no)
+                }
+                },
+                
+                {
+                title: 'Action',
+                key:'action',
+                render: (record) => (
+                <Button onClick={ () => {
+                  onClickFilter2(record)
+                }} >Choose
+                </Button>
+                ),
+                align: 'center'
+                }
+              ]
+
+              
 
   return (
     <div className='container'>
     <h1 className='mb-4 mt-4'> Input hasil kalibrasi Temperature Control</h1>
 
-    <form onSubmit={handleSubmit(onSubmit)} >
+    <form  onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
       <Row className="mb-5 border border-info">
         <Form.Group as={Col} controlId="formGridCity">
@@ -108,21 +173,31 @@ console.log("data no reg new :" , validno)
           </Form.Select>
         </Form.Group>
         
-        <Form.Group as={Col} controlId="formGridCity">
+        <Form.Group  as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-info">No Reg New</Form.Label>
-          
-          <Modal 
+          <Modal key={'action'}
                         title="Pilih No Reg New "
                         open={isEditing}
-                        okText='Download'
                         onCancel={() => {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        <a href='./src/Excelfrom/CalibrationFIle/Tpc016F0(SD073-T1-P0) 30-01-2023.xlsx'></a>
+                        {setValue('no_reg_new',`${filter}`)}
+                        setIsEditing(false)
                         }}
                     >
-                    <div>
+                    <div key={'action'}>
+                    <Input.Search
+                placeholder="cari device"
+                onSearch={(value) => {
+                setSearchText(value)
+                }}
+                onChange= {(e) => {
+                setSearchText(e.target.value)
+                }}
+                allowClear
+                type="text"
+                />
                     <Table 
                         columns={column}
                         dataSource={validno}
@@ -132,17 +207,44 @@ console.log("data no reg new :" , validno)
                     ></Table>
                     </div>
                     </Modal>
-          <Form.Control onClick={onClickButton} className="mb-2" {...register("updated_staff" , { required: true})}  placeholder="isi data user" />
+          <Form.Control onClick={onClickButton} className="mb-2" {...register("no_reg_new" , )}  placeholder="isi data user" />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridZip">
+        <Form.Group  as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-info">No Machine</Form.Label>
-          <Form.Select  defaultValue="" {...register("machine_no" , { required: true})}  placeholder="isi data No Reg New">
-            <option>....</option>
-            {validno.map(row => (
-              <option key={row.reg_no}>{row.machine_no}</option>
-            ))}
-          </Form.Select>
+          <Modal key={'action'}
+                        title="Choose No Machine "
+                        open={isEditing2}
+                        onCancel={() => {
+                        setIsEditing2(false)
+                        }}
+                        onOk= {()=> {
+                        {setValue('machine_no',`${filter2}`)}
+                        setIsEditing2(false)
+                        }}
+                    >
+                    <div key={'action'}>
+                    <Input.Search
+                placeholder="cari device"
+                onSearch={(value) => {
+                setSearchText(value)
+                }}
+                onChange= {(e) => {
+                setSearchText(e.target.value)
+                }}
+                allowClear
+                type="text"
+                />
+                    <Table 
+                        columns={column2}
+                        dataSource={validno}
+                        bordered
+                        scroll={{ x: true}}
+                        size= "small"
+                    ></Table>
+                    </div>
+                    </Modal>
+          <Form.Control onClick={onClickButton2} className="mb-2" {...register("machine_no" , )}  placeholder="No Machine" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">

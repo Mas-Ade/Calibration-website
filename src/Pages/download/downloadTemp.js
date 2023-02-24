@@ -312,7 +312,7 @@ const callDataTemp = async () => {
                         }}
                     >
                     <h4>Data : {editingData}</h4>
-                    <h4>Data : {getlink}</h4>
+                    
                     </Modal>
 
                 </div>
