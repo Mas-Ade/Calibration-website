@@ -5,10 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-// import Alert from 'react-bootstrap/Alert';
 import BASE_URLAPI from '../../config/URLAPI'
-import { Table, Input, Modal, message } from "antd";
-// import { FormControl } from "react-bootstrap";
+import { Table, Input, Modal, message, } from "antd";
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -16,17 +14,25 @@ import { Table, Input, Modal, message } from "antd";
 
 function InputTempCont() {
  // works
-  // deklarasi state
+ // deklarasi state
   const { register, handleSubmit, setValue } = useForm();
+ // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]) 
+ //logic kondisi Modal diatur dalam state tipe boolean
   const [isEditing, setIsEditing] = useState(false)
-   const [isEditing2, setIsEditing2] = useState(false)
+  const [isEditing2, setIsEditing2] = useState(false)
+ // state untuk memanpung data pencarian
   const [searchText, setSearchText] =useState("")
-  const [dataNoreg, setDataNoreg] = useState({})
-  const [dataNomach, setDataNomach] = useState({})
+ // state untuk memanpung data pencarian yang sudah dipilih 
   const [filter, setFilter] = useState("")
+ // state untuk memanpung data pencarian yang sudah dipilih
   const [filter2, setFilter2] = useState("")
+ // state untuk menampung text untuk message
   const [messageApi, contextHolder] = message.useMessage();
+ // state untuk memanpung data Noreg
+ // const [dataNoreg, setDataNoreg] = useState({})
+ // state untuk memanpung data nomach
+ // const [dataNomach, setDataNomach] = useState({})
 
   const getNo = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
@@ -43,27 +49,23 @@ function InputTempCont() {
   const onClickFilter = (record) => {
              setFilter(record.new_reg_no)
              setIsEditing(true)
+             messageApi.info(`${record.new_reg_no} berhasil dipilih `)
             }
   
   const onClickFilter2 = (record) => {
              setFilter2(record.machine_no)
              setIsEditing2(true)
+             messageApi.info(`${record.machine_no} berhasil dipilih `)
             }
             // console.log('data : ', filter)
-  const success = () => {
-            messageApi.open({
-            type: 'success',
-            content: 'No reg New Choosed',
-             });
-            };
 
+ 
   useEffect(() => {
     getNo()
 }, [])
 
 
-console.log("data no reg new :" , validno)
-
+// console.log("data no reg new :" , validno)
 
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
@@ -95,9 +97,9 @@ console.log("data no reg new :" , validno)
                 .toLowerCase()
                 .includes(value.toLowerCase())
                 },
-                onclick:(value, record) => {
-                setDataNoreg(record.new_reg_no)
-                }
+                // onclick:(value, record) => {
+                // setDataNoreg(record.new_reg_no)
+                // }
                 }, 
                 {
                 title: 'Action',
@@ -129,9 +131,9 @@ console.log("data no reg new :" , validno)
                 .toLowerCase()
                 .includes(value.toLowerCase())
                 },
-                onclick:(value, record) => {
-                setDataNomach(record.machine_no)
-                }
+                // onclick:(value, record) => {
+                // setDataNomach(record.machine_no)
+                // }
                 },
                 
                 {
@@ -153,7 +155,7 @@ console.log("data no reg new :" , validno)
     <div className='container'>
     <h1 className='mb-4 mt-4'> Input hasil kalibrasi Temperature Control</h1>
 
-    <form  onSubmit={handleSubmit(onSubmit)} >
+    <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
       <Row className="mb-5 border border-info">
         <Form.Group as={Col} controlId="formGridCity">
@@ -175,7 +177,9 @@ console.log("data no reg new :" , validno)
         
         <Form.Group  as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-info">No Reg New</Form.Label>
-          <Modal key={'action'}
+          {contextHolder}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+              <Modal 
+                        
                         title="Pilih No Reg New "
                         open={isEditing}
                         onCancel={() => {
@@ -186,7 +190,7 @@ console.log("data no reg new :" , validno)
                         setIsEditing(false)
                         }}
                     >
-                    <div key={'action'}>
+                    <div>
                     <Input.Search
                 placeholder="cari device"
                 onSearch={(value) => {
@@ -199,6 +203,7 @@ console.log("data no reg new :" , validno)
                 type="text"
                 />
                     <Table 
+                        key={'action'}
                         columns={column}
                         dataSource={validno}
                         bordered
@@ -223,7 +228,7 @@ console.log("data no reg new :" , validno)
                         setIsEditing2(false)
                         }}
                     >
-                    <div key={'action'}>
+                    <div>
                     <Input.Search
                 placeholder="cari device"
                 onSearch={(value) => {
