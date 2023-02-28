@@ -1,5 +1,13 @@
-.App {
-  text-align: center;
+.gradient-text{
+  
+  /* Create the gradient. */
+  background: linear-gradient(to Left, #15a1dd, #effafd);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .App-logo {

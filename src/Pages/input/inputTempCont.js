@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import BASE_URLAPI from '../../config/URLAPI'
 import { Table, Input, Modal, message, } from "antd";
+import '../../App.css'
 
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
@@ -63,7 +64,6 @@ function InputTempCont() {
   useEffect(() => {
     getNo()
 }, [])
-
 
 // console.log("data no reg new :" , validno)
 
@@ -153,7 +153,7 @@ function InputTempCont() {
 
   return (
     <div className='container'>
-    <h1 className='mb-4 mt-4'> Input hasil kalibrasi Temperature Control</h1>
+    <h1 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> INPUT HASIL KALIBRASI TEMPERATURE CONTROL </h1>
 
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
@@ -260,7 +260,7 @@ function InputTempCont() {
         </Row>
        
 {/* Group-1 */}
-      <Row className="mb-">
+      <Row className="mb-2" >
         <Form.Group as={Col} controlId="formGridCity" >
           <Form.Label className="fw-bold text-info">R1 10</Form.Label>
           <Form.Control {...register("std_ds1_r1", { required: true})} />

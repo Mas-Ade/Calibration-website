@@ -142,7 +142,7 @@ function InputTempPress() {
 
   return (
     <div className='container'>
-    <h1 className='mb-4 mt-4'> Input hasil kalibrasi Pressure Gauge</h1>
+    <h1 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> INPUT HASIL KALIBRASI PRESSURE GAUGE</h1>
 
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}

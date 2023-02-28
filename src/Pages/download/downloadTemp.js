@@ -270,7 +270,7 @@ const callDataTemp = async () => {
 
     return (
             <div>
-                <h3 className="container mt-3 mb-3 text-center fw-bold"> Download Data Temperature Control </h3>
+                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> Download Data Temperature Control </h3>
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>

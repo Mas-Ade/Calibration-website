@@ -4,9 +4,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import tempcont3 from '../../Assets/pictures/tempcont3.jpg';
-import pressgauge3 from '../../Assets/pictures/pressgauge3.jpg';
-import temp_recorder3 from '../../Assets/pictures/temp_recorder3.jpg';
+import pressgauge3 from '../../Assets/pictures/pressgauge3.png';
+import temp_recorder3 from '../../Assets/pictures/temp_recorder3.png';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 
 function Input () {
@@ -14,12 +15,12 @@ function Input () {
       <div>
         <Container className='mt-4'>
         <div>
-          <h2 className='text-center mb-4 fw-bold'>Select Device to Input</h2>
+          <h2 style={{fontFamily: 'Segoe UI'}} className='gradient-text text-center mb-4 fw-bold'>SELECT DEVICE TO INPUT</h2>
         </div>
       <Row>
         <Col sm={4}>
-        <Card className='shadow' style={{ width: '18rem' }}>
-      <Card.Img height={250} variant="top" src={tempcont3} />
+        <Card className='container shadow' style={{ width: '20rem' }}>
+      <Card.Img className='mt-2' height={250} variant="top" src={tempcont3} />
       <Card.Body>
         <Card.Title>Temperature Control</Card.Title>
         <Card.Text>
@@ -34,15 +35,13 @@ function Input () {
       </Card.Body>
     </Card>
         </Col>
-        <Col sm={4}>
-        <Card className='shadow' style={{ width: '18rem' }}>
-      <Card.Img height={250} variant="top" src={pressgauge3} />
+        <Col  sm={4}>
+        <Card className='container shadow ' style={{ width: '20rem' }}>
+      <Card.Img className='mt-2' height={250} variant="top" src={pressgauge3} />
       <Card.Body>
         <Card.Title>Pressure Gauge</Card.Title>
-        <Card.Text>
-          
-        </Card.Text>
-        <Link to='/inputTempPress'>
+        
+        <Link to='/inputTempPress'> 
         <Button style={{marginRight: 15}}  variant="outline-primary">Input Data</Button>
         </Link>
         <Link to='/downloadpress'>
@@ -51,9 +50,9 @@ function Input () {
       </Card.Body>
     </Card>
         </Col>
-        <Col sm={4}>
-        <Card className='shadow' style={{ width: '18rem' }}>
-      <Card.Img height={250} variant="top" src={temp_recorder3} />
+        <Col  sm={4}>
+        <Card className=' container shadow' style={{ width: '20rem' }}>
+      <Card.Img className='mt-2' height={250} variant="top" src={temp_recorder3} />
       <Card.Body>
         <Card.Title>Temp Recorder</Card.Title>
         <Card.Text>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AllData from './allData';
 import FilterToday from './filterToday';
+import '../../../App.css'
 
 function IndexHome () {
 
@@ -14,7 +15,7 @@ const handleClick = (table) => {
 
 return(
     <div className='App'>
-    <h2 className='container text-center fw-bold mb-4 mt-4' style={{fontFamily: 'Segoe UI'}}> Calibration Progress </h2>
+    <h2 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'>CALIBRATION PROGRESS </h2>
 
     {(() => {
         switch(todayData) {
