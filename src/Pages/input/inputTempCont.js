@@ -43,6 +43,7 @@ function InputTempCont() {
   const onClickButton = async (record) => {
             setIsEditing(true)
             }
+
   const onClickButton2 = async (record) => {
             setIsEditing2(true)
             }
@@ -70,7 +71,7 @@ function InputTempCont() {
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
     console.log(datas);
-    // await axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+    await axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
     alert(JSON.stringify("Data berhasil diinput"));
 
     // script timeout dan pindah halaman
@@ -149,8 +150,6 @@ function InputTempCont() {
                 }
               ]
 
-              
-
   return (
     <div className='container'>
     <h1 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> INPUT HASIL KALIBRASI TEMPERATURE CONTROL </h1>
@@ -186,7 +185,7 @@ function InputTempCont() {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        {setValue('no_reg_new',`${filter}`)}
+                        {setValue('new_reg_no',`${filter}`)}
                         setIsEditing(false)
                         }}
                     >
@@ -212,7 +211,7 @@ function InputTempCont() {
                     ></Table>
                     </div>
                     </Modal>
-          <Form.Control onClick={onClickButton} className="mb-2" {...register("no_reg_new" , )}  placeholder="isi data user" />
+          <Form.Control onClick={onClickButton} className="mb-2" {...register("new_reg_no" , )}  placeholder="isi data user" />
         </Form.Group>
 
         <Form.Group  as={Col} controlId="formGridCity">

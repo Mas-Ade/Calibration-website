@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, Input, Table, Modal } from "antd"
 import { Col, Container, Row } from 'react-bootstrap';
 import BASE_URLAPI from '../../../config/URLAPI'
-import moment from 'moment'
+import moment, { months } from 'moment'
 // import Column from 'antd/es/table/Column';
 
 function FilterToday (props) {
@@ -15,6 +15,7 @@ const [searchText, setSearchText] =useState("")
 const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
+const [filtermonth, setFilterMonth] = useState("")
 
 // let filteredData = useState()
 
@@ -44,19 +45,25 @@ useEffect(() => {
 // }
 
 
+
+
+const newDate = new Date()
+const dates = moment(newDate).format("YYYY-MMM")
+console.log('filter dates :', dates)
+
 const loadData2 = async () => {
     setLoading(true)
     const response = await axios.get( `${BASE_URLAPI}/api/getdata_schedule_calibration`)
     setLoading(false)
     setFilterData(
-    response.data.data.filter(filter => filter.date_calibration = "2023-01-11").map(row => ({
+    response.data.data.map(row => ({
             schedule_id: row.schedule_id,
             reg_no: row.reg_no,
             new_reg_no: row.new_reg_no,
             device_name: row.device_name,
             machine_no: row.machine_no,
             location: row.location,
-            date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
+            date_calibration: moment(row.date_calibration).format("YYYY-MMM"),
             last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
             next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
         })
@@ -73,15 +80,13 @@ const callDataTemp = async () => {
     // console.log("gridData", gridData)
     // console.log("filter:", tempData )
     // console.log("editing: --> " , editing)
-    // console.log("filtered data : ", filterData)
-
-
-const dates = moment(new Date()).format("YYYY-MM-DD")
+    console.log("filtered data : ", filterData)
+    // console.log("filtered month : ", filtermonth)
 
 const columns = [
                 {
-                title: 'ID',
-                dataIndex: 'schedule_id',
+                title: 'Reg No',
+                dataIndex: 'reg_no',
                 align: 'center',
                 filteredValue: [searchText],
                 onFilter:(value,record) => {
@@ -93,14 +98,11 @@ const columns = [
                 .includes(value.toLowerCase()) || 
                 String(record.date_calibration)
                 .toLowerCase()
+                .includes(value.toLowerCase()) ||
+                String(record.machine_no)
+                .toLowerCase()
                 .includes(value.toLowerCase())
                 },
-                },
-
-                {
-                title: 'Reg No',
-                dataIndex: "reg_no",
-                align: 'center'
                 },
 
                 {
@@ -130,7 +132,13 @@ const columns = [
                 {
                 title: 'Date Calibration',
                 dataIndex: 'date_calibration',
-                align: 'center'
+                align: 'center',
+                filteredValue: [dates],
+                onFilter:(value,record) => {
+                return String(record.date_calibration)
+                .toLowerCase()
+                .includes(value.toLowerCase())
+                }
                 },
 
                 {

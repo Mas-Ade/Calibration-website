@@ -62,7 +62,7 @@ function InputTempPress() {
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
     console.log(datas);
-    // axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
+    axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
     const timeout = await setTimeout(() => {

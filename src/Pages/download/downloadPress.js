@@ -97,6 +97,9 @@ const callDataTemp = async () => {
                 .includes(value.toLowerCase()) || 
                 String(record.calibration_date)
                 .toLowerCase()
+                .includes(value.toLowerCase()) ||
+                String(record.machine_no)
+                .toLowerCase()
                 .includes(value.toLowerCase())
                 },
                 },
