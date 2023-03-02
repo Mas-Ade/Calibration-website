@@ -33,10 +33,10 @@ const Header = () => {
 return (
       <div>
       <h2 className='container'>PT.NOK INDONESIA</h2>
-        <div className='bg-info shadow'>
+        <div className='nav-color shadow'>
         <div>
         <Container>
-        <Navbar bg="info" expand="lg">
+        <Navbar className='nav-color'  expand="lg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           

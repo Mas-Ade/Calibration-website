@@ -60,6 +60,8 @@ const onSubmit = async (e) => {
 		            						<button type="submit" className="form-control btn-lg  btn btn-primary rounded submit px-5">Login</button>
 		           							</div>
 		          						</form>
+
+                    
                          
             </div>
             </div>
@@ -75,7 +77,7 @@ const onSubmit = async (e) => {
 
 export default LoginUser;
 
-
+// tidak dipakai karena direvisi
 
 
 

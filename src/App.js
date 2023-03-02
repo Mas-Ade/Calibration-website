@@ -20,7 +20,7 @@ import InputTempPress from "./Pages/input/inputTempPress";
 import InputTempRecord from "./Pages/input/inputTempRecord";
 // import Greeting & Login Page
 import Greetings from "./Pages/greeting";
-import LoginPages from "./Pages/login/loginPages";
+import LoginPages from "./Pages/login/loginPage2";
 
 import TbHomeNow from "./Components/testing/home.dateNow";
 import IndexHome from "./Pages/dashborad/Home/index";
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
    <div className="App">
-   {page === '/'  ? '' : page === '/login' ? '' : <Header/> }
+   {page === '/'  ? '' : page === '/login' ? '' :page === '/login2' ? '' : <Header/> }
       <Routes> 
         <Route path="/" element={ <Greetings /> } />
         <Route path="/login" element={ <LoginPages /> } />

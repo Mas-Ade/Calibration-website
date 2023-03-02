@@ -154,11 +154,11 @@ console.log("data no reg new :" , validno)
 
   return (
     <div className='container'>
-    <h1 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> INPUT HASIL KALIBRASI TEMPERATURE RECORDER</h1>
+        <h1 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 mb-4 fw-bold'> Input Result Calibration of Temperature Recorder </h1>
 
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
-      <Row className="mb-5 border border-info">
+      <Row className="mb-5 border p-2">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-info">User</Form.Label>
           <Form.Control className="mb-2" {...register("updated_staff" , { required: true})}  placeholder="isi data user" />
@@ -259,9 +259,10 @@ console.log("data no reg new :" , validno)
         </Form.Group>
 
         </Row>
+        <div className="border p-4">
        
 {/* Group-1 */}
-      <Row className="mb-">
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridCity" >
           <Form.Label className="fw-bold text-info">R1 10</Form.Label>
           <Form.Control {...register("std_ds1_r1", { required: true})} />
@@ -354,6 +355,10 @@ console.log("data no reg new :" , validno)
         </Form.Group>
 
       </Row>
+      </div>
+      <div>
+        <h6 className="text-end text-warning fw-bold"> *mohon untuk diperiksa kembali hasil input anda</h6>
+      </div>
 
     {/* <Button  variant="primary" type="submit" onClick="setTimeout(movePage, 200);"> */}
       <Button  variant="primary" type="submit" >
