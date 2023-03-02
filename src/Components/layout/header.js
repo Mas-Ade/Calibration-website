@@ -51,7 +51,7 @@ return (
           </Nav>
         </Navbar.Collapse>
         {users.map(user => <div key={user} style={{marginRight:15, color:'white'}}>Login as {user.staff_name}</div>)}
-      <button type="button" onClick={Logout} className="btn btn-outline-dark me-2">Logout</button>
+      <button type="button" onClick={Logout} className="btn btn-outline-warning me-2">Logout</button>
       </Navbar>
       </Container>
         </div>

@@ -180,9 +180,9 @@ return (
                 type="text"
                 />
                 </Col>
-                <Col xs={2}>
-                <Button onClick={ () => props.handleClick('today')} type="primary" style={{marginLeft:2}}> Today</Button>
-                <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary" style={{marginLeft:12}}> All Data</Button>
+                <Col xs={3}>
+                <Button onClick={ () => props.handleClick('today')} type="primary" style={{}}> Currently</Button>
+                <Button onClick={ () => props.handleClick('all')} className='ml-3' type="primary" style={{marginLeft:8}}> All Data</Button>
                 </Col>
                 </Row>
                 </Container>

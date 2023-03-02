@@ -13,7 +13,7 @@ const [searchText, setSearchText] =useState("")
 const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
-const [getlink, setGetLink] =useState([])
+const [getlink, setGetLink] =useState("")
 // let filteredData = useState()
 
 useEffect(() => {
@@ -73,11 +73,6 @@ const callDataTemp = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
     setTempData(response.data.data)
 }
-    // # optional to show 
-    console.log("gridData", gridData)
-    // console.log("filter:", tempData)
-    // console.log("editing: --> " , editing)
-    // console.log("Link: --> " , getlink)
     
     const column  = [
                 {
@@ -264,11 +259,16 @@ const callDataTemp = async () => {
             const onClickButton = (record) => {
                 setIsEditing(true)
                 setEditing(record.reg_no)
-                setGetLink(record.attach_name)
+                setGetLink(record.attach_path)
                 
             }
 
             const editingData = editing
+            // # optional to show 
+            // console.log("gridData", gridData)
+            console.log("filter:", tempData)
+            // console.log("editing: --> " , editing)
+            // console.log("Link: --> " , getlink)
             
 
     return (
@@ -311,10 +311,11 @@ const callDataTemp = async () => {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        <a href='./src/Excelfrom/CalibrationFIle/Tpc016F0(SD073-T1-P0) 30-01-2023.xlsx'></a>
+                        window.location.replace('http://10.202.10.42:3003/api/download');
+                        // <a href={'http://10.202.10.42:3003/api/download'} ></a>
                         }}
                     >
-                    <h4>Data : {editingData}</h4>
+                    <h4>Data : {getlink}</h4>
                     
                     </Modal>
 
