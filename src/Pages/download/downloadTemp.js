@@ -18,7 +18,6 @@ const [getlink, setGetLink] =useState("")
 
 useEffect(() => {
     loadData()
-    callDataTemp()
 }, [])
 
 const loadData = async () => {
@@ -68,16 +67,11 @@ const loadData = async () => {
 
         })))
 }
-
-const callDataTemp = async () => {
-    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
-    setTempData(response.data.data)
-}
-    
+   
     const column  = [
                 {
                 title: 'ID',
-                dataIndex: 'schedule_id',
+                dataIndex: 'caltempctrl_rec_id',
                 align: 'center',
                 filteredValue: [searchText],
                 onFilter:(value,record) => {
@@ -248,9 +242,9 @@ const callDataTemp = async () => {
                 fixed: 'right',
                 widht: 100 ,
                 render: (record) => (
-                <Button onClick={() => {
+                <Button type='primary' onClick={() => {
                     onClickButton(record)
-                }} >test button 
+                }} >Download
                 </Button>),
                 align: 'center'
                 }
@@ -259,7 +253,7 @@ const callDataTemp = async () => {
             const onClickButton = (record) => {
                 setIsEditing(true)
                 setEditing(record.reg_no)
-                setGetLink(record.attach_path)
+                setGetLink(record.caltempctrl_rec_id)
                 
             }
 
@@ -269,8 +263,7 @@ const callDataTemp = async () => {
             console.log("filter:", tempData)
             // console.log("editing: --> " , editing)
             // console.log("Link: --> " , getlink)
-            
-
+        
     return (
             <div>
                 <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> Download Data Temperature Control </h3>
@@ -311,7 +304,7 @@ const callDataTemp = async () => {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        window.location.replace('http://10.202.10.42:3003/api/download');
+                        window.location.replace(`http://10.202.100.84:3003/api/download/file/calibration_tempctrl_temprec/${getlink}`);
                         // <a href={'http://10.202.10.42:3003/api/download'} ></a>
                         }}
                     >

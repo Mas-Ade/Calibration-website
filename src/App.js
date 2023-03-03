@@ -7,6 +7,7 @@ import ProtectedRoutes from '../src/utils/protectedRoutes'
 // import component
 import Header from './Components/layout/header';
 import Footer from './Components/layout/footer';
+
 // import JSX Page
 import Home from "./Components/testing/home"
 import About from "./Pages/dashborad/About";
@@ -52,7 +53,7 @@ const App = () => {
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
 
-            {/* <Route path="/trial2" element={ <Home /> } /> */}
+            
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
 

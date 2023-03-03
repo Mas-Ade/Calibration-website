@@ -13,20 +13,20 @@ const [searchText, setSearchText] =useState("")
 const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
+const [getlink, setGetLink] =useState("")
 // let filteredData = useState()
 
 useEffect(() => {
     loadData()
-    // callDataTemp()
 }, [])
 
 const loadData = async () => {
     setLoading(true)
-    const response = await axios.get( `${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+    const response = await axios.get( `${BASE_URLAPI}/api/getdata_calibration_pressgauge`)
     setLoading(false)
     setGridData(
         response.data.data.map(row => ({
-            caltempctrl_rec_id: row.caltempctrl_rec_id,
+            calpressgauge_id: row.calpressgauge_id,
             reg_no: row.reg_no,
             new_reg_no: row.new_reg_no,
             machine_no: row.machine_no,
@@ -73,19 +73,16 @@ const loadData = async () => {
         })))
 }
 
-const callDataTemp = async () => {
-    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_pressgauge`)
-    setTempData(response.data.data)
-}
     // # optional to show
     // console.log("gridData", gridData)
     console.log("filter:", tempData )
+    console.log("getlink : ", getlink)
     // console.log("editing: --> " , editing)
     
     const column  = [
                 {
                 title: 'ID',
-                dataIndex: 'schedule_id',
+                dataIndex: 'calpressgauge_id',
                 align: 'center',
                 filteredValue: [searchText],
                 onFilter:(value,record) => {
@@ -300,9 +297,9 @@ const callDataTemp = async () => {
             const onClickButton = (record) => {
                 setIsEditing(true)
                 setEditing(record.reg_no)
+                setGetLink(record.calpressgauge_id)
             }
 
-            const editingData = editing
             
 
     return (
@@ -344,10 +341,11 @@ const callDataTemp = async () => {
                         setIsEditing(false)
                         }}
                         onOk= {()=> {
-                        setIsEditing(false)
+                        window.location.replace(`http://10.202.100.84:3003/api/download/file/calibration_pressgauge/${getlink}`);
                         }}
                     >
-                    <h3>Data : {editingData}</h3>
+                    <h3>Data : {getlink}</h3>
+                    <h3>Data : {editing}</h3>
                     </Modal>
 
                 </div>

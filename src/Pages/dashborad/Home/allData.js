@@ -13,217 +13,217 @@ const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
 const [searchText, setSearchText] =useState("")
 
-const [tempData, setTempData] = useState([])
+// const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
 
-// search not global
-const [searchText2, setSearchText2] =useState("")
-const [searchedColumn, setSearchedColumn] = useState('');
-const searchInput = useRef(null);
-// search not global #2
-const [searchText3, setSearchText3] =useState("")
-const [searchedColumn2, setSearchedColumn2] = useState('');
-const searchInput2 = useRef(null);
+// // search not global
+// const [searchText2, setSearchText2] =useState("")
+// const [searchedColumn, setSearchedColumn] = useState('');
+// const searchInput = useRef(null);
+// // search not global #2
+// const [searchText3, setSearchText3] =useState("")
+// const [searchedColumn2, setSearchedColumn2] = useState('');
+// const searchInput2 = useRef(null);
 
 
-const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText2(selectedKeys[0]);
-    setSearchedColumn(dataIndex);
-  };
+// const handleSearch = (selectedKeys, confirm, dataIndex) => {
+//     confirm();
+//     setSearchText2(selectedKeys[1]);
+//     setSearchedColumn(dataIndex);
+//   };
 
-const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText3(selectedKeys[1]);
-    setSearchedColumn2(dataIndex);
-  };
+// const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
+//     confirm();
+//     setSearchText3(selectedKeys[1]);
+//     setSearchedColumn2(dataIndex);
+//   };
 
-const handleReset = (clearFilters) => {
-    clearFilters();
-    setSearchText2('');
-  };
+// const handleReset = (clearFilters) => {
+//     clearFilters();
+//     setSearchText2('');
+//   };
 
-const handleReset2 = (clearFilters2) => {
-    clearFilters2();
-    setSearchText3('');
-  };
+// const handleReset2 = (clearFilters2) => {
+//     clearFilters2();
+//     setSearchText3('');
+//   };
 
 
-  const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-      <div
-        style={{
-          padding: 8,
-        }}
-        onKeyDown={(e) => e.stopPropagation()}
-      >
-        <Input
-          ref={searchInput}
-          placeholder={`Search ${dataIndex}`}
-          value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{
-            marginBottom: 8,
-            display: 'block',
-          }}
-        />
-        <Space>
-          <Button
-            type="primary"
-            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-            icon={<SearchOutlined />}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Search
-          </Button>
+  // const getColumnSearchProps = (dataIndex) => ({
+  //   filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+  //     <div
+  //       style={{
+  //         padding: 8,
+  //       }}
+  //       onKeyDown={(e) => e.stopPropagation()}
+  //     >
+  //       <Input
+  //         ref={searchInput}
+  //         placeholder={`Search ${dataIndex}`}
+  //         value={selectedKeys[0]}
+  //         onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+  //         onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+  //         style={{
+  //           marginBottom: 8,
+  //           display: 'block',
+  //         }}
+  //       />
+  //       <Space>
+  //         <Button
+  //           type="primary"
+  //           onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+  //           icon={<SearchOutlined />}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Search
+  //         </Button>
           
-          <Button
-            onClick={() => clearFilters && handleReset(clearFilters)}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Reset
-          </Button>
+  //         <Button
+  //           onClick={() => clearFilters && handleReset(clearFilters)}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Reset
+  //         </Button>
     
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
-          </Button>
-        </Space>
-      </div>
-    ),
-    filterIcon: (filtered) => (
-      <SearchOutlined
-        style={{
-          color: filtered ? '#1890ff' : undefined,
-        }}
-      />
-    ),
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput.current?.select(), 100);
-      }
-    },
-    render: (text) =>
-      searchedColumn === dataIndex ? (
-        <Highlighter
-          highlightStyle={{
-            backgroundColor: '#ffc069',
-            padding: 0,
-          }}
-          searchWords={[searchText2]}
-          autoEscape
-          textToHighlight={text ? text.toString() : ''}
-        />
-      ) : (
-        text
-      ),
-  });
+  //         <Button
+  //           type="link"
+  //           size="small"
+  //           onClick={() => {
+  //             close();
+  //           }}
+  //         >
+  //           close
+  //         </Button>
+  //       </Space>
+  //     </div>
+  //   ),
+  //   filterIcon: (filtered) => (
+  //     <SearchOutlined
+  //       style={{
+  //         color: filtered ? '#1890ff' : undefined,
+  //       }}
+  //     />
+  //   ),
+  //   onFilter: (value, record) =>
+  //     record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+  //   onFilterDropdownOpenChange: (visible) => {
+  //     if (visible) {
+  //       setTimeout(() => searchInput.current?.select(), 100);
+  //     }
+  //   },
+  //   render: (text) =>
+  //     searchedColumn === dataIndex ? (
+  //       <Highlighter
+  //         highlightStyle={{
+  //           backgroundColor: '#ffc069',
+  //           padding: 0,
+  //         }}
+  //         searchWords={[searchText2]}
+  //         autoEscape
+  //         textToHighlight={text ? text.toString() : ''}
+  //       />
+  //     ) : (
+  //       text
+  //     ),
+  // });
 
-  const getColumnSearchProps2 = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-      <div
-        style={{
-          padding: 8,
-        }}
-        onKeyDown={(e) => e.stopPropagation()}
-      >
-        <Input
-          ref={searchInput2}
-          placeholder={`Search ${dataIndex}`}
-          value={selectedKeys[1]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-          onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-          style={{
-            marginBottom: 8,
-            display: 'block',
-          }}
-        />
-        <Space>
-          <Button
-            type="primary"
-            onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-            icon={<SearchOutlined />}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Search
-          </Button>
+  // const getColumnSearchProps2 = (dataIndex) => ({
+  //   filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+  //     <div
+  //       style={{
+  //         padding: 8,
+  //       }}
+  //       onKeyDown={(e) => e.stopPropagation()}
+  //     >
+  //       <Input
+  //         ref={searchInput2}
+  //         placeholder={`Search ${dataIndex}`}
+  //         value={selectedKeys[1]}
+  //         onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+  //         onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+  //         style={{
+  //           marginBottom: 8,
+  //           display: 'block',
+  //         }}
+  //       />
+  //       <Space>
+  //         <Button
+  //           type="primary"
+  //           onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+  //           icon={<SearchOutlined />}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Search
+  //         </Button>
           
-          <Button
-            onClick={() => clearFilters && handleReset2(clearFilters)}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Reset
-          </Button>
+  //         <Button
+  //           onClick={() => clearFilters && handleReset2(clearFilters)}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Reset
+  //         </Button>
     
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
-          </Button>
-        </Space>
-      </div>
-    ),
-    filterIcon: (filtered) => (
-      <SearchOutlined
-        style={{
-          color: filtered ? '#1890ff' : undefined,
-        }}
-      />
-    ),
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput2.current?.select(), 100);
-      }
-    },
-    render: (text) =>
-      searchedColumn === dataIndex ? (
-        <Highlighter
-          highlightStyle={{
-            backgroundColor: '#ffc069',
-            padding: 0,
-          }}
-          searchWords={[searchText3]}
-          autoEscape
-          textToHighlight={text ? text.toString() : ''}
-        />
-      ) : (
-        text
-      ),
-  });
+  //         <Button
+  //           type="link"
+  //           size="small"
+  //           onClick={() => {
+  //             close();
+  //           }}
+  //         >
+  //           close
+  //         </Button>
+  //       </Space>
+  //     </div>
+  //   ),
+  //   filterIcon: (filtered) => (
+  //     <SearchOutlined
+  //       style={{
+  //         color: filtered ? '#1890ff' : undefined,
+  //       }}
+  //     />
+  //   ),
+  //   onFilter: (value, record) =>
+  //     record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+  //   onFilterDropdownOpenChange: (visible) => {
+  //     if (visible) {
+  //       setTimeout(() => searchInput2.current?.select(), 100);
+  //     }
+  //   },
+  //   render: (text) =>
+  //     searchedColumn === dataIndex ? (
+  //       <Highlighter
+  //         highlightStyle={{
+  //           backgroundColor: '#ffc069',
+  //           padding: 0,
+  //         }}
+  //         searchWords={[searchText3]}
+  //         autoEscape
+  //         textToHighlight={text ? text.toString() : ''}
+  //       />
+  //     ) : (
+  //       text
+  //     ),
+  // });
 
 
 // let filteredData = useState()
 
 useEffect(() => {
     loadData()
-    callDataTemp()
+    // callDataTemp()
 }, [])
 
 const loadData = async () => {
@@ -244,43 +244,32 @@ const loadData = async () => {
         })))
 }
 
-const callDataTemp = async () => {
-    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
-    setTempData(response.data.data)
-}
+// const callDataTemp = async () => {
+//     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+//     setTempData(response.data.data)
+// }
     // # optional to show (for checking only)
     // console.log("gridData", gridData)
     // console.log("filter:", tempData )
     // console.log("editing: --> " , editing)
     
-    const column  = [
+    const columns  = [
                 {
-                title: 'ID',
-                dataIndex: 'schedule_id',
+                title: 'Reg_no',
+                dataIndex: 'reg_no',
                 align: 'center',
-                filteredvalue: [searchText],
+                filteredValue: [searchText],
                 onFilter:(value,record) => {
                 return String(record.reg_no)
                 .toLowerCase()
-                .includes(value.toLowerCase()) || 
-                String(record.new_reg_no)
+                .includes(value.toLowerCase())  || 
+                 String(record.new_reg_no)
                 .toLowerCase()
                 .includes(value.toLowerCase()) || 
                 String(record.date_calibration)
                 .toLowerCase()
                 .includes(value.toLowerCase())
-                },
-                },
-
-                {
-                title: 'Reg No',
-                dataIndex: "reg_no",
-                align: 'center',
-                width: 110,
-                filterMode: 'tree',
-                filterSearch: true,
-                onFilter: (value, record) => record.reg_no.startsWith(value),
-                ...getColumnSearchProps('reg_no'),
+                }
                 },
 
                 {
@@ -313,7 +302,7 @@ const callDataTemp = async () => {
                 title: 'Date Calibration',
                 dataIndex: 'date_calibration',
                 align: 'center',
-                ...getColumnSearchProps2('date_calibration'),
+                // ...getColumnSearchProps2('date_calibration'),
                 },
 
                 {
@@ -375,7 +364,7 @@ const callDataTemp = async () => {
                 {/* table */}
                 <div key={gridData} className='container '>
                     <Table 
-                        columns={column}
+                        columns={columns}
                         dataSource={gridData}
                         bordered
                         loading={loading}
