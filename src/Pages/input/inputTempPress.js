@@ -19,6 +19,7 @@ function InputTempPress() {
   const { register, handleSubmit, setValue } = useForm();
   // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]) 
+  const [staff, setStaff] = useState([])
   //logic kondisi Modal diatur dalam state tipe boolean
   const [isEditing, setIsEditing] = useState(false)
   const [isEditing2, setIsEditing2] = useState(false)
@@ -34,6 +35,11 @@ function InputTempPress() {
   const getNo = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
     setValidno(response.data.data)
+  }
+
+  const getStaff = async () => {
+    const response = await axios.get(`${BASE_URLAPI}/api/getdata_staff`)
+    setStaff(response.data.data)
   }
 
   const onClickButton = async (record) => {
@@ -57,6 +63,7 @@ function InputTempPress() {
 
   useEffect(() => {
     getNo()
+    getStaff()
 }, [])
 
   // fungsi onsubmit + alert
@@ -147,10 +154,20 @@ function InputTempPress() {
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
       <Row className="mb-3 border p-2">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label className="fw-bold text-primary">User</Form.Label>
-          <Form.Control {...register("updated_staff" , { required: true})}  placeholder="isi data user" />
-        </Form.Group>
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label className="fw-bold text-primary">User</Form.Label>
+            <Form.Select defaultValue="...." {...register("updated_staff", { required: true })} placeholder="isi data suhu ruangan">
+              {staff.map(row => {
+                return (
+                  <option> {row.staff_name} </option>)
+              })}
+              {/* <option>....</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option> */}
+            </Form.Select>
+          </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-primary">Room Degree</Form.Label>

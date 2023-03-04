@@ -10,7 +10,7 @@ function DownloadPress () {
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
 const [searchText, setSearchText] =useState("")
-const [tempData, setTempData] = useState([])
+// const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
 const [getlink, setGetLink] =useState("")
@@ -75,7 +75,7 @@ const loadData = async () => {
 
     // # optional to show
     // console.log("gridData", gridData)
-    console.log("filter:", tempData )
+    // console.log("filter:", tempData )
     console.log("getlink : ", getlink)
     // console.log("editing: --> " , editing)
     
@@ -304,7 +304,7 @@ const loadData = async () => {
 
     return (
             <div>
-                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> Download Data Pressure Gauge </h3>
+                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 text-center mb-4 fw-bold'> Download Data Pressure Gauge </h3>
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>

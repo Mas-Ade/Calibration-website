@@ -19,6 +19,7 @@ function InputTempCont() {
   const { register, handleSubmit, setValue } = useForm();
  // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]) 
+  const [staff , setStaff] = useState([])
  //logic kondisi Modal diatur dalam state tipe boolean
   const [isEditing, setIsEditing] = useState(false)
   const [isEditing2, setIsEditing2] = useState(false)
@@ -39,6 +40,13 @@ function InputTempCont() {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
     setValidno(response.data.data)
   }
+
+  const getStaff = async () => {
+    const response = await axios.get(`${BASE_URLAPI}/api/getdata_staff`)
+    setStaff(response.data.data)
+  }
+
+  
 
   const onClickButton = async (record) => {
             setIsEditing(true)
@@ -64,6 +72,7 @@ function InputTempCont() {
  
   useEffect(() => {
     getNo()
+    getStaff()
 }, [])
 
 // console.log("data no reg new :" , validno)
@@ -157,15 +166,25 @@ function InputTempCont() {
     <form onSubmit={handleSubmit(onSubmit)} >
 {/* Leader Form Group 1 */}
       <Row className="mb-5 border p-2">
-        <Form.Group as={Col} controlId="formGridCity">
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label className="fw-bold text-primary">User</Form.Label>
+            <Form.Select defaultValue="...." {...register("updated_staff", { required: true })} placeholder="isi data suhu ruangan">
+            {staff.map(row => {
+              return (
+              <option> {row.staff_name} </option>)
+            })}
+            </Form.Select>
+          </Form.Group>
+          
+        {/* <Form.Group as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-primary">User</Form.Label>
           <Form.Control className="mb-2" {...register("updated_staff" , { required: true})}  placeholder="isi data user" />
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-primary">Room Degree</Form.Label>
           <Form.Select  defaultValue="" {...register("room_temperature" , { required: true})}  placeholder="isi data suhu ruangan">
-            
+            {filter}
             <option>....</option>
             <option>21</option>
             <option>22</option>

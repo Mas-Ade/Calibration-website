@@ -15,7 +15,7 @@ function Input () {
       <div>
         <Container className='mt-4'>
         <div>
-          <h2 style={{fontFamily: 'Segoe UI'}} className='gradient-text text-center mb-4 fw-bold'>SELECT DEVICE TO INPUT</h2>
+          <h2 style={{fontFamily: 'Segoe UI'}} className=' text-center mb-4 fw-bold'>SELECT DEVICE TO INPUT</h2>
         </div>
       <Row>
         <Col sm={4}>

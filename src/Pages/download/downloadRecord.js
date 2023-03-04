@@ -10,14 +10,14 @@ function DownloadRecord () {
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
 const [searchText, setSearchText] =useState("")
-const [tempData, setTempData] = useState([])
+// const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [editing, setEditing] = useState([])
 // let filteredData = useState()
 
 useEffect(() => {
     loadData()
-    callDataTemp()
+    // callDataTemp()
 }, [])
 
 const loadData = async () => {
@@ -68,10 +68,10 @@ const loadData = async () => {
         })))
 }
 
-const callDataTemp = async () => {
-    const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
-    setTempData(response.data.data)
-}
+// const callDataTemp = async () => {
+//     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+//     setTempData(response.data.data)
+// }
     // # optional to show
     // console.log("gridData", gridData)
     // console.log("filter:", tempData )
@@ -277,7 +277,7 @@ const callDataTemp = async () => {
             
     return (
             <div>
-                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> Download Data Temperature Recorder </h3>
+                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 text-center mb-4 fw-bold'> Download Data Temperature Recorder </h3>
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>

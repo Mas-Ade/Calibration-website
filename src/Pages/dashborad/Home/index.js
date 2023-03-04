@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import AllData from './allData';
 import FilterToday from './filterToday';
 import '../../../App.css'
@@ -15,7 +15,7 @@ const handleClick = (table) => {
 
 return(
     <div className='App'>
-    <h2 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'>CALIBRATION PROGRESS </h2>
+    <h2 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 text-center mb-4 fw-bold'>CALIBRATION PROGRESS </h2>
 
     {(() => {
         switch(todayData) {

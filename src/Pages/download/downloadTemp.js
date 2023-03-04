@@ -10,9 +10,9 @@ function DownloadTemp () {
 const [gridData, setGridData] = useState([])
 const [loading, setLoading] = useState(false)
 const [searchText, setSearchText] =useState("")
-const [tempData, setTempData] = useState([])
+// const [tempData, setTempData] = useState([])
 const [isEditing, setIsEditing] = useState(false)
-const [editing, setEditing] = useState([])
+// const [editing, setEditing] = useState([])
 const [getlink, setGetLink] =useState("")
 // let filteredData = useState()
 
@@ -252,21 +252,21 @@ const loadData = async () => {
         
             const onClickButton = (record) => {
                 setIsEditing(true)
-                setEditing(record.reg_no)
+                // setEditing(record.reg_no)
                 setGetLink(record.caltempctrl_rec_id)
                 
             }
 
-            const editingData = editing
+            // const editingData = editing
             // # optional to show 
             // console.log("gridData", gridData)
-            console.log("filter:", tempData)
+            // console.log("filter:", tempData)
             // console.log("editing: --> " , editing)
             // console.log("Link: --> " , getlink)
         
     return (
             <div>
-                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 gradient-text text-center mb-4 fw-bold'> Download Data Temperature Control </h3>
+                <h3 style={{fontFamily: 'Segoe UI'}} className='mb-4 mt-4 text-center mb-4 fw-bold'> Download Data Temperature Control </h3>
                 {/* search button */}
                 <Container className='container mb-3'>
                 <Row>
