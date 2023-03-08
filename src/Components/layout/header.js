@@ -47,6 +47,7 @@ return (
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/Schedule" >Schedule</NavDropdown.Item>
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/Report" >Report</NavDropdown.Item>
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/About" >About</NavDropdown.Item>
+                  <NavDropdown.Item style={{ color: 'darkgrey' }} as={Link} to="/testing/addModal" >Trial Modal</NavDropdown.Item>
               </NavDropdown>
           </Nav>
         </Navbar.Collapse>

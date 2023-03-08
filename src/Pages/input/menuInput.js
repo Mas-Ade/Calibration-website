@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import tempcont3 from '../../Assets/pictures/tempcont3.jpg';
 import pressgauge3 from '../../Assets/pictures/pressgauge3.png';
 import temp_recorder3 from '../../Assets/pictures/temp_recorder3.png';
+import documentLogo from '../../Assets/pictures/logo-document.png';
 import { Link } from 'react-router-dom';
 import '../../App.css'
 
@@ -68,6 +69,48 @@ function Input () {
     </Card>
         </Col>
       </Row>
+      <div className='container mt-5 '>
+        <h4 className='container'>Please Check Our Procedure for better Calibration</h4>
+            <Row className='mt-3'>
+              <Col sm={6}>
+                <Card className='shadow' style={{ width: '33rem' }}>
+                  <Card.Body>
+                    <Row>
+                      <Col sm={10}>
+                        <Card.Title >Temperature Control & Recorder</Card.Title>
+                        <Card.Text>
+                          klik disini 
+                        </Card.Text>
+                      </Col>
+                      <Col sm={2}>
+                        <img src={documentLogo} style={{ height: 50, width: 50,}} ></img>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+              
+              <Col sm={6}>
+                <Card className='container shadow ' style={{ width: '33rem' }}>
+                  {/* <Card.Img className='mt-2' height={120} variant="top" src={pressgauge3} /> */}
+                  <Card.Body>
+                    <Row>
+                      <Col sm={10}>
+                        <Card.Title >Pressure Gauge</Card.Title>
+                        <Card.Text>
+                          klik disini
+                        </Card.Text>
+                      </Col>
+                      <Col sm={2}>
+                        <img src={documentLogo} style={{ height: 50, width: 50, }} ></img>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+              
+            </Row>
+      </div>
     </Container>
     </div>
         

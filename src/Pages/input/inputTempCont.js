@@ -46,8 +46,6 @@ function InputTempCont() {
     setStaff(response.data.data)
   }
 
-  
-
   const onClickButton = async (record) => {
             setIsEditing(true)
             }
