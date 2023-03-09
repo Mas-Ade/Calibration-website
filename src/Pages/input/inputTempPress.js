@@ -50,9 +50,10 @@ function InputTempPress() {
             }
 
   const onClickFilter = (record) => {
-             setFilter(record.new_reg_no)
+             setFilter(record.reg_no)
+             setFilter2(record.machine_no)
              setIsEditing(true)
-             messageApi.info(`${record.new_reg_no} berhasil dipilih `)
+             messageApi.info(`${record.reg_no} berhasil dipilih `)
             }
   
   const onClickFilter2 = (record) => {
@@ -69,7 +70,7 @@ function InputTempPress() {
   // fungsi onsubmit + alert
   const onSubmit = async datas => {
     console.log(datas);
-    axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
+    // axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
     const timeout = await setTimeout(() => {
@@ -80,8 +81,8 @@ function InputTempPress() {
 
   const column  = [
                 {
-                title: 'New Reg No',
-                dataIndex: "new_reg_no",
+                title: 'No Reg Old',
+                dataIndex: "reg_no",
                 align: 'center',
                 filteredValue: [searchText],
                 onFilter:(value,record) => {
@@ -180,81 +181,52 @@ function InputTempPress() {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group  as={Col} controlId="formGridCity">
-          <Form.Label className="fw-bold text-primary">No Reg New</Form.Label>
-          {contextHolder}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-              <Modal 
-                        
-                        title="Pilih No Reg New "
-                        open={isEditing}
-                        onCancel={() => {
-                        setIsEditing(false)
-                        }}
-                        onOk= {()=> {
-                        {setValue('no_reg_new',`${filter}`)}
-                        setIsEditing(false)
-                        }}
-                    >
-                    <div>
-                    <Input.Search
-                placeholder="cari device"
-                onSearch={(value) => {
-                setSearchText(value)
-                }}
-                onChange= {(e) => {
-                setSearchText(e.target.value)
-                }}
-                allowClear
-                type="text"
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label className="fw-bold text-primary">No Reg Old</Form.Label>
+            {contextHolder}
+            <Modal
+
+              title="Pilih No Reg Old "
+              open={isEditing}
+              onCancel={() => {
+                setIsEditing(false)
+              }}
+              onOk={() => {
+                { setValue('reg_no', `${filter}`) }
+                { setValue('machine_no', `${filter2}`) }
+                setIsEditing(false)
+
+              }}
+            >
+              <div>
+                <Input.Search
+                  placeholder="cari device"
+                  onSearch={(value) => {
+                    setSearchText(value)
+                  }}
+                  onChange={(e) => {
+                    setSearchText(e.target.value)
+                  }}
+                  allowClear
+                  type="text"
                 />
-                    <Table 
-                        key={'action'}
-                        columns={column}
-                        dataSource={validno}
-                        bordered
-                        scroll={{ x: true}}
-                        size= "small"
-                    ></Table>
-                    </div>
-                    </Modal>
-          <Form.Control onClick={onClickButton} className="mb-2" {...register("no_reg_new" , )}  placeholder="isi data user" />
-        </Form.Group>
+                <Table
+                  key={'action'}
+                  columns={column}
+                  dataSource={validno}
+                  bordered
+                  scroll={{ x: true }}
+                  size="small"
+                ></Table>
+              </div>
+            </Modal>
+            <Form.Control onClick={onClickButton} className="mb-2" {...register("reg_no", { required: true })} placeholder="isi data user" />
+          </Form.Group>
 
         <Form.Group  as={Col} controlId="formGridCity">
           <Form.Label className="fw-bold text-primary">No Machine</Form.Label>
-          <Modal key={'action'}
-                        title="Choose No Machine "
-                        open={isEditing2}
-                        onCancel={() => {
-                        setIsEditing2(false)
-                        }}
-                        onOk= {()=> {
-                        {setValue('machine_no',`${filter2}`)}
-                        setIsEditing2(false)
-                        }}
-                    >
-                    <div>
-                    <Input.Search
-                placeholder="cari device"
-                onSearch={(value) => {
-                setSearchText(value)
-                }}
-                onChange= {(e) => {
-                setSearchText(e.target.value)
-                }}
-                allowClear
-                type="text"
-                />
-                    <Table 
-                        columns={column2}
-                        dataSource={validno}
-                        bordered
-                        scroll={{ x: true}}
-                        size= "small"
-                    ></Table>
-                    </div>
-                    </Modal>
-          <Form.Control onClick={onClickButton2} className="mb-2" {...register("machine_no" , )}  placeholder="No Machine" />
+          
+            <Form.Control className="mb-2" {...register("machine_no", { required: true } )}  placeholder="No Machine" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">

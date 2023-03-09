@@ -9,9 +9,15 @@ import temp_recorder3 from '../../Assets/pictures/temp_recorder3.png';
 import documentLogo from '../../Assets/pictures/logo-document.png';
 import { Link } from 'react-router-dom';
 import '../../App.css'
+import { useEffect, useState } from 'react';
+import BASE_URLAPI from '../../config/URLAPI'
+import axios from 'axios';
 
 
 function Input () {
+
+const tempCont = () => { window.location.replace('http://10.202.100.84:3003/api/download/file/collection_document/1') }
+  const pressGauge = () => { window.location.replace('http://10.202.100.84:3003/api/download/file/collection_document/2') }
     return (
       <div>
         <Container className='mt-4'>
@@ -70,16 +76,19 @@ function Input () {
         </Col>
       </Row>
       <div className='container mt-5 '>
-        <h4 className='container'>Please Check Our Procedure for better Calibration</h4>
+        <h4 className='container'>Please Check Our Calibration Procedure </h4>
             <Row className='mt-3'>
               <Col sm={6}>
                 <Card className='shadow' style={{ width: '33rem' }}>
                   <Card.Body>
                     <Row>
                       <Col sm={10}>
-                        <Card.Title >Temperature Control & Recorder</Card.Title>
+                        <Card.Title >Temperature Control & Recorder Procedure</Card.Title>
                         <Card.Text>
-                          klik disini 
+                          <Button variant='link' class="btn btn-link" onClick={tempCont} >
+                            Download
+                          </Button>
+                           
                         </Card.Text>
                       </Col>
                       <Col sm={2}>
@@ -96,9 +105,11 @@ function Input () {
                   <Card.Body>
                     <Row>
                       <Col sm={10}>
-                        <Card.Title >Pressure Gauge</Card.Title>
+                        <Card.Title >Pressure Gauge Procedure</Card.Title>
                         <Card.Text>
-                          klik disini
+                          <Button variant='link' class="btn btn-link" onClick={pressGauge} >
+                            Download
+                          </Button>
                         </Card.Text>
                       </Col>
                       <Col sm={2}>
@@ -117,63 +128,5 @@ function Input () {
     )
 }
 
-// class Input extends Component {
-//     render(){
-//     return (
-//       <div>
-//         <Container className='mt-3'>
-//       <Row>
-//         <Col sm={4}>
-//         <Card style={{ width: '20rem' }}>
-//       <Card.Img variant="top" src={tempcont3} />
-//       <Card.Body>
-//         <Card.Title>Temperature Control</Card.Title>
-//         <Card.Text>
-//           Some quick example text to build on the card title and make up the
-//           bulk of the card's content.
-//         </Card.Text>
-//         <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempCont">Input Data</Link></Button>
-//       </Card.Body>
-//     </Card>
-//         </Col>
-//         <Col sm={4}>
-//         <Card style={{ width: '20rem' }}>
-//       <Card.Img width={50} variant="top" src={pressgauge3} />
-//       <Card.Body>
-//         <Card.Title>Pressure Gauge</Card.Title>
-//         <Card.Text>
-//           Some quick example text to build on the card title and make up the
-//           bulk of the card's content.
-//         </Card.Text>
-//         <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempPress">Input Data</Link></Button>
-//       </Card.Body>
-//     </Card>
-//         </Col>
-//         <Col sm={4}>
-//         <Card style={{ width: '20rem' }}>
-//       <Card.Img variant="top" src={temp_recorder3} />
-//       <Card.Body>
-//         <Card.Title>Temp Recorder</Card.Title>
-//         <Card.Text>
-//           Some quick example text to build on the card title and make up the
-//           bulk of the card's content.
-//         </Card.Text>
-//         <Button variant="outline-primary" ><Link className="nav-link px-2 text-secondary" to="/inputTempRecord">Input Data</Link></Button>
-//       </Card.Body>
-//     </Card>
-//         </Col>
-//       </Row>
-//     </Container>
-//     <div className='container mt-4 border border-info'>
-//       <h3>Download File</h3>
-//       <div className='border'>
-//         <h4>pilih device</h4>
-//       </div>
-//     </div>
-//     </div>
-        
-//     )
-// }
-// }
 
 export default Input;

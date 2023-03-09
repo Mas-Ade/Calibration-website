@@ -7,6 +7,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Space } from 'antd';
 
 
 
@@ -32,22 +35,28 @@ const Header = () => {
 
 return (
       <div>
-      <h2 className='container'>PT.NOK INDONESIA</h2>
+        <Container>
+      <Row>
+        <Col><img src={nok} className='mt-1' style={{ height: 60, width: 60, }} ></img></Col> 
+      </Row>
+        </Container>
+    
         <div className='nav-color shadow'>
         <div>
         <Container>
         <Navbar className='nav-color'  expand="lg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          
+         
               <Nav className="me-auto">
-              <Nav.Link  as={Link} to="/home" >Home</Nav.Link>
-              <Nav.Link  as={Link} to="/Input" >Input</Nav.Link>
-                <NavDropdown style={{color:'white'}}  title="Others" id="navbarScrollingDropdown">
+                <Nav.Link style={{ color: 'white' }}  as={Link} to="/home" >Home</Nav.Link>
+                <Nav.Link style={{ color: 'white' }}  as={Link} to="/Input" >Input</Nav.Link>
+                <NavDropdown style={{color:'white'}}  title={<span style={{color: 'whitesmoke'}}>Others</span>} id="navbarScrollingDropdown">
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/Schedule" >Schedule</NavDropdown.Item>
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/Report" >Report</NavDropdown.Item>
                   <NavDropdown.Item style={{color:'darkgrey'}}  as={Link} to="/About" >About</NavDropdown.Item>
-                  <NavDropdown.Item style={{ color: 'darkgrey' }} as={Link} to="/testing/addModal" >Trial Modal</NavDropdown.Item>
+                  <NavDropdown.Item style={{ color: 'darkgrey' }} as={Link} to="/testing/field" >Trial auto field</NavDropdown.Item>
+                  <NavDropdown.Item style={{ color: 'darkgrey' }} as={Link} to="/testing/modal" >Trial add Modal</NavDropdown.Item>
               </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -91,4 +100,4 @@ return (
 //     }
 
 
-    export default Header;
+export default Header;

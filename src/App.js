@@ -27,6 +27,7 @@ import LoginPages from "./Pages/login/loginPage2";
 import TbHomeNow from "./Components/testing/home.dateNow";
 import IndexHome from "./Pages/dashborad/Home/index";
 import InputTempContAddModal from "./Components/testing/addModal";
+import TestingNomach from "./Components/testing/autoNomach";
 
 // import Download Data Page
 import DownloadTemp from "./Pages/download/downloadTemp";
@@ -55,7 +56,8 @@ const App = () => {
             <Route path="/About" element={ <About /> } />
         {/* =================END OF DASHBOARD==================== */}
 
-            <Route path="/testing/addModal" element={<InputTempContAddModal />} />
+            <Route path="/testing/field" element={<TestingNomach />} />
+          <Route path="/testing/modal" element={<InputTempContAddModal />} />
             {/* <Route path="/table" element={ <DataTables  /> } />
             <Route path="/testTable" element={ <DataTables  /> } /> */}
 

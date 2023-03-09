@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -16,11 +16,10 @@ import '../../App.css'
 function TestingNomach() {
     // works
     // deklarasi state
-    const { register, handleSubmit, setValue , watch } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     // state untuk memanpung data dalam table Modal
     const [validno, setValidno] = useState([])
     const [staff, setStaff] = useState([])
-    const [name, setName] = useState([])
     //logic kondisi Modal diatur dalam state tipe boolean
     const [isEditing, setIsEditing] = useState(false)
     const [isEditing2, setIsEditing2] = useState(false)
@@ -36,14 +35,6 @@ function TestingNomach() {
     // const [dataNoreg, setDataNoreg] = useState({})
     // state untuk memanpung data nomach
     // const [dataNomach, setDataNomach] = useState({})
-
-
-    const nameValue = e => { setName(e.target.value)}
-    
-
-    useEffect(()=> {
-        console.log("name", name)
-    },[])
 
     const getNo = async () => {
         const response = await axios.get(`${BASE_URLAPI}/api/getdata_devicemaster_calibration`)
@@ -76,23 +67,26 @@ function TestingNomach() {
         messageApi.info(`${record.machine_no} berhasil dipilih `)
     }
     
+
+
     useEffect(() => {
         getNo()
         getStaff()
     }, [])
 
-    // console.log('data : ', filter)
     // console.log("data no reg new :" , validno)
+    // console.log('data : ', filter)
+
     // fungsi onsubmit + alert
     const onSubmit = async datas => {
         console.log(datas);
-        // await axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
+        await axios.post('http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec', datas)
         alert(JSON.stringify("Data berhasil diinput"));
 
         // script timeout dan pindah halaman
-        const timeout = setTimeout(() => {
+        const timeout = await setTimeout(() => {
             console.log('update berhasil');
-            window.location.href = '/testing/modal'
+            window.location.href = '/inputTempCont'
         }, 1000);
     }
 
@@ -166,25 +160,25 @@ function TestingNomach() {
 
     return (
         <div className='container'>
-            <h1 style={{ fontFamily: 'Segoe UI' }} className='mb-4 mt-4 mb-4 fw-bold'> Testing Validate </h1>
+            <h1 style={{ fontFamily: 'Segoe UI' }} className='mb-4 mt-4 mb-4 fw-bold'> Input Result Calibration of Temperature Control </h1>
 
             <form onSubmit={handleSubmit(onSubmit)} >
                 {/* Leader Form Group 1 */}
                 <Row className="mb-5 border p-2">
                     <Form.Group as={Col} controlId="formGridCity">
                         <Form.Label className="fw-bold text-primary">User</Form.Label>
-                        <Form.Select onChange={{nameValue}} defaultValue="...." {...register("updated_staff", { required: true })} placeholder="isi data calibrator">
+                        <Form.Select defaultValue="...." {...register("updated_staff", { required: true })} placeholder="isi data suhu ruangan">
                             {staff.map(row => {
                                 return (
                                     <option> {row.staff_name} </option>)
                             })}
                         </Form.Select>
                     </Form.Group>
-
-                    {/* <Form.Group as={Col} controlId="formGridCity">
+                    
+                    <Form.Group as={Col} controlId="formGridCity">
                         <Form.Label className="fw-bold text-primary">Room Degree</Form.Label>
                         <Form.Select defaultValue="" {...register("room_temperature", { required: true })} placeholder="isi data suhu ruangan">
-
+                            
                             <option>....</option>
                             <option>21</option>
                             <option>22</option>
@@ -237,20 +231,20 @@ function TestingNomach() {
 
                     <Form.Group as={Col} controlId="formGridCity">
                         <Form.Label className="fw-bold text-primary">No Machine</Form.Label>
-
+                        
                         <Form.Control onClick={onClickButton2} className="mb-2" {...register("machine_no",)} placeholder="No Machine" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridZip">
                         <Form.Label className="fw-bold text-primary">Calibration Date</Form.Label>
                         <Form.Control type="date" {...register("calibration_date", { required: true })} placeholder="isi data tanggal kalibrasi" />
-                    </Form.Group> */}
+                    </Form.Group>
 
                 </Row>
                 <div className="border p-4">
 
                     {/* Group-1 */}
-                    {/* <Row className="mb-2" >
+                    <Row className="mb-2" >
                         <Form.Group as={Col} controlId="formGridCity" >
                             <Form.Label className="fw-bold text-primary">R1 10</Form.Label>
                             <Form.Control {...register("std_ds1_r1", { required: true })} />
@@ -265,9 +259,9 @@ function TestingNomach() {
                             <Form.Label className="fw-bold text-primary">R3 10</Form.Label>
                             <Form.Control {...register("std_ds1_r3", { required: true })} />
                         </Form.Group>
-                    </Row> */}
+                    </Row>
                     {/* Group-2 */}
-                    {/* <Row className="mb-2">
+                    <Row className="mb-2">
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label className="fw-bold text-primary">R1 50</Form.Label>
                             <Form.Control {...register("std_ds2_r1", { required: true })} />
@@ -283,10 +277,10 @@ function TestingNomach() {
                             <Form.Control {...register("std_ds2_r3", { required: true })} />
                         </Form.Group>
 
-                    </Row> */}
+                    </Row>
 
                     {/* Group-3 */}
-                    {/* <Row className="mb-2">
+                    <Row className="mb-2">
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label className="fw-bold text-primary">R1 100</Form.Label>
                             <Form.Control {...register("std_ds3_r1", { required: true })} />
@@ -302,10 +296,10 @@ function TestingNomach() {
                             <Form.Control {...register("std_ds3_r3", { required: true })} />
                         </Form.Group>
 
-                    </Row> */}
+                    </Row>
 
                     {/* Group-4 */}
-                    {/* <Row className="mb-2">
+                    <Row className="mb-2">
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label className="fw-bold text-primary">R1 150</Form.Label>
                             <Form.Control {...register("std_ds4_r1", { required: true })} />
@@ -321,10 +315,10 @@ function TestingNomach() {
                             <Form.Control {...register("std_ds4_r3", { required: true })} />
                         </Form.Group>
 
-                    </Row> */}
+                    </Row>
 
                     {/* Group-5 */}
-                    {/* <Row className="mb-5 ">
+                    <Row className="mb-5 ">
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label className="fw-bold text-primary">R1 300</Form.Label>
                             <Form.Control {...register("std_ds5_r1", { required: true })} />
@@ -339,14 +333,20 @@ function TestingNomach() {
                             <Form.Label className="fw-bold text-primary">R3 300</Form.Label>
                             <Form.Control {...register("std_ds5_r3", { required: true })} />
                         </Form.Group>
-                    </Row> */}
+                    </Row>
                 </div>
                 <div>
                     <h6 className="text-end text-warning fw-bold"> *mohon untuk diperiksa kembali hasil input anda</h6>
                 </div>
-                <Button variant="warning" type="submit" >Validate</Button>
-                <Button style={{ marginLeft:15 }} variant="primary" type="submit" >Submit</Button>
-                
+
+
+                {/* <Button  variant="primary" type="submit" onClick="setTimeout(movePage, 200);"> */}
+                <Button variant="primary" type="submit" >
+                    {/* <Button  variant="primary" type="submit"> */}
+                    Submit
+                </Button>
+
+
             </form>
         </div>
     );
