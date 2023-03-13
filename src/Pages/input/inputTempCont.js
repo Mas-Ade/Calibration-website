@@ -67,10 +67,10 @@ function InputTempCont() {
 
   // filter data
   const filterData = (record, index) => {
-    setFilter(record.reg_no);
+    setFilter(record.new_reg_no);
     setFilter2(record.machine_no);
     setIsEditing(true);
-    messageApi.info(`${record.reg_no} berhasil dipilih `);
+    messageApi.info(`${record.new_reg_no} berhasil dipilih `);
   };
 
   const filterData2 = (record) => {
@@ -85,31 +85,31 @@ function InputTempCont() {
   }, []);
 
   const onSubmitState = async (datas) => {
-    // console.log(datas);
+    console.log(datas);
     setFormValues(datas);
     setIsEditing3(true);
   };
 
   const onSubmit = async () => {
-    const data = formValues;
     await axios.post(
       "http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec",
       formValues
     );
+    console.log("data submit :", formValues);
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
     const timeout = setTimeout(() => {
       console.log("update berhasil");
-      window.location.href = "/testing/modal";
+      window.location.href = "/inputTempCont";
     }, 1000);
   };
 
   const column = [
     {
-      title: "Reg No",
-      dataIndex: "reg_no",
+      title: "New Reg No",
+      dataIndex: "new_reg_no",
       align: "center",
-      key: "reg_no",
+      key: "new_reg_no",
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
@@ -315,17 +315,17 @@ function InputTempCont() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label className="fw-bold text-primary">No Reg Old</Form.Label>
+            <Form.Label className="fw-bold text-primary">New Reg No</Form.Label>
             {contextHolder}
             <Modal
-              title="Pilih No Reg Old "
+              title="Pilih new Reg No "
               open={isEditing}
               onCancel={() => {
                 setIsEditing(false);
               }}
               onOk={() => {
                 {
-                  setValue("reg_no", `${filter}`);
+                  setValue("new_reg_no", `${filter}`);
                 }
                 {
                   setValue("machine_no", `${filter2}`);
@@ -358,7 +358,7 @@ function InputTempCont() {
             <Form.Control
               onClick={showModal}
               className="mb-2"
-              {...register("reg_no")}
+              {...register("new_reg_no")}
               placeholder="isi data user"
             />
           </Form.Group>

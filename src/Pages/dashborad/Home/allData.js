@@ -1,66 +1,67 @@
-import React, {useState, useEffect, useRef} from 'react';
-import axios from 'axios';
-import { Button, Input, Table, Modal, Space} from "antd"
-import { Col, Container, Row } from 'react-bootstrap';
-import BASE_URLAPI from '../../../config/URLAPI'
-import moment from 'moment'
-import { SearchOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { Button, Input, Table, Modal, Space } from "antd";
+import { Col, Container, Row } from "react-bootstrap";
+import BASE_URLAPI from "../../../config/URLAPI";
+import moment from "moment";
+import { SearchOutlined } from "@ant-design/icons";
+import Highlighter from "react-highlight-words";
 
-function AllData (props) {
+function AllData(props) {
+  const [gridData, setGridData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const [searchText, setSearchText] =useState("")
 
-const [gridData, setGridData] = useState([])
-const [loading, setLoading] = useState(false)
-// const [searchText, setSearchText] =useState("")
+  // const [tempData, setTempData] = useState([])
+  const [isEditing, setIsEditing] = useState(false);
+  const [editing, setEditing] = useState([]);
 
-// const [tempData, setTempData] = useState([])
-const [isEditing, setIsEditing] = useState(false)
-const [editing, setEditing] = useState([])
+  // search not global
+  const [searchText2, setSearchText2] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
+  const searchInput = useRef(null);
 
-// search not global
-const [searchText2, setSearchText2] =useState("")
-const [searchedColumn, setSearchedColumn] = useState('');
-const searchInput = useRef(null);
+  // search not global #2
+  const [searchText3, setSearchText3] = useState("");
+  const [searchedColumn2, setSearchedColumn2] = useState("");
+  const searchInput2 = useRef(null);
 
-    
+  useEffect(() => {
+    loadData();
+    // callDataTemp()
+  }, []);
 
-// search not global #2
-const [searchText3, setSearchText3] =useState("")
-const [searchedColumn2, setSearchedColumn2] = useState('');
-const searchInput2 = useRef(null);
-
-    useEffect(() => {
-        loadData()
-        // callDataTemp()
-    }, [])
-
-
-const handleSearch = (selectedKeys, confirm, dataIndex) => {
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText2(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
 
-const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
+  const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText3(selectedKeys[1]);
     setSearchedColumn2(dataIndex);
   };
 
-const handleReset = (clearFilters) => {
+  const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText2('');
+    setSearchText2("");
   };
 
-const handleReset2 = (clearFilters2) => {
+  const handleReset2 = (clearFilters2) => {
     clearFilters2();
-    setSearchText3('');
+    setSearchText3("");
   };
-
 
   const getColumnSearchProps = (dataIndex) => ({
     // show searchbar
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -71,11 +72,13 @@ const handleReset2 = (clearFilters2) => {
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -90,7 +93,7 @@ const handleReset2 = (clearFilters2) => {
           >
             Search
           </Button>
-          
+
           <Button
             onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
@@ -100,7 +103,7 @@ const handleReset2 = (clearFilters2) => {
           >
             Reset
           </Button>
-    
+
           <Button
             type="link"
             size="small"
@@ -119,7 +122,7 @@ const handleReset2 = (clearFilters2) => {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1890ff' : undefined,
+          color: filtered ? "#1890ff" : undefined,
         }}
       />
     ),
@@ -127,33 +130,39 @@ const handleReset2 = (clearFilters2) => {
 
     // logic search
     onFilter: (value, record) =>
-    record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownOpenChange: (visible) => {
-    if (visible) {
+      if (visible) {
         setTimeout(() => searchInput.current?.select(), 100);
       }
     },
 
     render: (text) =>
-    searchedColumn === dataIndex ? (
-    // highlight searched text with color works
-    <Highlighter
-        highlightStyle={{
-        backgroundColor: '#ffc069',
-        padding: 0,
-        }}
-        searchWords={[searchText2]}
-        autoEscape
-        textToHighlight={text ? text.toString() : ''}
+      searchedColumn === dataIndex ? (
+        // highlight searched text with color works
+        <Highlighter
+          highlightStyle={{
+            backgroundColor: "#ffc069",
+            padding: 0,
+          }}
+          searchWords={[searchText2]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
       ),
-      // end of highlight
+    // end of highlight
   });
 
   const getColumnSearchProps2 = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -164,11 +173,13 @@ const handleReset2 = (clearFilters2) => {
           ref={searchInput2}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[1]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -183,7 +194,7 @@ const handleReset2 = (clearFilters2) => {
           >
             Search
           </Button>
-          
+
           <Button
             onClick={() => clearFilters && handleReset2(clearFilters)}
             size="small"
@@ -193,7 +204,7 @@ const handleReset2 = (clearFilters2) => {
           >
             Reset
           </Button>
-    
+
           <Button
             type="link"
             size="small"
@@ -209,12 +220,12 @@ const handleReset2 = (clearFilters2) => {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1890ff' : undefined,
+          color: filtered ? "#1890ff" : undefined,
         }}
       />
     ),
     onFilter: (value, record) =>
-    record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput2.current?.select(), 100);
@@ -224,140 +235,144 @@ const handleReset2 = (clearFilters2) => {
       searchedColumn2 === dataIndex ? (
         <Highlighter
           highlightStyle={{
-          backgroundColor: '#ffc069',
-          padding: 0,
+            backgroundColor: "#ffc069",
+            padding: 0,
           }}
           searchWords={[searchText3]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
       ),
   });
 
+  // let filteredData = useState()
 
-// let filteredData = useState()
-
-const loadData = async () => {
-    setLoading(true)
-    const response = await axios.get( `${BASE_URLAPI}/api/getdata_schedule_calibration`)
-    setLoading(false)
+  const loadData = async () => {
+    setLoading(true);
+    const response = await axios.get(
+      `${BASE_URLAPI}/api/getdata_schedule_calibration`
+    );
+    setLoading(false);
     setGridData(
-        response.data.data.map(row => ({
-            schedule_id: row.schedule_id,
-            reg_no: row.reg_no,
-            new_reg_no: row.new_reg_no,
-            device_name: row.device_name,
-            machine_no: row.machine_no,
-            location: row.location,
-            date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
-            last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
-            next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
-        })))
-}
+      response.data.data.map((row) => ({
+        schedule_id: row.schedule_id,
+        reg_no: row.reg_no,
+        new_reg_no: row.new_reg_no,
+        device_name: row.device_name,
+        machine_no: row.machine_no,
+        location: row.location,
+        date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
+        last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
+        next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
+      }))
+    );
+  };
 
-// const callDataTemp = async () => {
-//     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
-//     setTempData(response.data.data)
-// }
-    // # optional to show (for checking only)
-    // console.log("gridData", gridData)
-    // console.log("filter:", tempData )
-    // console.log("editing: --> " , editing)
-    
-    const columns  = [
-                {
-                title: 'Reg_no',
-                dataIndex: 'reg_no',
-                align: 'center',
-                // logic global search
+  // const callDataTemp = async () => {
+  //     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+  //     setTempData(response.data.data)
+  // }
+  // # optional to show (for checking only)
+  // console.log("gridData", gridData)
+  // console.log("filter:", tempData )
+  // console.log("editing: --> " , editing)
 
-                // filteredValue: [searchText],
-                // onFilter:(value,record) => {
-                // return String(record.reg_no)
-                // .toLowerCase()
-                // .includes(value.toLowerCase())  || 
-                //  String(record.new_reg_no)
-                // .toLowerCase()
-                // .includes(value.toLowerCase()) || 
-                // String(record.date_calibration)
-                // .toLowerCase()
-                // .includes(value.toLowerCase())
-                // },
-                },
+  const columns = [
+    {
+      title: "Reg_no",
+      dataIndex: "reg_no",
+      align: "center",
+      // logic global search
 
-                {
-                title: 'New Reg No',
-                dataIndex: "new_reg_no",
-                align: 'center',
-                ...getColumnSearchProps('new_reg_no'),
-                
-                },
+      // filteredValue: [searchText],
+      // onFilter:(value,record) => {
+      // return String(record.reg_no)
+      // .toLowerCase()
+      // .includes(value.toLowerCase())  ||
+      //  String(record.new_reg_no)
+      // .toLowerCase()
+      // .includes(value.toLowerCase()) ||
+      // String(record.date_calibration)
+      // .toLowerCase()
+      // .includes(value.toLowerCase())
+      // },
+    },
 
-                {
-                title: 'Device Name',
-                dataIndex: 'device_name',
-                align: 'center'
-                },
+    {
+      title: "New Reg No",
+      dataIndex: "new_reg_no",
+      align: "center",
+      ...getColumnSearchProps("new_reg_no"),
+    },
 
-                {
-                title: 'Machine No',
-                dataIndex: 'machine_no',
-                align: 'center'
-                },
+    {
+      title: "Device Name",
+      dataIndex: "device_name",
+      align: "center",
+    },
 
-                {
-                title: 'Location',
-                dataIndex: 'location',
-                align: 'center'
-                },
+    {
+      title: "Machine No",
+      dataIndex: "machine_no",
+      align: "center",
+    },
 
-                {
-                title: 'Date Calibration',
-                dataIndex: 'date_calibration',
-                align: 'center',
-                ...getColumnSearchProps('date_calibration'),
-                },
+    {
+      title: "Location",
+      dataIndex: "location",
+      align: "center",
+    },
 
-                {
-                title: 'Last Calibration',
-                dataIndex: 'last_calibration',
-                align: 'center'
-                },
-                
-                {
-                title: 'Next Calibration',
-                dataIndex: 'next_calibration',
-                align: 'center'
-                },
-                {
-                title: 'Action',
-                key:'action',
-                render: (record) => (
-                <Button onClick={() => {
-                    onClickButton(record)
-                }} >test button 
-                </Button>),
-                align: 'center'
-                }
-            ]
-        
-            const onClickButton = (record) => {
-                setIsEditing(true)
-                setEditing(record.reg_no)
-            }
+    {
+      title: "Date Calibration",
+      dataIndex: "date_calibration",
+      align: "center",
+      ...getColumnSearchProps("date_calibration"),
+    },
 
-            const editingData = editing
-            
-    return (
-            <div>
-                
-                {/* search button */}
-                <Container className='container mb-3'>
-                <Row>
-                {/* <Col> */}
-                {/* <Input.Search
+    {
+      title: "Last Calibration",
+      dataIndex: "last_calibration",
+      align: "center",
+    },
+
+    {
+      title: "Next Calibration",
+      dataIndex: "next_calibration",
+      align: "center",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (record) => (
+        <Button
+          onClick={() => {
+            onClickButton(record);
+          }}
+        >
+          test button
+        </Button>
+      ),
+      align: "center",
+    },
+  ];
+
+  const onClickButton = (record) => {
+    setIsEditing(true);
+    setEditing(record.reg_no);
+  };
+
+  const editingData = editing;
+
+  return (
+    <div>
+      {/* search button */}
+      <Container className="container mb-3">
+        <Row>
+          {/* <Col> */}
+          {/* <Input.Search
                 placeholder="cari device"
                 onSearch={(value) => {
                 setSearchText(value)
@@ -368,48 +383,55 @@ const loadData = async () => {
                 allowClear
                 type="text"
                 /> */}
-                {/* </Col> */}
-            <Col sm={1} >
-              <Button onClick={() => props.handleClick('today')} type="primary" style={{}}> Currently</Button>
-            </Col>
-            <Col sm={1} >
-              <Button onClick={() => props.handleClick('all')} type="primary" style={{ marginLeft: 8 }}> All Data</Button>
-            </Col>
-                </Row>
-                </Container>
+          {/* </Col> */}
+          <Col sm={1}>
+            <Button
+              onClick={() => props.handleClick("today")}
+              type="primary"
+              style={{}}
+            >
+              {" "}
+              Currently
+            </Button>
+          </Col>
+          <Col sm={1}>
+            <Button
+              onClick={() => props.handleClick("all")}
+              type="primary"
+              style={{ marginLeft: 8 }}
+            >
+              {" "}
+              All Data
+            </Button>
+          </Col>
+        </Row>
+      </Container>
 
-                {/* table */}
-                <div key={gridData} className='container '>
-                    <Table 
-                        columns={columns}
-                        dataSource={gridData}
-                        bordered
-                        loading={loading}
-                        size= "small"
-                    ></Table>
-                    <Modal 
-                        title="test tampil data : "
-                        open={isEditing}
-                        okText='Download'
-                        onCancel={() => {
-                        setIsEditing(false)
-                        }}
-                        onOk= {()=> {
-                        setIsEditing(false)
-                        }}
-                    >
-                    <h3>Data : {editingData}</h3>
-                    </Modal>
-
-                </div>
-
-            </div>
-    );
-
+      {/* table */}
+      <div key={gridData} className="container ">
+        <Table
+          columns={columns}
+          dataSource={gridData}
+          bordered
+          loading={loading}
+          size="small"
+        ></Table>
+        <Modal
+          title="test tampil data : "
+          open={isEditing}
+          okText="Download"
+          onCancel={() => {
+            setIsEditing(false);
+          }}
+          onOk={() => {
+            setIsEditing(false);
+          }}
+        >
+          <h3>Data : {editingData}</h3>
+        </Modal>
+      </div>
+    </div>
+  );
 }
 
 export default AllData;
-
-
-
-

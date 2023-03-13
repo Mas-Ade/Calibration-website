@@ -59,10 +59,10 @@ function InputTempPress() {
   };
 
   const filterData = (record) => {
-    setFilter(record.reg_no);
+    setFilter(record.new_reg_no);
     setFilter2(record.machine_no);
     setIsEditing(true);
-    messageApi.info(`${record.reg_no} berhasil dipilih `);
+    messageApi.info(`${record.new_reg_no} berhasil dipilih `);
   };
 
   const filterData2 = (record) => {
@@ -84,7 +84,11 @@ function InputTempPress() {
 
   // fungsi onsubmit + alert
   const onSubmit = async (datas) => {
-    // axios.post('http://10.202.100.84:3003/api/postdata_calibration_pressgauge', datas)
+    const data = formValues;
+    axios.post(
+      "http://10.202.100.84:3003/api/postdata_calibration_pressgauge",
+      formValues
+    );
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
     const timeout = await setTimeout(() => {
@@ -95,8 +99,8 @@ function InputTempPress() {
 
   const column = [
     {
-      title: "No Reg Old",
-      dataIndex: "reg_no",
+      title: "No Reg New",
+      dataIndex: "new_reg_no",
       align: "center",
       filteredValue: [searchText],
       onFilter: (value, record) => {
@@ -407,7 +411,7 @@ function InputTempPress() {
               }}
               onOk={() => {
                 {
-                  setValue("reg_no", `${filter}`);
+                  setValue("new_reg_no", `${filter}`);
                 }
                 {
                   setValue("machine_no", `${filter2}`);
@@ -440,7 +444,7 @@ function InputTempPress() {
             <Form.Control
               onClick={showModal}
               className="mb-2"
-              {...register("reg_no", { required: true })}
+              {...register("new_reg_no", { required: true })}
               placeholder="isi data user"
             />
           </Form.Group>

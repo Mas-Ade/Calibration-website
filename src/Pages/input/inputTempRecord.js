@@ -1,25 +1,25 @@
 import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import BASE_URLAPI from "../../config/URLAPI";
-// import Alert from 'react-bootstrap/Alert';
 import { Table, Input, Modal, message } from "antd";
+import "../../App.css";
 
 // method ini menggunakan libary react-hook-form dimana semua data yang dideclare disimpan di state useForm() [bawaan dari library]
 // state input disimpan di register dan di fetch atau di gabung di useForm
 
-function InputTempRecord() {
+function InputTempCont() {
   // works
   // deklarasi state
   const { register, handleSubmit, setValue, watch } = useForm();
   // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]);
   const [staff, setStaff] = useState([]);
-  const [name, setName] = useState([]);
+
   //logic kondisi Modal diatur dalam state tipe boolean
   const [isEditing, setIsEditing] = useState(false);
   const [isEditing2, setIsEditing2] = useState(false);
@@ -39,10 +39,6 @@ function InputTempRecord() {
   // const [dataNoreg, setDataNoreg] = useState({})
   // state untuk memanpung data nomach
   // const [dataNomach, setDataNomach] = useState({})
-
-  const nameValue = (e) => {
-    setName(e.target.value);
-  };
 
   useEffect(() => {}, []);
 
@@ -71,10 +67,10 @@ function InputTempRecord() {
 
   // filter data
   const filterData = (record, index) => {
-    setFilter(record.reg_no);
+    setFilter(record.new_reg_no);
     setFilter2(record.machine_no);
     setIsEditing(true);
-    messageApi.info(`${record.reg_no} berhasil dipilih `);
+    messageApi.info(`${record.new_reg_no} berhasil dipilih `);
   };
 
   const filterData2 = (record) => {
@@ -110,10 +106,10 @@ function InputTempRecord() {
 
   const column = [
     {
-      title: "Reg No",
-      dataIndex: "reg_no",
+      title: "New Reg No",
+      dataIndex: "new_reg_no",
       align: "center",
-      key: "reg_no",
+      key: "new_reg_no",
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
@@ -319,17 +315,17 @@ function InputTempRecord() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label className="fw-bold text-primary">No Reg Old</Form.Label>
+            <Form.Label className="fw-bold text-primary">New Reg No</Form.Label>
             {contextHolder}
             <Modal
-              title="Pilih No Reg Old "
+              title="Pilih new Reg No "
               open={isEditing}
               onCancel={() => {
                 setIsEditing(false);
               }}
               onOk={() => {
                 {
-                  setValue("reg_no", `${filter}`);
+                  setValue("new_reg_no", `${filter}`);
                 }
                 {
                   setValue("machine_no", `${filter2}`);
@@ -362,7 +358,7 @@ function InputTempRecord() {
             <Form.Control
               onClick={showModal}
               className="mb-2"
-              {...register("reg_no")}
+              {...register("new_reg_no")}
               placeholder="isi data user"
             />
           </Form.Group>
@@ -522,4 +518,4 @@ function InputTempRecord() {
   );
 }
 
-export default InputTempRecord;
+export default InputTempCont;

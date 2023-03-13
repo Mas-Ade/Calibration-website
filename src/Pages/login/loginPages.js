@@ -1,98 +1,96 @@
-
-import { login } from '../../utils/axios'
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import login3 from '../../Assets/pictures/login3.png';
-import Footer from '../../Components/layout/footer'
-
+import { login } from "../../utils/axios";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import login3 from "../../Assets/pictures/login3.png";
+import Footer from "../../Components/layout/footer";
 
 const LoginUser = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-const [username,setUsername] = useState('')
-const [password,setPassword] = useState('')
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-const onSubmit = async (e) => {
-    e.preventDefault()
-    try{
-
-    const result = await login(username,password)
-    localStorage.setItem('dataUser', JSON.stringify(result.data.data))
-    navigate('/home')
-    console.log(result)
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await login(username, password);
+      localStorage.setItem("dataUser", JSON.stringify(result.data.data));
+      navigate("/home");
+      console.log(result);
+    } catch (error) {
+      console.log(error);
     }
-    catch(error){
-    console.log(error)
-    }
+  };
 
-    }
-
-    return(
-       
-    <div className='ftco-section '  >
-		<div className="container ">
+  return (
+    <div className="ftco-section ">
+      <div className="container ">
         <div className="row justify-content-center ">
-        <div className="col-md-7 col-lg-5 mt-5 p-0 mb-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded background "> 
-        <div className="wrap">
-        <div className="card-img ">
-               			<img className="img-fluid max-width: 100%  " alt="logo dept. NIN" src={login3}></img>
-                 				</div>
+          <div className="col-md-7 col-lg-5 mt-5 p-0 mb-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded background ">
+            <div className="wrap">
+              <div className="card-img ">
+                <img
+                  className="img-fluid max-width: 100%  "
+                  alt="logo dept. NIN"
+                  src={login3}
+                ></img>
+              </div>
 
- 							  		<div className="login-wrap p-4 p-md-4">
- 			      					<div className="w-100 ">
-			      						<h1 className="mb-2 text-dark font-weight-bold ">Login</h1>
-			      					</div>
+              <div className="login-wrap p-4 p-md-4">
+                <div className="w-100 ">
+                  <h1 className="mb-2 text-dark font-weight-bold ">Login</h1>
+                </div>
 
-                                    <form onSubmit={(e) => onSubmit(e)} className="signin-form ">
+                <form onSubmit={(e) => onSubmit(e)} className="signin-form ">
+                  <div className="form-group mt-3 mb-3">
+                    <label className="form-control-placeholder">Username</label>
+                    <input
+                      type="text"
+                      className="form-control form-control-lg "
+                      required
+                      onChange={(e) => setUsername(e.target.value)}
+                      value={username}
+                    />
+                  </div>
 
-			      							<div className="form-group mt-3 mb-3">
-                                            <label className="form-control-placeholder">Username</label>
-			      							<input type="text" className="form-control form-control-lg " required onChange={(e)=> setUsername(e.target.value) } value={username}/>	
-			      							</div>
+                  <div className="form-group mb-5">
+                    <label className="form-control-placeholder">Password</label>
+                    <input
+                      id="password-field"
+                      type="password"
+                      className="form-control form-control-lg"
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    />
+                    <span
+                      toggle="#password-field"
+                      className="fa fa-fw fa-eye field-icon toggle-password"
+                    ></span>
+                  </div>
 
-		            						<div className="form-group mb-5">
-                                            <label className="form-control-placeholder" >Password</label>
-		              						<input id="password-field" type="password" className="form-control form-control-lg" required onChange={(e)=> setPassword(e.target.value) } value ={password} />
-		              						<span toggle="#password-field" className="fa fa-fw fa-eye field-icon toggle-password"></span>
-		            						</div>
-                                            
-		            						<div className="form-group">
-		            						<button type="submit" className="form-control btn-lg  btn btn-primary rounded submit px-5">Login</button>
-		           							</div>
-		          						</form>
-
-                    
-                         
+                  <div className="form-group">
+                    <button
+                      type="submit"
+                      className="form-control btn-lg  btn btn-primary rounded submit px-5"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-            </div>
-        </div>    
+          </div>
         </div>
-		</div>
-        <Footer />
-        </div>
-
-    )
-}
-
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default LoginUser;
 
 // tidak dipakai karena direvisi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import login1 from '../Assets/pictures/login1.jpg';
 // import Col from 'react-bootstrap/Col';
@@ -102,7 +100,6 @@ export default LoginUser;
 // import { useForm } from "react-hook-form"
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
-
 
 // const LoginPages = () => {
 
@@ -115,12 +112,12 @@ export default LoginUser;
 //     }
 
 // 	const [ dbUser, setDbUser] = useState([])
-	
+
 // 	useEffect (() => {
 //     getDB().then((result) => {
 //     setDbUser (result.data.data)
 //     console.log("result :", dbUser)
-//     })   
+//     })
 //      },[])
 
 // 	const onSubmit = datas => {
@@ -132,7 +129,7 @@ export default LoginUser;
 // 		 <div className="ftco-section">
 // 		  <div class="container">
 // 			  <div class="row justify-content-center bor">
-// 				  <div class="col-md-7 col-lg-5 bg-light shadow p-3 mb-5"> 
+// 				  <div class="col-md-7 col-lg-5 bg-light shadow p-3 mb-5">
 // 					  <div class="wrap bg-warning">
 //             			<div class="card-img mt-2">
 //                 			<img class="img-fluid max-width: 100%" alt="logo dept. NIN" src={login1}></img>
@@ -158,7 +155,7 @@ export default LoginUser;
 // 									<option>Production</option>
 // 									<option>Engineering</option>
 // 									<option>Admin</option>
-									
+
 // 									</Form.Select>
 // 									</Form.Group>
 // 									</Row>
@@ -171,7 +168,7 @@ export default LoginUser;
 // 									</Row>
 // 									<Button onClick={event =>  window.location.href='/app'} variant="primary" type="submit">Login </Button>
 // 									</Form>
-									
+
 // 		        			</div>
 // 		      			</div>
 // 					</div>
@@ -180,6 +177,5 @@ export default LoginUser;
 // 		</div>
 //   )
 // }
-
 
 // export default LoginPages;
