@@ -35,20 +35,17 @@ function InputTempCont() {
   // state untuk simpan data ke local storage
   const [formValues, setFormValues] = useState([]);
   const [enableButton, setEnableButton] = useState(true);
-  // state untuk memanpung data Noreg
-  // const [dataNoreg, setDataNoreg] = useState({})
-  // state untuk memanpung data nomach
-  // const [dataNomach, setDataNomach] = useState({})
 
   useEffect(() => {}, []);
 
-  // get data
+  // get data device calibration
   const getNo = async () => {
     const response = await axios.get(
       `${BASE_URLAPI}/api/getdata_devicemaster_calibration`
     );
     setValidno(response.data.data);
   };
+  // get data staff
   const getStaff = async () => {
     const response = await axios.get(`${BASE_URLAPI}/api/getdata_staff`);
     setStaff(response.data.data);
@@ -85,26 +82,29 @@ function InputTempCont() {
     getStaff();
   }, []);
 
+  // function submit For Validation Button
   const onSubmitState = async (datas) => {
-    // console.log(datas);
+    console.log(datas);
     setFormValues(datas);
     setIsEditing3(true);
   };
 
+  // function submit For Submit Button
   const onSubmit = async () => {
-    const data = formValues;
     await axios.post(
       "http://10.202.100.84:3003/api/postdata_calibration_tempctrl_temprec",
-      data
+      formValues
     );
+    console.log("data submit :", formValues);
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
     setTimeout(() => {
       console.log("update berhasil");
-      window.location.href = "/testing/modal";
+      window.location.href = "/inputTempCont";
     }, 1000);
   };
 
+  // column for field new reg no modal
   const column = [
     {
       title: "New Reg No",
@@ -123,6 +123,16 @@ function InputTempCont() {
             .includes(value.toLowerCase())
         );
       },
+    },
+    {
+      title: "Device Name",
+      dataIndex: "device_name",
+      align: "center",
+    },
+    {
+      title: "Machine No",
+      dataIndex: "machine_no",
+      align: "center",
     },
     {
       title: "Action",
@@ -178,6 +188,7 @@ function InputTempCont() {
   //   },
   // ];
 
+  // column for verification Button
   const column3 = [
     {
       title: "R1 10",
@@ -272,7 +283,7 @@ function InputTempCont() {
     },
   ];
 
-  //   console.log("data : ", formValues);
+  // console.log("data : ", formValues);
   // console.log("data no reg new :" , validno)
   // fungsi onsubmit + alert
 
@@ -330,6 +341,7 @@ function InputTempCont() {
               onOk={() => {
                 setValue("new_reg_no", `${filter}`);
                 setValue("machine_no", `${filter2}`);
+
                 setIsEditing(false);
               }}
             >
@@ -480,6 +492,7 @@ function InputTempCont() {
             *mohon untuk diperiksa kembali hasil input anda
           </h6>
         </div>
+        {/* validasi sebelum submit */}
         <Button variant="warning" type="submit">
           <Modal
             title="Result"
@@ -504,7 +517,7 @@ function InputTempCont() {
           </Modal>
           Validate
         </Button>
-
+        {/* Submit data to server/db */}
         <Button
           disabled={enableButton}
           style={{ marginLeft: 15 }}

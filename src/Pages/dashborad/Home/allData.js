@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Button, Input, Table, Modal, Space } from "antd";
+import { Button, Input, Table, Modal, Space, Tag } from "antd";
 import { Col, Container, Row } from "react-bootstrap";
 import BASE_URLAPI from "../../../config/URLAPI";
 import moment from "moment";
@@ -20,11 +20,6 @@ function AllData(props) {
   const [searchText2, setSearchText2] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
-
-  // search not global #2
-  // const [searchText3, setSearchText3] = useState("");
-  // const [searchedColumn2, setSearchedColumn2] = useState("");
-  // const searchInput2 = useRef(null);
 
   useEffect(() => {
     loadData();
@@ -155,98 +150,6 @@ function AllData(props) {
     // end of highlight
   });
 
-  // const getColumnSearchProps2 = (dataIndex) => ({
-  //   filterDropdown: ({
-  //     setSelectedKeys,
-  //     selectedKeys,
-  //     confirm,
-  //     clearFilters,
-  //     close,
-  //   }) => (
-  //     <div
-  //       style={{
-  //         padding: 8,
-  //       }}
-  //       onKeyDown={(e) => e.stopPropagation()}
-  //     >
-  //       <Input
-  //         ref={searchInput2}
-  //         placeholder={`Search ${dataIndex}`}
-  //         value={selectedKeys[1]}
-  //         onChange={(e) =>
-  //           setSelectedKeys(e.target.value ? [e.target.value] : [])
-  //         }
-  //         onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-  //         style={{
-  //           marginBottom: 8,
-  //           display: "block",
-  //         }}
-  //       />
-  //       <Space>
-  //         <Button
-  //           type="primary"
-  //           onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-  //           icon={<SearchOutlined />}
-  //           size="small"
-  //           style={{
-  //             width: 90,
-  //           }}
-  //         >
-  //           Search
-  //         </Button>
-
-  //         <Button
-  //           onClick={() => clearFilters && handleReset2(clearFilters)}
-  //           size="small"
-  //           style={{
-  //             width: 90,
-  //           }}
-  //         >
-  //           Reset
-  //         </Button>
-
-  //         <Button
-  //           type="link"
-  //           size="small"
-  //           onClick={() => {
-  //             close();
-  //           }}
-  //         >
-  //           close
-  //         </Button>
-  //       </Space>
-  //     </div>
-  //   ),
-  //   filterIcon: (filtered) => (
-  //     <SearchOutlined
-  //       style={{
-  //         color: filtered ? "#1890ff" : undefined,
-  //       }}
-  //     />
-  //   ),
-  //   onFilter: (value, record) =>
-  //     record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-  //   onFilterDropdownOpenChange: (visible) => {
-  //     if (visible) {
-  //       setTimeout(() => searchInput2.current?.select(), 100);
-  //     }
-  //   },
-  //   render: (text) =>
-  //     searchedColumn2 === dataIndex ? (
-  //       <Highlighter
-  //         highlightStyle={{
-  //           backgroundColor: "#ffc069",
-  //           padding: 0,
-  //         }}
-  //         searchWords={[searchText3]}
-  //         autoEscape
-  //         textToHighlight={text ? text.toString() : ""}
-  //       />
-  //     ) : (
-  //       text
-  //     ),
-  // });
-
   // let filteredData = useState()
 
   const loadData = async () => {
@@ -270,41 +173,28 @@ function AllData(props) {
     );
   };
 
-  // const callDataTemp = async () => {
-  //     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
-  //     setTempData(response.data.data)
-  // }
-  // # optional to show (for checking only)
-  // console.log("gridData", gridData)
-  // console.log("filter:", tempData )
-  // console.log("editing: --> " , editing)
-
   const columns = [
     {
       title: "Reg_no",
       dataIndex: "reg_no",
       align: "center",
-      // logic global search
-
-      // filteredValue: [searchText],
-      // onFilter:(value,record) => {
-      // return String(record.reg_no)
-      // .toLowerCase()
-      // .includes(value.toLowerCase())  ||
-      //  String(record.new_reg_no)
-      // .toLowerCase()
-      // .includes(value.toLowerCase()) ||
-      // String(record.date_calibration)
-      // .toLowerCase()
-      // .includes(value.toLowerCase())
-      // },
     },
 
     {
       title: "New Reg No",
       dataIndex: "new_reg_no",
       align: "center",
+      widht: 200,
       ...getColumnSearchProps("new_reg_no"),
+    },
+
+    {
+      title: "Status",
+      key: "Status",
+      dataIndex: "location",
+      align: "center",
+      // logic menunggu database update
+      render: (record) => <Tag color={"green"}> Active</Tag>,
     },
 
     {
@@ -435,3 +325,31 @@ function AllData(props) {
 }
 
 export default AllData;
+
+// logic global search
+// filteredValue: [searchText],
+// onFilter:(value,record) => {
+// return String(record.reg_no)
+// .toLowerCase()
+// .includes(value.toLowerCase())  ||
+//  String(record.new_reg_no)
+// .toLowerCase()
+// .includes(value.toLowerCase()) ||
+// String(record.date_calibration)
+// .toLowerCase()
+// .includes(value.toLowerCase())
+// },
+
+// const callDataTemp = async () => {
+//     const response = await axios.get(`${BASE_URLAPI}/api/getdata_calibration_tempctrl_temprec`)
+//     setTempData(response.data.data)
+// }
+// # optional to show (for checking only)
+// console.log("gridData", gridData)
+// console.log("filter:", tempData )
+// console.log("editing: --> " , editing)
+
+// search not global #2
+// const [searchText3, setSearchText3] = useState("");
+// const [searchedColumn2, setSearchedColumn2] = useState("");
+// const searchInput2 = useRef(null);

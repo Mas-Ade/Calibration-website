@@ -119,6 +119,16 @@ function InputTempPress() {
       // }
     },
     {
+      title: "Device Name",
+      dataIndex: "device_name",
+      align: "center",
+    },
+    {
+      title: "Machine No",
+      dataIndex: "machine_no",
+      align: "center",
+    },
+    {
       title: "Action",
       key: "action",
       render: (record) => (

@@ -1,24 +1,30 @@
+// import bootstrap
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+// Import Assets Picture
 import tempcont3 from "../../Assets/pictures/tempcont3.jpg";
 import pressgauge3 from "../../Assets/pictures/pressgauge3.png";
 import temp_recorder3 from "../../Assets/pictures/temp_recorder3.png";
 import documentLogo from "../../Assets/pictures/logo-document.png";
+// import library react router dom
 import { Link } from "react-router-dom";
+// import single page css
 import "../../App.css";
 // import { useEffect, useState } from "react";
 // import BASE_URLAPI from "../../config/URLAPI";
 // import axios from "axios";
 
 function Input() {
+  // function move page
   const tempCont = () => {
     window.location.replace(
       "http://10.202.100.84:3003/api/download/file/collection_document/1"
     );
   };
+  // function move page
   const pressGauge = () => {
     window.location.replace(
       "http://10.202.100.84:3003/api/download/file/collection_document/2"
@@ -35,6 +41,9 @@ function Input() {
             Select Device
           </h2>
         </div>
+        {/* Header End */}
+
+        {/* card to choose device */}
         <Row>
           <Col sm={4}>
             <Card className="container shadow" style={{ width: "20rem" }}>
@@ -112,6 +121,9 @@ function Input() {
             </Card>
           </Col>
         </Row>
+        {/* card to choose device End */}
+
+        {/* download procedure */}
         <div className="container mt-5 ">
           <h4 className="container">Please Check Our Calibration Procedure </h4>
           <Row className="mt-3">
@@ -175,6 +187,7 @@ function Input() {
             </Col>
           </Row>
         </div>
+        {/* download procedure end */}
       </Container>
     </div>
   );
