@@ -11,7 +11,6 @@ function DownloadTemp() {
   const [searchText, setSearchText] = useState("");
   // const [tempData, setTempData] = useState([])
   const [isEditing, setIsEditing] = useState(false);
-  // const [editing, setEditing] = useState([])
   const [getlink, setGetLink] = useState("");
   // let filteredData = useState()
 

@@ -35,225 +35,6 @@ function FilterToday(props) {
     // callDataTemp()
   }, []);
 
-  // const handleSearch = (selectedKeys, confirm, dataIndex) => {
-  //     confirm();
-  //     setSearchText2(selectedKeys[0]);
-  //     setSearchedColumn(dataIndex);
-  // };
-
-  // const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
-  //     confirm();
-  //     setSearchText3(selectedKeys[1]);
-  //     setSearchedColumn2(dataIndex);
-  // };
-
-  // const handleReset = (clearFilters) => {
-  //     clearFilters();
-  //     setSearchText2('');
-  // };
-
-  // const handleReset2 = (clearFilters2) => {
-  //     clearFilters2();
-  //     setSearchText3('');
-  // };
-
-  // const getColumnSearchProps = (dataIndex) => ({
-  //     // show searchbar
-  //     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-  //         <div
-  //             style={{
-  //                 padding: 8,
-  //             }}
-  //             onKeyDown={(e) => e.stopPropagation()}
-  //         >
-  //             <Input
-  //                 ref={searchInput}
-  //                 placeholder={`Search ${dataIndex}`}
-  //                 value={selectedKeys[0]}
-  //                 onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-  //                 onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-  //                 style={{
-  //                     marginBottom: 8,
-  //                     display: 'block',
-  //                 }}
-  //             />
-  //             <Space>
-  //                 <Button
-  //                     type="primary"
-  //                     onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-  //                     icon={<SearchOutlined />}
-  //                     size="small"
-  //                     style={{
-  //                         width: 90,
-  //                     }}
-  //                 >
-  //                     Search
-  //                 </Button>
-
-  //                 <Button
-  //                     onClick={() => clearFilters && handleReset(clearFilters)}
-  //                     size="small"
-  //                     style={{
-  //                         width: 90,
-  //                     }}
-  //                 >
-  //                     Reset
-  //                 </Button>
-
-  //                 <Button
-  //                     type="link"
-  //                     size="small"
-  //                     onClick={() => {
-  //                         close();
-  //                     }}
-  //                 >
-  //                     close
-  //                 </Button>
-  //             </Space>
-  //         </div>
-  //     ),
-  //     // end of search bar
-
-  //     // icon button search
-  //     filterIcon: (filtered) => (
-  //         <SearchOutlined
-  //             style={{
-  //                 color: filtered ? '#1890ff' : undefined,
-  //             }}
-  //         />
-  //     ),
-  //     // end of icon
-
-  //     // logic search
-  //     onFilter: (value, record) =>
-  //         record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-  //     onFilterDropdownOpenChange: (visible) => {
-  //         if (visible) {
-  //             setTimeout(() => searchInput.current?.select(), 100);
-  //         }
-  //     },
-
-  //     render: (text) =>
-  //         searchedColumn === dataIndex ? (
-  //             // highlight searched text with color works
-  //             <Highlighter
-  //                 highlightStyle={{
-  //                     backgroundColor: '#ffc069',
-  //                     padding: 0,
-  //                 }}
-  //                 searchWords={[searchText2]}
-  //                 autoEscape
-  //                 textToHighlight={text ? text.toString() : ''}
-  //             />
-  //         ) : (
-  //             text
-  //         ),
-  // end of highlight
-  // });
-
-  // const getColumnSearchProps2 = (dataIndex) => ({
-  //     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-  //         <div
-  //             style={{
-  //                 padding: 8,
-  //             }}
-  //             onKeyDown={(e) => e.stopPropagation()}
-  //         >
-  //             <Input
-  //                 ref={searchInput2}
-  //                 placeholder={`Search ${dataIndex}`}
-  //                 value={selectedKeys[1]}
-  //                 onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-  //                 onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-  //                 style={{
-  //                     marginBottom: 8,
-  //                     display: 'block',
-  //                 }}
-  //             />
-  //             <Space>
-  //                 <Button
-  //                     type="primary"
-  //                     onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-  //                     icon={<SearchOutlined />}
-  //                     size="small"
-  //                     style={{
-  //                         width: 90,
-  //                     }}
-  //                 >
-  //                     Search
-  //                 </Button>
-
-  //                 <Button
-  //                     onClick={() => clearFilters && handleReset2(clearFilters)}
-  //                     size="small"
-  //                     style={{
-  //                         width: 90,
-  //                     }}
-  //                 >
-  //                     Reset
-  //                 </Button>
-
-  //                 <Button
-  //                     type="link"
-  //                     size="small"
-  //                     onClick={() => {
-  //                         close();
-  //                     }}
-  //                 >
-  //                     close
-  //                 </Button>
-  //             </Space>
-  //         </div>
-  //     ),
-  //     filterIcon: (filtered) => (
-  //         <SearchOutlined
-  //             style={{
-  //                 color: filtered ? '#1890ff' : undefined,
-  //             }}
-  //         />
-  //     ),
-  //     onFilter: (value, record) =>
-  //         record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-  //     onFilterDropdownOpenChange: (visible) => {
-  //         if (visible) {
-  //             setTimeout(() => searchInput2.current?.select(), 100);
-  //         }
-  //     },
-  //     render: (text) =>
-  //         searchedColumn2 === dataIndex ? (
-  //             <Highlighter
-  //                 highlightStyle={{
-  //                     backgroundColor: '#ffc069',
-  //                     padding: 0,
-  //                 }}
-  //                 searchWords={[searchText3]}
-  //                 autoEscape
-  //                 textToHighlight={text ? text.toString() : ''}
-  //             />
-  //         ) : (
-  //             text
-  //         ),
-  // });
-
-  // const loadData = async () => {
-  //     setLoading(true)
-  //     const response = await axios.get( `${BASE_URLAPI}/api/getdata_schedule_calibration`)
-  //     setLoading(false)
-  //     setGridData(
-  //         response.data.data.map(row => ({
-  //             schedule_id: row.schedule_id,
-  //             reg_no: row.reg_no,
-  //             new_reg_no: row.new_reg_no,
-  //             device_name: row.device_name,
-  //             machine_no: row.machine_no,
-  //             location: row.location,
-  //             date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
-  //             last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
-  //             next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
-  //         })))
-
-  // }
-
   const newDate = new Date();
   const dates = moment(newDate).format("YYYY-MMM");
   console.log("filter dates :", dates);
@@ -378,10 +159,10 @@ function FilterToday(props) {
     },
   ];
 
-  const onClickButton = (record) => {
-    setIsEditing(true);
-    setEditing(record.reg_no);
-  };
+  // const onClickButton = (record) => {
+  //   setIsEditing(true);
+  //   setEditing(record.reg_no);
+  // };
 
   const editingData = editing;
 
@@ -453,3 +234,222 @@ function FilterToday(props) {
 }
 
 export default FilterToday;
+
+// const handleSearch = (selectedKeys, confirm, dataIndex) => {
+//     confirm();
+//     setSearchText2(selectedKeys[0]);
+//     setSearchedColumn(dataIndex);
+// };
+
+// const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
+//     confirm();
+//     setSearchText3(selectedKeys[1]);
+//     setSearchedColumn2(dataIndex);
+// };
+
+// const handleReset = (clearFilters) => {
+//     clearFilters();
+//     setSearchText2('');
+// };
+
+// const handleReset2 = (clearFilters2) => {
+//     clearFilters2();
+//     setSearchText3('');
+// };
+
+// const getColumnSearchProps = (dataIndex) => ({
+//     // show searchbar
+//     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+//         <div
+//             style={{
+//                 padding: 8,
+//             }}
+//             onKeyDown={(e) => e.stopPropagation()}
+//         >
+//             <Input
+//                 ref={searchInput}
+//                 placeholder={`Search ${dataIndex}`}
+//                 value={selectedKeys[0]}
+//                 onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+//                 onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+//                 style={{
+//                     marginBottom: 8,
+//                     display: 'block',
+//                 }}
+//             />
+//             <Space>
+//                 <Button
+//                     type="primary"
+//                     onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+//                     icon={<SearchOutlined />}
+//                     size="small"
+//                     style={{
+//                         width: 90,
+//                     }}
+//                 >
+//                     Search
+//                 </Button>
+
+//                 <Button
+//                     onClick={() => clearFilters && handleReset(clearFilters)}
+//                     size="small"
+//                     style={{
+//                         width: 90,
+//                     }}
+//                 >
+//                     Reset
+//                 </Button>
+
+//                 <Button
+//                     type="link"
+//                     size="small"
+//                     onClick={() => {
+//                         close();
+//                     }}
+//                 >
+//                     close
+//                 </Button>
+//             </Space>
+//         </div>
+//     ),
+//     // end of search bar
+
+//     // icon button search
+//     filterIcon: (filtered) => (
+//         <SearchOutlined
+//             style={{
+//                 color: filtered ? '#1890ff' : undefined,
+//             }}
+//         />
+//     ),
+//     // end of icon
+
+//     // logic search
+//     onFilter: (value, record) =>
+//         record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+//     onFilterDropdownOpenChange: (visible) => {
+//         if (visible) {
+//             setTimeout(() => searchInput.current?.select(), 100);
+//         }
+//     },
+
+//     render: (text) =>
+//         searchedColumn === dataIndex ? (
+//             // highlight searched text with color works
+//             <Highlighter
+//                 highlightStyle={{
+//                     backgroundColor: '#ffc069',
+//                     padding: 0,
+//                 }}
+//                 searchWords={[searchText2]}
+//                 autoEscape
+//                 textToHighlight={text ? text.toString() : ''}
+//             />
+//         ) : (
+//             text
+//         ),
+// end of highlight
+// });
+
+// const getColumnSearchProps2 = (dataIndex) => ({
+//     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+//         <div
+//             style={{
+//                 padding: 8,
+//             }}
+//             onKeyDown={(e) => e.stopPropagation()}
+//         >
+//             <Input
+//                 ref={searchInput2}
+//                 placeholder={`Search ${dataIndex}`}
+//                 value={selectedKeys[1]}
+//                 onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+//                 onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+//                 style={{
+//                     marginBottom: 8,
+//                     display: 'block',
+//                 }}
+//             />
+//             <Space>
+//                 <Button
+//                     type="primary"
+//                     onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+//                     icon={<SearchOutlined />}
+//                     size="small"
+//                     style={{
+//                         width: 90,
+//                     }}
+//                 >
+//                     Search
+//                 </Button>
+
+//                 <Button
+//                     onClick={() => clearFilters && handleReset2(clearFilters)}
+//                     size="small"
+//                     style={{
+//                         width: 90,
+//                     }}
+//                 >
+//                     Reset
+//                 </Button>
+
+//                 <Button
+//                     type="link"
+//                     size="small"
+//                     onClick={() => {
+//                         close();
+//                     }}
+//                 >
+//                     close
+//                 </Button>
+//             </Space>
+//         </div>
+//     ),
+//     filterIcon: (filtered) => (
+//         <SearchOutlined
+//             style={{
+//                 color: filtered ? '#1890ff' : undefined,
+//             }}
+//         />
+//     ),
+//     onFilter: (value, record) =>
+//         record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+//     onFilterDropdownOpenChange: (visible) => {
+//         if (visible) {
+//             setTimeout(() => searchInput2.current?.select(), 100);
+//         }
+//     },
+//     render: (text) =>
+//         searchedColumn2 === dataIndex ? (
+//             <Highlighter
+//                 highlightStyle={{
+//                     backgroundColor: '#ffc069',
+//                     padding: 0,
+//                 }}
+//                 searchWords={[searchText3]}
+//                 autoEscape
+//                 textToHighlight={text ? text.toString() : ''}
+//             />
+//         ) : (
+//             text
+//         ),
+// });
+
+// const loadData = async () => {
+//     setLoading(true)
+//     const response = await axios.get( `${BASE_URLAPI}/api/getdata_schedule_calibration`)
+//     setLoading(false)
+//     setGridData(
+//         response.data.data.map(row => ({
+//             schedule_id: row.schedule_id,
+//             reg_no: row.reg_no,
+//             new_reg_no: row.new_reg_no,
+//             device_name: row.device_name,
+//             machine_no: row.machine_no,
+//             location: row.location,
+//             date_calibration: moment(row.date_calibration).format("YYYY-MM-DD"),
+//             last_calibration: moment(row.last_calibration).format("YYYY-MM-DD"),
+//             next_calibration: moment(row.next_calibration).format("YYYY-MM-DD"),
+//         })))
+
+// }

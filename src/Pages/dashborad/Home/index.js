@@ -17,7 +17,7 @@ function IndexHome() {
         style={{ fontFamily: "Segoe UI" }}
         className="mb-4 mt-4 text-center mb-4 fw-bold"
       >
-        CALIBRATION PROGRESS{" "}
+        Calibration Progress
       </h2>
 
       {(() => {

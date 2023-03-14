@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import Alert from "react-bootstrap/Alert";
 import React, { useState, useEffect } from "react";
 import BASE_URLAPI from "../../config/URLAPI";
 import { Table, Input, Modal, message } from "antd";
@@ -19,10 +18,10 @@ function InputTempPress() {
   // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]);
   const [staff, setStaff] = useState([]);
-  const [name, setName] = useState([]);
+  // const [name, setName] = useState([]);
   //logic kondisi Modal diatur dalam state tipe boolean
   const [isEditing, setIsEditing] = useState(false);
-  const [isEditing2, setIsEditing2] = useState(false);
+  // const [isEditing2, setIsEditing2] = useState(false);
   const [isEditing3, setIsEditing3] = useState(false);
   // state untuk memanpung data pencarian
   const [searchText, setSearchText] = useState("");
@@ -51,12 +50,12 @@ function InputTempPress() {
   const showModal = async (record) => {
     setIsEditing(true);
   };
-  const showModal2 = async (record) => {
-    setIsEditing2(true);
-  };
-  const showModal3 = async (record) => {
-    setIsEditing3(true);
-  };
+  // const showModal2 = async (record) => {
+  //   setIsEditing2(true);
+  // };
+  // const showModal3 = async (record) => {
+  //   setIsEditing3(true);
+  // };
 
   const filterData = (record) => {
     setFilter(record.new_reg_no);
@@ -65,11 +64,12 @@ function InputTempPress() {
     messageApi.info(`${record.new_reg_no} berhasil dipilih `);
   };
 
-  const filterData2 = (record) => {
-    setFilter2(record.machine_no);
-    setIsEditing2(true);
-    messageApi.info(`${record.machine_no} berhasil dipilih `);
-  };
+  // tidak digunakan karena auto dengan no reg
+  // const filterData2 = (record) => {
+  //   setFilter2(record.machine_no);
+  //   setIsEditing2(true);
+  //   messageApi.info(`${record.machine_no} berhasil dipilih `);
+  // };
 
   useEffect(() => {
     getNo();
@@ -87,11 +87,11 @@ function InputTempPress() {
     const data = formValues;
     axios.post(
       "http://10.202.100.84:3003/api/postdata_calibration_pressgauge",
-      formValues
+      data
     );
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
-    const timeout = await setTimeout(() => {
+    setTimeout(() => {
       console.log("update berhasil");
       window.location.href = "/inputTempPress";
     }, 1000);
@@ -134,45 +134,45 @@ function InputTempPress() {
     },
   ];
 
-  const column2 = [
-    {
-      title: "Machine No",
-      dataIndex: "machine_no",
-      align: "center",
-      filteredValue: [searchText],
-      onFilter: (value, record) => {
-        return (
-          String(record.machine_no)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          String(record.new_reg_no)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          String(record.calibration_date)
-            .toLowerCase()
-            .includes(value.toLowerCase())
-        );
-      },
-      // onclick:(value, record) => {
-      // setDataNomach(record.machine_no)
-      // }
-    },
+  // const column2 = [
+  //   {
+  //     title: "Machine No",
+  //     dataIndex: "machine_no",
+  //     align: "center",
+  //     filteredValue: [searchText],
+  //     onFilter: (value, record) => {
+  //       return (
+  //         String(record.machine_no)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase()) ||
+  //         String(record.new_reg_no)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase()) ||
+  //         String(record.calibration_date)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase())
+  //       );
+  //     },
+  //     // onclick:(value, record) => {
+  //     // setDataNomach(record.machine_no)
+  //     // }
+  //   },
 
-    {
-      title: "Action",
-      key: "action",
-      render: (record) => (
-        <Button
-          onClick={() => {
-            filterData2(record);
-          }}
-        >
-          Choose
-        </Button>
-      ),
-      align: "center",
-    },
-  ];
+  //   {
+  //     title: "Action",
+  //     key: "action",
+  //     render: (record) => (
+  //       <Button
+  //         onClick={() => {
+  //           filterData2(record);
+  //         }}
+  //       >
+  //         Choose
+  //       </Button>
+  //     ),
+  //     align: "center",
+  //   },
+  // ];
 
   const column3 = [
     {
@@ -363,7 +363,10 @@ function InputTempPress() {
 
   return (
     <div className="container">
-      <h1 style={{ fontFamily: "Segoe UI" }} className="mb-4 mt-4 mb-4 fw-bold">
+      <h1
+        style={{ fontFamily: "Segoe UI" }}
+        className="mb-4 mt-4 mb-4 fw-bold text-center"
+      >
         Input Result Calibration of Pressure Gauge
       </h1>
 
@@ -410,12 +413,8 @@ function InputTempPress() {
                 setIsEditing(false);
               }}
               onOk={() => {
-                {
-                  setValue("new_reg_no", `${filter}`);
-                }
-                {
-                  setValue("machine_no", `${filter2}`);
-                }
+                setValue("new_reg_no", `${filter}`);
+                setValue("machine_no", `${filter2}`);
                 setIsEditing(false);
               }}
             >

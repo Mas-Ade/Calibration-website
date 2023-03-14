@@ -15,7 +15,7 @@ import "../../App.css";
 function InputTempCont() {
   // works
   // deklarasi state
-  const { register, handleSubmit, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   // state untuk memanpung data dalam table Modal
   const [validno, setValidno] = useState([]);
   const [staff, setStaff] = useState([]);
@@ -61,9 +61,9 @@ function InputTempCont() {
   const showModal2 = async (record) => {
     setIsEditing2(true);
   };
-  const showModal3 = async (record) => {
-    setIsEditing3(true);
-  };
+  // const showModal3 = async (record) => {
+  //   setIsEditing3(true);
+  // };
 
   // filter data
   const filterData = (record, index) => {
@@ -73,11 +73,12 @@ function InputTempCont() {
     messageApi.info(`${record.new_reg_no} berhasil dipilih `);
   };
 
-  const filterData2 = (record) => {
-    setFilter2(record.machine_no);
-    setIsEditing2(true);
-    messageApi.info(`${record.machine_no} berhasil dipilih `);
-  };
+  // tidak digunakan karena auto dengan no reg
+  // const filterData2 = (record) => {
+  //   setFilter2(record.machine_no);
+  //   setIsEditing2(true);
+  //   messageApi.info(`${record.machine_no} berhasil dipilih `);
+  // };
 
   useEffect(() => {
     getNo();
@@ -98,7 +99,7 @@ function InputTempCont() {
     console.log("data submit :", formValues);
     alert(JSON.stringify("Data berhasil diinput"));
     // script timeout dan pindah halaman
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       console.log("update berhasil");
       window.location.href = "/inputTempCont";
     }, 1000);
@@ -139,43 +140,43 @@ function InputTempCont() {
     },
   ];
 
-  const column2 = [
-    {
-      title: "Machine No",
-      dataIndex: "machine_no",
-      align: "center",
-      key: "machine_no",
-      filteredValue: [searchText],
-      onFilter: (value, record) => {
-        return (
-          String(record.machine_no)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          String(record.new_reg_no)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          String(record.calibration_date)
-            .toLowerCase()
-            .includes(value.toLowerCase())
-        );
-      },
-    },
+  // const column2 = [
+  //   {
+  //     title: "Machine No",
+  //     dataIndex: "machine_no",
+  //     align: "center",
+  //     key: "machine_no",
+  //     filteredValue: [searchText],
+  //     onFilter: (value, record) => {
+  //       return (
+  //         String(record.machine_no)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase()) ||
+  //         String(record.new_reg_no)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase()) ||
+  //         String(record.calibration_date)
+  //           .toLowerCase()
+  //           .includes(value.toLowerCase())
+  //       );
+  //     },
+  //   },
 
-    {
-      title: "Action",
-      key: "action",
-      render: (record) => (
-        <Button
-          onClick={() => {
-            filterData2(record);
-          }}
-        >
-          Choose
-        </Button>
-      ),
-      align: "center",
-    },
-  ];
+  //   {
+  //     title: "Action",
+  //     key: "action",
+  //     render: (record) => (
+  //       <Button
+  //         onClick={() => {
+  //           filterData2(record);
+  //         }}
+  //       >
+  //         Choose
+  //       </Button>
+  //     ),
+  //     align: "center",
+  //   },
+  // ];
 
   const column3 = [
     {
@@ -277,7 +278,10 @@ function InputTempCont() {
 
   return (
     <div className="container">
-      <h1 style={{ fontFamily: "Segoe UI" }} className="mb-4 mt-4 mb-4 fw-bold">
+      <h1
+        style={{ fontFamily: "Segoe UI" }}
+        className="mb-4 mt-4 mb-4 fw-bold text-center"
+      >
         Input Result Calibration Temperature Control
       </h1>
 
@@ -324,12 +328,9 @@ function InputTempCont() {
                 setIsEditing(false);
               }}
               onOk={() => {
-                {
-                  setValue("new_reg_no", `${filter}`);
-                }
-                {
-                  setValue("machine_no", `${filter2}`);
-                }
+                setValue("new_reg_no", `${filter}`);
+                setValue("machine_no", `${filter2}`);
+
                 setIsEditing(false);
               }}
             >

@@ -9,9 +9,9 @@ import temp_recorder3 from "../../Assets/pictures/temp_recorder3.png";
 import documentLogo from "../../Assets/pictures/logo-document.png";
 import { Link } from "react-router-dom";
 import "../../App.css";
-import { useEffect, useState } from "react";
-import BASE_URLAPI from "../../config/URLAPI";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import BASE_URLAPI from "../../config/URLAPI";
+// import axios from "axios";
 
 function Input() {
   const tempCont = () => {
@@ -32,13 +32,14 @@ function Input() {
             style={{ fontFamily: "Segoe UI" }}
             className=" text-center mb-4 fw-bold"
           >
-            SELECT DEVICE TO INPUT
+            Select Device
           </h2>
         </div>
         <Row>
           <Col sm={4}>
             <Card className="container shadow" style={{ width: "20rem" }}>
               <Card.Img
+                alt="temperature control"
                 className="mt-2"
                 height={250}
                 variant="top"
@@ -64,6 +65,7 @@ function Input() {
             <Card className="container shadow " style={{ width: "20rem" }}>
               <Card.Img
                 className="mt-2"
+                alt="pressure gauge"
                 height={250}
                 variant="top"
                 src={pressgauge3}
@@ -88,6 +90,7 @@ function Input() {
             <Card className=" container shadow" style={{ width: "20rem" }}>
               <Card.Img
                 className="mt-2"
+                alt="temperature recorder"
                 height={250}
                 variant="top"
                 src={temp_recorder3}
@@ -132,6 +135,7 @@ function Input() {
                     </Col>
                     <Col sm={2}>
                       <img
+                        alt="document logo"
                         src={documentLogo}
                         style={{ height: 50, width: 50 }}
                       ></img>
@@ -142,7 +146,7 @@ function Input() {
             </Col>
 
             <Col sm={6}>
-              <Card className="container shadow " style={{ width: "33rem" }}>
+              <Card className="shadow " style={{ width: "33rem" }}>
                 {/* <Card.Img className='mt-2' height={120} variant="top" src={pressgauge3} /> */}
                 <Card.Body>
                   <Row>
@@ -160,6 +164,7 @@ function Input() {
                     </Col>
                     <Col sm={2}>
                       <img
+                        alt="document logo"
                         src={documentLogo}
                         style={{ height: 50, width: 50 }}
                       ></img>

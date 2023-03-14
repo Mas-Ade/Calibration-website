@@ -22,9 +22,9 @@ function AllData(props) {
   const searchInput = useRef(null);
 
   // search not global #2
-  const [searchText3, setSearchText3] = useState("");
-  const [searchedColumn2, setSearchedColumn2] = useState("");
-  const searchInput2 = useRef(null);
+  // const [searchText3, setSearchText3] = useState("");
+  // const [searchedColumn2, setSearchedColumn2] = useState("");
+  // const searchInput2 = useRef(null);
 
   useEffect(() => {
     loadData();
@@ -37,21 +37,21 @@ function AllData(props) {
     setSearchedColumn(dataIndex);
   };
 
-  const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText3(selectedKeys[1]);
-    setSearchedColumn2(dataIndex);
-  };
+  // const handleSearch2 = (selectedKeys, confirm, dataIndex) => {
+  //   confirm();
+  //   setSearchText3(selectedKeys[1]);
+  //   setSearchedColumn2(dataIndex);
+  // };
 
   const handleReset = (clearFilters) => {
     clearFilters();
     setSearchText2("");
   };
 
-  const handleReset2 = (clearFilters2) => {
-    clearFilters2();
-    setSearchText3("");
-  };
+  // const handleReset2 = (clearFilters2) => {
+  //   clearFilters2();
+  //   setSearchText3("");
+  // };
 
   const getColumnSearchProps = (dataIndex) => ({
     // show searchbar
@@ -155,97 +155,97 @@ function AllData(props) {
     // end of highlight
   });
 
-  const getColumnSearchProps2 = (dataIndex) => ({
-    filterDropdown: ({
-      setSelectedKeys,
-      selectedKeys,
-      confirm,
-      clearFilters,
-      close,
-    }) => (
-      <div
-        style={{
-          padding: 8,
-        }}
-        onKeyDown={(e) => e.stopPropagation()}
-      >
-        <Input
-          ref={searchInput2}
-          placeholder={`Search ${dataIndex}`}
-          value={selectedKeys[1]}
-          onChange={(e) =>
-            setSelectedKeys(e.target.value ? [e.target.value] : [])
-          }
-          onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-          style={{
-            marginBottom: 8,
-            display: "block",
-          }}
-        />
-        <Space>
-          <Button
-            type="primary"
-            onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
-            icon={<SearchOutlined />}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Search
-          </Button>
+  // const getColumnSearchProps2 = (dataIndex) => ({
+  //   filterDropdown: ({
+  //     setSelectedKeys,
+  //     selectedKeys,
+  //     confirm,
+  //     clearFilters,
+  //     close,
+  //   }) => (
+  //     <div
+  //       style={{
+  //         padding: 8,
+  //       }}
+  //       onKeyDown={(e) => e.stopPropagation()}
+  //     >
+  //       <Input
+  //         ref={searchInput2}
+  //         placeholder={`Search ${dataIndex}`}
+  //         value={selectedKeys[1]}
+  //         onChange={(e) =>
+  //           setSelectedKeys(e.target.value ? [e.target.value] : [])
+  //         }
+  //         onPressEnter={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+  //         style={{
+  //           marginBottom: 8,
+  //           display: "block",
+  //         }}
+  //       />
+  //       <Space>
+  //         <Button
+  //           type="primary"
+  //           onClick={() => handleSearch2(selectedKeys, confirm, dataIndex)}
+  //           icon={<SearchOutlined />}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Search
+  //         </Button>
 
-          <Button
-            onClick={() => clearFilters && handleReset2(clearFilters)}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Reset
-          </Button>
+  //         <Button
+  //           onClick={() => clearFilters && handleReset2(clearFilters)}
+  //           size="small"
+  //           style={{
+  //             width: 90,
+  //           }}
+  //         >
+  //           Reset
+  //         </Button>
 
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
-          </Button>
-        </Space>
-      </div>
-    ),
-    filterIcon: (filtered) => (
-      <SearchOutlined
-        style={{
-          color: filtered ? "#1890ff" : undefined,
-        }}
-      />
-    ),
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput2.current?.select(), 100);
-      }
-    },
-    render: (text) =>
-      searchedColumn2 === dataIndex ? (
-        <Highlighter
-          highlightStyle={{
-            backgroundColor: "#ffc069",
-            padding: 0,
-          }}
-          searchWords={[searchText3]}
-          autoEscape
-          textToHighlight={text ? text.toString() : ""}
-        />
-      ) : (
-        text
-      ),
-  });
+  //         <Button
+  //           type="link"
+  //           size="small"
+  //           onClick={() => {
+  //             close();
+  //           }}
+  //         >
+  //           close
+  //         </Button>
+  //       </Space>
+  //     </div>
+  //   ),
+  //   filterIcon: (filtered) => (
+  //     <SearchOutlined
+  //       style={{
+  //         color: filtered ? "#1890ff" : undefined,
+  //       }}
+  //     />
+  //   ),
+  //   onFilter: (value, record) =>
+  //     record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+  //   onFilterDropdownOpenChange: (visible) => {
+  //     if (visible) {
+  //       setTimeout(() => searchInput2.current?.select(), 100);
+  //     }
+  //   },
+  //   render: (text) =>
+  //     searchedColumn2 === dataIndex ? (
+  //       <Highlighter
+  //         highlightStyle={{
+  //           backgroundColor: "#ffc069",
+  //           padding: 0,
+  //         }}
+  //         searchWords={[searchText3]}
+  //         autoEscape
+  //         textToHighlight={text ? text.toString() : ""}
+  //       />
+  //     ) : (
+  //       text
+  //     ),
+  // });
 
   // let filteredData = useState()
 

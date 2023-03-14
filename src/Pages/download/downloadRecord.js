@@ -11,7 +11,7 @@ function DownloadRecord() {
   const [searchText, setSearchText] = useState("");
   // const [tempData, setTempData] = useState([])
   const [isEditing, setIsEditing] = useState(false);
-  const [editing, setEditing] = useState([]);
+
   // let filteredData = useState()
   const [getlink, setGetLink] = useState("");
 
@@ -273,7 +273,7 @@ function DownloadRecord() {
     setGetLink(record.caltempctrl_rec_id);
   };
 
-  const editingData = editing;
+  // const editingData = editing;
 
   return (
     <div>
